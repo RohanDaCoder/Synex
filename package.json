@@ -1,0 +1,32 @@
+{
+  "name": "Synex",
+  "version": "1.0.0",
+  "description": "An Discord Bot Made Using Discord.js v14",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\"",
+    "start": "clear && node src/index.js",
+    "dev": "clear && nodemon src/index.js",
+    "format": "prettier -w .",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "discord",
+    "bot"
+  ],
+  "author": "RohanDaCoder",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "discord.js": "^14.15.3",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.8.0",
+    "eslint": "^9.8.0",
+    "globals": "^15.9.0",
+    "nodemon": "^3.1.4",
+    "prettier": "^3.3.3"
+  }
+}
