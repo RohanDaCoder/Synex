@@ -1,2 +1,3 @@
-bundle.js
+dist/
 node_modules/
+.commandkit
