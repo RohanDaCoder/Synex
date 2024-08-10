@@ -1,20 +1,30 @@
 import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
 import type { Command } from "../../types";
-import { SlashCommandProps } from "commandkit";
 
 export default {
-  data: new SlashCommandBuilder().setName("ping").setDescription("Get My Ping"),
+  data: new SlashCommandBuilder().setName("ping").setDescription("Pong!"),
 
-  run: async ({ interaction, client }: SlashCommandProps) => {
+  run: async ({ interaction, client }) => {
     const embed = new EmbedBuilder()
+      .setColor("#2F3136")
+      .setTitle("Client Ping")
       .addFields({
-        name: "Client Ping",
-        value: `${client.ws.ping}`,
+        name: "*Latency*",
+        value: `${Date.now() - interaction.createdTimestamp}ms`,
+      })
+      .addFields({
+        name: "*API Latency*",
+        value: `${Math.round(client.ws.ping)}ms`,
       })
       .setColor("Blurple")
-      .setTimestamp();
+      .setTimestamp()
+      .setFooter({
+        text: interaction.user.username,
+        iconURL: interaction.user.displayAvatarURL(),
+      });
     await interaction.reply({
       embeds: [embed],
+      content: "Pong!",
     });
   },
 } as Command;
