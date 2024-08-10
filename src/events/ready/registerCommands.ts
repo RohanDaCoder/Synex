@@ -22,11 +22,11 @@ async function deployCommands(client: Client, commandDataArray: Array<any>) {
 
 async function handleLoading(client: Client, commandDataArray: Array<any>) {
   const validCommands = commandDataArray.filter(
-    (cmd) => !cmd.options?.deleted && cmd.name && cmd.description
+    (cmd) => !cmd.options?.deleted && cmd.name && cmd.description,
   );
 
   const devOnlyCommands = validCommands.filter(
-    (cmd) => cmd.options?.devOnly === true
+    (cmd) => cmd.options?.devOnly === true,
   );
   const globalCommands = validCommands.filter((cmd) => !cmd.options?.devOnly);
 
@@ -40,12 +40,12 @@ async function loadGlobalCommands(client: Client, commands: Array<any>) {
   try {
     await client.application?.commands.set(commands);
     console.log(
-      colors.magenta(`[Commands] Loaded ${commands.length} commands.`)
+      colors.magenta(`[Commands] Loaded ${commands.length} commands.`),
     );
   } catch (error) {
     console.error(
       colors.red("Error loading global application commands.\n"),
-      error
+      error,
     );
   }
 }
@@ -58,7 +58,7 @@ async function loadDevCommands(client: Client, commands: Array<any>) {
 
       if (!targetGuild) {
         console.warn(
-          `Cannot load commands in guild "${guildId}" - guild doesn't exist or client isn't part of the guild.`
+          `Cannot load commands in guild "${guildId}" - guild doesn't exist or client isn't part of the guild.`,
         );
         continue;
       }
@@ -67,9 +67,9 @@ async function loadDevCommands(client: Client, commands: Array<any>) {
     } catch (error) {
       console.error(
         colors.red(
-          `Error loading developer application commands in guild "${guildId}".\n`
+          `Error loading developer application commands in guild "${guildId}".\n`,
         ),
-        error
+        error,
       );
     }
   }
@@ -102,13 +102,13 @@ module.exports = async (client: Client) => {
             totalCommands++;
           } else {
             console.error(
-              `Command ${commandFile} in category ${category} is missing required properties.`
+              `Command ${commandFile} in category ${category} is missing required properties.`,
             );
           }
         } catch (error) {
           console.error(
             `Error loading command ${commandFile} in category ${category}:`,
-            error
+            error,
           );
         }
       }

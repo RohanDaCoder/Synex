@@ -22,7 +22,7 @@ module.exports = async (client: Client, interaction: CommandInteraction) => {
       embeds: [
         new EmbedBuilder()
           .setDescription(
-            `:x: An error occurred while executing this command: \n${error.message}`
+            `:x: An error occurred while executing this command: \n${error.message}`,
           )
           .setColor("Red")
           .setFooter({

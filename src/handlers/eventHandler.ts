@@ -7,7 +7,7 @@ export function handleEvents(client: Client) {
 
   eventNames.forEach(async (name) => {
     const eventFiles = fs.readdirSync(
-      path.resolve(__dirname, `../events/${name}`)
+      path.resolve(__dirname, `../events/${name}`),
     );
 
     eventFiles.forEach(async (eventFile: string) => {
