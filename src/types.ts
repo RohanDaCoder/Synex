@@ -3,10 +3,13 @@ import type {
   SlashCommandProps,
   CommandOptions,
 } from "commandkit";
-import { SlashCommandBuilder } from "discord.js";
+import {
+  SlashCommandBuilder,
+  SlashCommandOptionsOnlyBuilder,
+} from "discord.js";
 
 export type Command = {
-  data: CommandData | SlashCommandBuilder;
+  data: CommandData | SlashCommandBuilder | SlashCommandOptionsOnlyBuilder;
   run: (props: SlashCommandProps) => void;
   options?: CommandOptions;
   category?: string;
