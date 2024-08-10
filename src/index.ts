@@ -1,15 +1,27 @@
-import { Client, GatewayIntentBits } from "discord.js";
-import "dotenv/config";
-import { handleEvents } from "./handlers/eventHandler";
+import 'dotenv/config';
 
-const client: Client = new Client({
+import { Client, IntentsBitField } from 'discord.js';
+import { CommandKit } from 'commandkit';
+
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const client = new Client({
   intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent,
+    IntentsBitField.Flags.Guilds,
+    IntentsBitField.Flags.GuildMembers,
+    IntentsBitField.Flags.GuildMessages,
+    IntentsBitField.Flags.MessageContent,
   ],
 });
 
-handleEvents(client);
+new CommandKit({
+  client,
+  eventsPath: join(__dirname, 'events'),
+  commandsPath: join(__dirname, 'commands'),
+  bulkRegister: true,
+});
 
 client.login(process.env.TOKEN);

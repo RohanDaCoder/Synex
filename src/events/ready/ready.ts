@@ -1,9 +1,5 @@
-import { Client, ActivityType } from "discord.js";
+import type { Client } from 'discord.js';
 
-module.exports = async (client: Client) => {
-  console.log(`[Client] ${client.user?.tag} Is Ready`);
-  client.user?.setPresence({
-    activities: [{ name: `You`, type: ActivityType.Watching }],
-    status: "online",
-  });
+export default (client: Client<true>) => {
+  console.log(`${client.user.tag} is online!`);
 };

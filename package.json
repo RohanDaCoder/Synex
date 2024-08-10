@@ -1,37 +1,19 @@
 {
-  "name": "Synex",
-  "version": "1.0.0",
-  "description": "A Discord Bot Made Using Discord.js v14",
-  "main": "dist/index.js",
+  "name": "synex",
+  "version": "0.0.0",
+  "description": "",
   "scripts": {
-    "start": "node dist/index.js",
-    "dev": "nodemon --exec ts-node src/index.ts",
-    "build": "tsc",
-    "format": "prettier -w .",
-    "lint": "eslint ."
+    "dev": "commandkit dev",
+    "build": "commandkit build",
+    "start": "commandkit start"
   },
-  "keywords": [
-    "discord",
-    "bot"
-  ],
-  "author": "RohanDaCoder",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
+  "type": "module",
   "dependencies": {
-    "colors": "^1.4.0",
+    "commandkit": "^0.1.10",
     "discord.js": "^14.15.3",
-    "dotenv": "^16.4.5",
-    "fs": "0.0.1-security",
-    "path": "^0.12.7"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.9.0",
-    "@stylistic/eslint-plugin-js": "^2.6.2",
-    "@types/node": "^22.2.0",
-    "eslint": "^9.9.0",
-    "globals": "^15.9.0",
-    "nodemon": "^3.1.4",
-    "prettier": "^3.3.3",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.5.4"
+    "dotenv": "^16.4.5"
   }
 }
