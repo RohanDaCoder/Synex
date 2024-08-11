@@ -7,7 +7,7 @@ export default {
     .setDescription("Get a User's ID")
     .setDMPermission(false)
     .addUserOption((o) =>
-      o.setName("target").setDescription("The Target User")
+      o.setName("target").setDescription("The Target User"),
     ),
 
   run: async ({ interaction, client }) => {

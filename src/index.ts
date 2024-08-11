@@ -1,10 +1,7 @@
+console.clear();
 import "dotenv/config";
-import { Client, GatewayIntentBits, Events } from "discord.js";
-import { fileURLToPath } from "node:url";
-import path from "path";
-import fs from "fs";
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+import { Client, GatewayIntentBits } from "discord.js";
+import eventHandler from "./handlers/eventHandler";
 
 const client = new Client({
   intents: [
@@ -15,45 +12,7 @@ const client = new Client({
   ],
 });
 
-async function loadEvents() {
-  try {
-    const eventNames = fs.readdirSync(path.join(__dirname, "events"));
-
-    for (const name of eventNames) {
-      const eventFiles = fs.readdirSync(path.join(__dirname, `events/${name}`));
-
-      for (const eventFile of eventFiles) {
-        const eventPath = path.join(__dirname, `events/${name}/${eventFile}`);
-
-        try {
-          // Dynamically import the event handler
-          const { default: runEvent } = await import(eventPath);
-
-          if (typeof runEvent === "function") {
-            // Type assertion to ensure correct event type
-            client.on(name as keyof typeof Events, (...props: any[]) =>
-              runEvent(client, ...props)
-            );
-          } else {
-            console.error(
-              `Event handler in file ${eventFile} is not a function.`
-            );
-          }
-        } catch (importError) {
-          console.error(
-            `Error importing event file ${eventFile}:`,
-            importError
-          );
-        }
-      }
-    }
-  } catch (error) {
-    console.error("Error loading events:", error);
-  }
-}
-
-// Call the loadEvents function to initialize event handlers
-loadEvents();
+eventHandler(client);
 
 client.login(process.env.TOKEN);
 

@@ -2,7 +2,7 @@ import { ChatInputCommandInteraction, EmbedBuilder } from "discord.js";
 
 export default async (
   message: string,
-  interaction: ChatInputCommandInteraction
+  interaction: ChatInputCommandInteraction,
 ) => {
   const embed = new EmbedBuilder()
     .setDescription(message)

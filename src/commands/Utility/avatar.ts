@@ -7,7 +7,7 @@ export default {
     .setDescription("Fetch A User's Or Your Avatar")
     .setDMPermission(false)
     .addUserOption((option) =>
-      option.setName("target").setDescription("The Target User")
+      option.setName("target").setDescription("The Target User"),
     ),
 
   run: async ({ interaction }) => {

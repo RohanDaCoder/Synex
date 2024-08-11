@@ -1,15 +1,25 @@
-import type {
-  CommandData,
-  SlashCommandProps,
-  CommandOptions,
-} from "commandkit";
 import {
   SlashCommandBuilder,
   SlashCommandOptionsOnlyBuilder,
+  ChatInputCommandInteraction,
+  Client,
+  PermissionsString
 } from "discord.js";
 
+export type SlashCommandProps = {
+  interaction: ChatInputCommandInteraction;
+  client: Client;
+}
+
+export interface CommandOptions {
+  devOnly?: boolean;
+  deleted?: boolean;
+  userPermissions?: PermissionsString | PermissionsString[];
+  botPermissions?: PermissionsString | PermissionsString[];
+}
+
 export type Command = {
-  data: CommandData | SlashCommandBuilder | SlashCommandOptionsOnlyBuilder;
+  data: SlashCommandBuilder | SlashCommandOptionsOnlyBuilder;
   run: (props: SlashCommandProps) => void;
   options?: CommandOptions;
   category?: string;

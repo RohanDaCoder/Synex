@@ -15,7 +15,7 @@ export default {
     .setDMPermission(false),
 
   run: async ({ interaction, client }) => {
-    const inviteLink = `https://discord.com/oauth2/authorize?client_id=${client.user.id}&scope=bot`;
+    const inviteLink = `https://discord.com/oauth2/authorize?client_id=${client.user?.id}&scope=bot`;
 
     const button = new ButtonBuilder()
       .setLabel("Invite Link")
@@ -25,12 +25,12 @@ export default {
 
     const inviteEmbed = new EmbedBuilder()
       .setTitle("Invite Me!")
-      .setDescription(`Invite ${client.user.username} Using The Button Below`)
+      .setDescription(`Invite ${client.user?.username} Using The Button Below`)
       .setColor("Blurple")
       .setTimestamp()
       .setAuthor({
-        name: client.user.username,
-        iconURL: client.user.displayAvatarURL({ forceStatic: true }),
+        name: `${client.user?.username}`,
+        iconURL: client.user?.displayAvatarURL({ forceStatic: true }),
       });
 
     await interaction.reply({

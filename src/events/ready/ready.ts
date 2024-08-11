@@ -1,5 +1,11 @@
-import type { Client } from "discord.js";
 
-export default (client: Client<true>) => {
-  console.log(`${client.user.tag} is online!`);
+import client from "../../index";
+
+const consoleLog: any = {
+  once: true,
+  execute() {
+    console.log(`Logged in as ${client.user?.tag}`);
+  },
 };
+
+export default consoleLog;
