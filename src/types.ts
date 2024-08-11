@@ -14,3 +14,10 @@ export type Command = {
   options?: CommandOptions;
   category?: string;
 };
+
+export type Config = {
+  emojis: {
+    true: string;
+    false: string;
+  };
+};

@@ -4,7 +4,8 @@ import type { Command } from "../../types";
 export default {
   data: new SlashCommandBuilder()
     .setName("hello")
-    .setDescription("Replies With Hello"),
+    .setDescription("Replies With Hello")
+    .setDMPermission(false),
 
   run: async ({ interaction, client }) => {
     await interaction.reply({

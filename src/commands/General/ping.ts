@@ -2,7 +2,10 @@ import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
 import type { Command } from "../../types";
 
 export default {
-  data: new SlashCommandBuilder().setName("ping").setDescription("Pong!"),
+  data: new SlashCommandBuilder()
+    .setName("ping")
+    .setDescription("Pong!")
+    .setDMPermission(false),
 
   run: async ({ interaction, client }) => {
     const embed = new EmbedBuilder()

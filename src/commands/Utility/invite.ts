@@ -11,7 +11,8 @@ import {
 export default {
   data: new SlashCommandBuilder()
     .setName("invite")
-    .setDescription("Get the bot's invite link"),
+    .setDescription("Get the bot's invite link")
+    .setDMPermission(false),
 
   run: async ({ interaction, client }) => {
     const inviteLink = `https://discord.com/oauth2/authorize?client_id=${client.user.id}&scope=bot`;
@@ -33,6 +34,7 @@ export default {
       });
 
     await interaction.reply({
+      ephemeral: true,
       embeds: [inviteEmbed],
       components: [row],
     });
