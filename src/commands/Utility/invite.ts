@@ -21,7 +21,7 @@ export default {
       .setLabel("Invite Link")
       .setURL(inviteLink)
       .setStyle(ButtonStyle.Link);
-    const row = new ActionRowBuilder().addComponents(button);
+    const row = new ActionRowBuilder<ButtonBuilder>().addComponents(button);
 
     const inviteEmbed = new EmbedBuilder()
       .setTitle("Invite Me!")
