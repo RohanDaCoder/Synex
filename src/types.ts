@@ -9,18 +9,17 @@ import {
 export type SlashCommandProps = {
   interaction: ChatInputCommandInteraction;
   client: Client;
-}
+};
 
 export interface CommandOptions {
   devOnly?: boolean;
-  deleted?: boolean;
   userPermissions?: PermissionsString | PermissionsString[];
   botPermissions?: PermissionsString | PermissionsString[];
 }
 
 export type Command = {
   data: SlashCommandBuilder | SlashCommandOptionsOnlyBuilder;
-  run: (props: SlashCommandProps) => void;
+  run: (props: SlashCommandProps) => Promise<void>;
   options?: CommandOptions;
   category?: string;
 };
