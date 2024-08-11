@@ -6,7 +6,8 @@
     "dev": "commandkit dev",
     "build": "commandkit build",
     "start": "commandkit start",
-    "prettier": "prettier -w ."
+    "prettier": "prettier -w .",
+    "nodemon": "nodemon"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +19,9 @@
     "dotenv": "^16.4.5"
   },
   "devDependencies": {
-    "prettier": "^3.3.3"
+    "nodemon": "^3.1.4",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
   }
 }
