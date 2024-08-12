@@ -3,7 +3,9 @@ import { ChatInputCommandInteraction, EmbedBuilder } from "discord.js";
 export default async (
   message: string,
   interaction: ChatInputCommandInteraction,
+  ephemeral?: boolean
 ) => {
+  const IsEphemeral = ephemeral || false;
   const embed = new EmbedBuilder()
     .setDescription(message)
     .setColor("Blurple")

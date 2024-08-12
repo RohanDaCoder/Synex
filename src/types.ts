@@ -4,6 +4,7 @@ import {
   ChatInputCommandInteraction,
   Client,
   PermissionsString,
+  Collection,
 } from "discord.js";
 
 export type SlashCommandProps = {
@@ -33,3 +34,6 @@ export type Config = {
   devGuildIds: string[];
   devUserIds: string[];
 };
+export interface BotClient extends Client {
+  commands: Collection<string, Command>;
+}

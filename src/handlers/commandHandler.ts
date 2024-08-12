@@ -8,14 +8,14 @@ import fs from "fs";
 import { Command } from "../types";
 import { fileURLToPath } from "node:url";
 import chalk from "chalk";
-import log from "../util/log.ts";
+import log from "../util/log";
 import config from "../config";
+const commands = new Collection<string, Command>();
 
 export default async function commandHandler(client: Client) {
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
   const commandsPath = path.join(__dirname, "../commands");
   const commandFolders = fs.readdirSync(commandsPath);
-  process.commands = new Collection<string, Command>();
 
   const globalCommands: ApplicationCommandDataResolvable[] = [];
   const devCommands: ApplicationCommandDataResolvable[] = [];
@@ -36,7 +36,7 @@ export default async function commandHandler(client: Client) {
         command.options?.devOnly
           ? devCommands.push(command.data.toJSON())
           : globalCommands.push(command.data.toJSON());
-        process.commands.set(command.data.name, command);
+        commands.set(command.data.name, command);
       }
     }
   }
@@ -54,10 +54,12 @@ export default async function commandHandler(client: Client) {
       log(
         "Info",
         `Registered ${devCommands.length} developer and ${globalCommands.length} global commands.`,
-        chalk.green,
+        chalk.green
       );
-    } catch (error) {
+    } catch (error: any) {
       log("Error", `Error registering commands: ${error.message}`, chalk.red);
     }
   });
 }
+
+export { commands };
