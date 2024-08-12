@@ -1,10 +1,11 @@
-
 import client from "../../index";
+import chalk from "chalk";
+import log from "../../util/log";
 
 const consoleLog: any = {
   once: true,
   execute() {
-    console.log(`Logged in as ${client.user?.tag}`);
+    log("Info", `Logged in as ${client.user?.tag}`, chalk.blue);
   },
 };
 

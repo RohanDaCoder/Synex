@@ -4,26 +4,26 @@ import fs from "fs";
 import { fileURLToPath } from "node:url";
 
 export default async (client: Client) => {
-// Event Handler
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const eventsPath = path.join(__dirname, "../events");
-const eventFolders = fs.readdirSync(eventsPath);
+  // Event Handler
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
+  const eventsPath = path.join(__dirname, "../events");
+  const eventFolders = fs.readdirSync(eventsPath);
 
-eventFolders.forEach(async (folder) => {
-  const eventFiles = fs
-    .readdirSync(path.join(eventsPath, folder))
-    .filter((file) => file.endsWith(".ts"));
+  eventFolders.forEach(async (folder) => {
+    const eventFiles = fs
+      .readdirSync(path.join(eventsPath, folder))
+      .filter((file) => file.endsWith(".ts"));
 
-  eventFiles.forEach(async (file) => {
-    const { execute, once } = (
-      await import(path.join(eventsPath, folder, file))
-    ).default;
+    eventFiles.forEach(async (file) => {
+      const { execute, once } = (
+        await import(path.join(eventsPath, folder, file))
+      ).default;
 
-    if (once) {
-      client.once(folder, (...args) => execute(...args));
-    } else {
-      client.on(folder, (...args) => execute(...args));
-    }
+      if (once) {
+        client.once(folder, (...args) => execute(...args));
+      } else {
+        client.on(folder, (...args) => execute(...args));
+      }
+    });
   });
-});
-}
+};

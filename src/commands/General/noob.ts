@@ -12,4 +12,7 @@ export default {
       content: `Hey Noob :rofl:, ${interaction.user.displayName}!`,
     });
   },
+  options: {
+    devOnly: true,
+  },
 } as Command;

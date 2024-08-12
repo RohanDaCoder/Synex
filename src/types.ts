@@ -3,7 +3,7 @@ import {
   SlashCommandOptionsOnlyBuilder,
   ChatInputCommandInteraction,
   Client,
-  PermissionsString
+  PermissionsString,
 } from "discord.js";
 
 export type SlashCommandProps = {
@@ -28,5 +28,8 @@ export type Config = {
   emojis: {
     true: string;
     false: string;
+    loading: string;
   };
+  devGuildIds: string[];
+  devUserIds: string[];
 };
