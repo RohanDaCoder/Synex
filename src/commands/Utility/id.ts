@@ -10,7 +10,7 @@ export default {
       o.setName("target").setDescription("The Target User"),
     ),
 
-  run: async ({ interaction, client }) => {
+  run: async ({ interaction }) => {
     const target = interaction.options.getUser("target") || interaction.user;
     const embed = new EmbedBuilder()
       .setColor("Blurple")
