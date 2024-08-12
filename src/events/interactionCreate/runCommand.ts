@@ -1,16 +1,9 @@
-import {
-  ChatInputCommandInteraction,
-  Client,
-  EmbedBuilder,
-  Events,
-} from "discord.js";
-import type { Command } from "../../types";
+import { ChatInputCommandInteraction, Events } from "discord.js";
+import type { Command, Event } from "../../types";
 import { commands } from "../../handlers/commandHandler";
 import client from "../../index";
 import config from "../../config";
 import sendMessage from "../../util/sendMessage";
-
-//TODO: Return If The User Is Not A Developer
 
 export default {
   name: Events.InteractionCreate,
@@ -42,4 +35,4 @@ export default {
       );
     }
   },
-};
+} as Event;

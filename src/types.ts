@@ -5,6 +5,7 @@ import {
   Client,
   PermissionsString,
   Collection,
+  Events,
 } from "discord.js";
 
 export type SlashCommandProps = {
@@ -34,6 +35,9 @@ export type Config = {
   devGuildIds: string[];
   devUserIds: string[];
 };
-export interface BotClient extends Client {
-  commands: Collection<string, Command>;
+
+export interface Event {
+  name: Events;
+  once: boolean;
+  execute: Function;
 }
