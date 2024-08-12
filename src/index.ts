@@ -26,11 +26,9 @@ async function loadEvents() {
         const eventPath = path.join(__dirname, `events/${name}/${eventFile}`);
 
         try {
-          // Dynamically import the event handler
           const { default: runEvent } = await import(eventPath);
 
           if (typeof runEvent === "function") {
-            // Type assertion to ensure correct event type
             client.on(name as keyof typeof Events, (...props: any[]) =>
               runEvent(client, ...props)
             );
@@ -52,7 +50,6 @@ async function loadEvents() {
   }
 }
 
-// Call the loadEvents function to initialize event handlers
 loadEvents();
 
 client.login(process.env.TOKEN);

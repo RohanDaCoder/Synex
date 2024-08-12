@@ -4,7 +4,6 @@ import fs from "fs";
 import { fileURLToPath } from "node:url";
 
 export default async (client: Client) => {
-  // Event Handler
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
   const eventsPath = path.join(__dirname, "../events");
   const eventFolders = fs.readdirSync(eventsPath);
