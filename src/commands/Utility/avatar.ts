@@ -7,7 +7,7 @@ export default {
     .setDescription("Fetch A User's Or Your Avatar")
     .setDMPermission(false)
     .addUserOption((option) =>
-      option.setName("target").setDescription("The Target User"),
+      option.setName("target").setDescription("The Target User")
     ),
 
   run: async ({ interaction }) => {
@@ -19,8 +19,7 @@ export default {
         iconURL: targetAvatar,
       })
       .setTimestamp()
-      .setImage(targetAvatar)
-      .setThumbnail(targetAvatar);
+      .setImage(targetAvatar);
     await interaction.reply({
       embeds: [embed],
     });

@@ -34,7 +34,6 @@ export default {
       });
 
     await interaction.reply({
-      ephemeral: true,
       embeds: [inviteEmbed],
       components: [row],
     });

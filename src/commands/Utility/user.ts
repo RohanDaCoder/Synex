@@ -10,7 +10,6 @@ import {
 } from "discord.js";
 import sendMessage from "../../util/sendMessage";
 import timestamp from "../../util/timestamp";
-import { buffer } from "stream/consumers";
 
 export default {
   data: new SlashCommandBuilder()
