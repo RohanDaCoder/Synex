@@ -15,7 +15,7 @@ export default {
   data: new SlashCommandBuilder()
     .setName("user")
     .setDescription(
-      "Fetch a user by mention or ID and display their information."
+      "Fetch a user by mention or ID and display their information"
     )
     .addUserOption((option) =>
       option
