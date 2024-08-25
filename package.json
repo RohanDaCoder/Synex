@@ -1,12 +1,12 @@
 {
   "name": "synex",
   "version": "0.0.0",
-  "description": "A Discord Bot Made Using Typescript",
+  "description": "",
   "scripts": {
-    "dev": "bun --watch run src/index.ts",
+    "dev": "nodemon",
     "build": "tsc",
     "esbuild": "node esbuild.build.cjs",
-    "start": "bun run src/index.ts",
+    "start": "node dist/index.js",
     "prettier": "prettier -w ."
   },
   "keywords": [],
@@ -20,9 +20,11 @@
     "fs": "0.0.1-security"
   },
   "devDependencies": {
-    "@types/node": "^22.2.0",
-    "esbuild": "^0.23.0",
+    "@types/node": "^22.5.0",
+    "esbuild": "^0.23.1",
+    "nodemon": "^3.1.4",
     "prettier": "^3.3.3",
+    "tsx": "^4.18.0",
     "typescript": "^5.5.4"
   }
 }
