@@ -10,29 +10,37 @@ export default {
   once: false,
   async execute(interaction: ChatInputCommandInteraction) {
     if (!interaction.isCommand()) return;
+
     const command = commands.get(interaction.commandName) as Command;
+
+    if (!command) {
+      return sendMessage({
+        message: "This Command Does Not Exist!",
+        interaction,
+        emoji: "No",
+      });
+    }
+
     if (
       command.options?.devOnly === true &&
       !config.devUserIds.includes(interaction.user.id)
-    )
-      return sendMessage(
-        `${config.emojis.false} This Command Is Only For Developers!`,
-        interaction
-      );
-    if (!command)
-      return sendMessage(
-        `${config.emojis.false} This Command Does Not Exist!`,
-        interaction
-      );
+    ) {
+      return sendMessage({
+        message: "This Command Is Only For Developers!",
+        interaction,
+        emoji: "No",
+      });
+    }
 
     try {
       await command.run({ interaction, client });
     } catch (error) {
       console.error(error);
-      await sendMessage(
-        `${config.emojis.false} There was an error while executing this command!`,
-        interaction
-      );
+      await sendMessage({
+        message: "There was an error while executing this command!",
+        interaction,
+        emoji: "No",
+      });
     }
   },
 } as Event;

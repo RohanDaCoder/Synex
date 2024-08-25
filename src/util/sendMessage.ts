@@ -1,22 +1,32 @@
-import { ChatInputCommandInteraction, EmbedBuilder } from "discord.js";
+import { EmbedBuilder } from "discord.js";
+import { ReplyOptions } from "../types";
+import config from "../config";
 
-export default async (
-  message: string,
-  interaction: ChatInputCommandInteraction,
-  ephemeral?: boolean
-) => {
-  const IsEphemeral = ephemeral || false;
+export default async (props: ReplyOptions) => {
+  const { interaction, ephemeral = false, message, emoji = null } = props;
+
+  let emojiPrefix = "";
+
+  if (emoji === "No") {
+    emojiPrefix = config.emojis.false;
+  } else if (emoji === "Yes") {
+    emojiPrefix = config.emojis.true;
+  }
+
   const embed = new EmbedBuilder()
-    .setDescription(message)
-    .setColor("Blurple")
+    .setDescription(`${emojiPrefix}${message}`)
+    .setColor("Red")
     .setTimestamp();
+
   if (interaction.replied || interaction.deferred) {
     await interaction.followUp({
       embeds: [embed],
+      ephemeral,
     });
-    return;
+  } else {
+    await interaction.reply({
+      embeds: [embed],
+      ephemeral,
+    });
   }
-  await interaction.reply({
-    embeds: [embed],
-  });
 };

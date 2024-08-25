@@ -4,7 +4,6 @@ import {
   ChatInputCommandInteraction,
   Client,
   PermissionsString,
-  Collection,
   Events,
 } from "discord.js";
 
@@ -40,4 +39,11 @@ export interface Event {
   name: Events;
   once: boolean;
   execute: Function;
+}
+
+export interface ReplyOptions {
+  message: string;
+  interaction: ChatInputCommandInteraction;
+  ephemeral?: boolean;
+  emoji?: "Yes" | "No";
 }
