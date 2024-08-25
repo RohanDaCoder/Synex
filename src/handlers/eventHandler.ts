@@ -9,9 +9,7 @@ export default async (client: Client) => {
   const eventFolders = fs.readdirSync(eventsPath);
 
   eventFolders.forEach(async (folder) => {
-    const eventFiles = fs
-      .readdirSync(path.join(eventsPath, folder))
-      .filter((file) => file.endsWith(".ts"));
+    const eventFiles = fs.readdirSync(path.join(eventsPath, folder));
 
     eventFiles.forEach(async (file) => {
       const { execute, once } = (

@@ -5,6 +5,13 @@ import {
   Client,
   PermissionsString,
   Events,
+  CommandInteraction,
+  ButtonInteraction,
+  ChannelSelectMenuInteraction,
+  MentionableSelectMenuInteraction,
+  RoleSelectMenuInteraction,
+  StringSelectMenuInteraction,
+  UserSelectMenuInteraction,
 } from "discord.js";
 
 export type SlashCommandProps = {
@@ -43,7 +50,14 @@ export interface Event {
 
 export interface ReplyOptions {
   message: string;
-  interaction: ChatInputCommandInteraction;
+  interaction:
+    | CommandInteraction
+    | ButtonInteraction
+    | StringSelectMenuInteraction
+    | UserSelectMenuInteraction
+    | RoleSelectMenuInteraction
+    | MentionableSelectMenuInteraction
+    | ChannelSelectMenuInteraction;
   ephemeral?: boolean;
   emoji?: "Yes" | "No";
 }

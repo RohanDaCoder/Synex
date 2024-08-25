@@ -1,13 +1,8 @@
 console.clear();
 import "dotenv/config";
-import { Client, GatewayIntentBits, Events } from "discord.js";
-import { fileURLToPath } from "node:url";
-import path from "path";
-import fs from "fs";
+import { Client, GatewayIntentBits } from "discord.js";
 import eventHandler from "./handlers/eventHandler";
 import commandHandler from "./handlers/commandHandler";
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const client = new Client({
   intents: [
