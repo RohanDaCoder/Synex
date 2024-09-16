@@ -6,13 +6,14 @@ import {
   ButtonStyle,
   SlashCommandBuilder,
   EmbedBuilder,
+  InteractionContextType,
 } from "discord.js";
 
 export default {
   data: new SlashCommandBuilder()
     .setName("invite")
     .setDescription("Get the bot's invite link")
-    .setDMPermission(false),
+    .setContexts(InteractionContextType.Guild),
 
   run: async ({ interaction, client }) => {
     const inviteLink = `https://discord.com/oauth2/authorize?client_id=${client.user?.id}&scope=bot`;

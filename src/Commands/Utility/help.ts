@@ -1,12 +1,12 @@
-import { SlashCommandBuilder } from "discord.js";
+import { InteractionContextType, SlashCommandBuilder } from "discord.js";
 import type { Command } from "../../types";
-import sendMessage from "../../util/sendMessage";
+import sendMessage from "../../Utils/sendMessage";
 
 export default {
   data: new SlashCommandBuilder()
     .setName("help")
     .setDescription("List My Command's Descriptions")
-    .setDMPermission(false),
+    .setContexts(InteractionContextType.Guild),
 
   run: async ({ interaction, client }) => {
     sendMessage({

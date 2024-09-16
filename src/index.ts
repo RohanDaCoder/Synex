@@ -1,21 +1,10 @@
-console.clear();
-import "dotenv/config";
-import { Client, GatewayIntentBits } from "discord.js";
-import eventHandler from "./handlers/eventHandler";
-import commandHandler from "./handlers/commandHandler";
+import { Client } from "discord.js";
+import loadEvents from "./Utils/loadEvents";
+import config from "./config";
 
-const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMembers,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent,
-  ],
+const client: Client = new Client({
+  intents: ["GuildMembers", "GuildMessages", "MessageContent"],
 });
-
-eventHandler(client);
-commandHandler(client);
-
-client.login(process.env.TOKEN);
+client.login(config.token).then(() => loadEvents());
 
 export default client;

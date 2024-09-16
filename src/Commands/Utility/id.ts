@@ -1,11 +1,15 @@
-import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
+import {
+  EmbedBuilder,
+  InteractionContextType,
+  SlashCommandBuilder,
+} from "discord.js";
 import type { Command } from "../../types";
 
 export default {
   data: new SlashCommandBuilder()
     .setName("id")
     .setDescription("Get a User's ID")
-    .setDMPermission(false)
+    .setContexts(InteractionContextType.Guild)
     .addUserOption((o) =>
       o.setName("target").setDescription("The Target User"),
     ),

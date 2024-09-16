@@ -1,9 +1,9 @@
 import { ChatInputCommandInteraction, Events } from "discord.js";
 import type { Command, Event } from "../../types";
-import { commands } from "../../handlers/commandHandler";
 import client from "../../index";
+import sendMessage from "../../Utils/sendMessage";
+import Commands from "../../Commands";
 import config from "../../config";
-import sendMessage from "../../util/sendMessage";
 
 export default {
   name: Events.InteractionCreate,
@@ -11,7 +11,9 @@ export default {
   async execute(interaction: ChatInputCommandInteraction) {
     if (!interaction.isCommand()) return;
 
-    const command = commands.get(interaction.commandName) as Command;
+    const command = Commands.allCommands.find(
+      (cmd) => cmd.data.name === interaction.commandName,
+    );
 
     if (!command) {
       return sendMessage({

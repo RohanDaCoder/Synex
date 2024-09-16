@@ -1,12 +1,15 @@
-import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
+import {
+  EmbedBuilder,
+  InteractionContextType,
+  SlashCommandBuilder,
+} from "discord.js";
 import type { Command } from "../../types";
 
 export default {
   data: new SlashCommandBuilder()
     .setName("ping")
     .setDescription("Pong!")
-    .setDMPermission(false),
-
+    .setContexts(InteractionContextType.Guild),
   run: async ({ interaction, client }) => {
     const embed = new EmbedBuilder()
       .setColor("#2F3136")

@@ -5,13 +5,14 @@ import {
   Client,
   PermissionsString,
   Events,
-  CommandInteraction,
   ButtonInteraction,
   ChannelSelectMenuInteraction,
+  CommandInteraction,
   MentionableSelectMenuInteraction,
   RoleSelectMenuInteraction,
   StringSelectMenuInteraction,
   UserSelectMenuInteraction,
+  ClientEvents,
 } from "discord.js";
 
 export type SlashCommandProps = {
@@ -32,20 +33,10 @@ export type Command = {
   category?: string;
 };
 
-export type Config = {
-  emojis: {
-    true: string;
-    false: string;
-    loading: string;
-  };
-  devGuildIds: string[];
-  devUserIds: string[];
-};
-
-export interface Event {
-  name: Events;
-  once: boolean;
-  execute: Function;
+export interface LogProps {
+  prefix: string;
+  message: string;
+  color: Colors;
 }
 
 export interface ReplyOptions {
@@ -61,3 +52,53 @@ export interface ReplyOptions {
   ephemeral?: boolean;
   emoji?: "Yes" | "No";
 }
+export interface Event {
+  name: keyof ClientEvents;
+  once: boolean;
+  execute: Function;
+}
+export type Config = {
+  emojis: {
+    true: string;
+    false: string;
+    loading: string;
+  };
+  devGuildIds: string[];
+  devUserIds: string[];
+  token: string;
+};
+export type Colors =
+  | "black"
+  | "red"
+  | "green"
+  | "yellow"
+  | "blue"
+  | "magenta"
+  | "cyan"
+  | "white"
+  | "gray"
+  | "grey"
+  | "bgBlack"
+  | "bgRed"
+  | "bgGreen"
+  | "bgYellow"
+  | "bgBlue"
+  | "bgMagenta"
+  | "bgCyan"
+  | "bgWhite"
+  | "reset"
+  | "bold"
+  | "dim"
+  | "italic"
+  | "underline"
+  | "inverse"
+  | "hidden"
+  | "strikethrough"
+  | "rainbow"
+  | "zebra"
+  | "america"
+  | "trap"
+  | "random"
+  | "zalgo"
+  | "strip"
+  | "stripColors";

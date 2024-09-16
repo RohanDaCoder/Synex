@@ -1,4 +1,3 @@
-import config from "../../config";
 import { Command } from "../../types";
 
 import {
@@ -7,9 +6,9 @@ import {
   ButtonBuilder,
   ButtonStyle,
   ActionRowBuilder,
+  InteractionContextType,
 } from "discord.js";
-import sendMessage from "../../util/sendMessage";
-import timestamp from "../../util/timestamp";
+import sendMessage from "../../Utils/sendMessage";
 
 export default {
   data: new SlashCommandBuilder()
@@ -28,7 +27,8 @@ export default {
         .setName("user_id")
         .setDescription("The user ID to fetch")
         .setRequired(false)
-    ),
+    )
+    .setContexts(InteractionContextType.Guild),
 
   async run({ interaction, client }) {
     try {
@@ -56,7 +56,7 @@ export default {
         const createdAtTimestamp = user.createdTimestamp || "Unknown";
         const createdAtFormatted =
           createdAtTimestamp !== "Unknown"
-            ? `${new Date(createdAtTimestamp).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })} (${timestamp(createdAtTimestamp, "R")})`
+            ? `${new Date(createdAtTimestamp).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}`
             : "Unknown";
         const userEmbed = new EmbedBuilder()
           .setColor(0x0099ff)
@@ -124,7 +124,7 @@ export default {
     } catch (error: any) {
       console.error(error);
       await sendMessage({
-        message: `An error occurred: ${error.message}`,
+        message: `An error occurrred: ${error.message}`,
         interaction,
         ephemeral: false,
         emoji: "No",

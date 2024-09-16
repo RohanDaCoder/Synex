@@ -1,11 +1,11 @@
-import { SlashCommandBuilder } from "discord.js";
+import { InteractionContextType, SlashCommandBuilder } from "discord.js";
 import type { Command } from "../../types";
 
 export default {
   data: new SlashCommandBuilder()
     .setName("hello")
     .setDescription("Replies With Hello")
-    .setDMPermission(false),
+    .setContexts(InteractionContextType.Guild),
 
   run: async ({ interaction, client }) => {
     await interaction.reply({

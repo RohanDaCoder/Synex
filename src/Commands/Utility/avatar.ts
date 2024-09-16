@@ -1,13 +1,17 @@
-import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
+import {
+  EmbedBuilder,
+  InteractionContextType,
+  SlashCommandBuilder,
+} from "discord.js";
 import type { Command } from "../../types";
 
 export default {
   data: new SlashCommandBuilder()
     .setName("avatar")
     .setDescription("Fetch A User's Or Your Avatar")
-    .setDMPermission(false)
+    .setContexts(InteractionContextType.Guild)
     .addUserOption((option) =>
-      option.setName("target").setDescription("The Target User")
+      option.setName("target").setDescription("The Target User"),
     ),
 
   run: async ({ interaction }) => {
