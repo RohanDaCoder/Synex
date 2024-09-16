@@ -8,7 +8,8 @@ const config = {
   },
   devGuildIds: ["1271700025646387221"],
   devUserIds: ["922419431508938773"],
-  token: process.env.token,
+  token:
+    "MTI3MDMyMTcyMDI5MjU0MDQ0Ng.G-yN2v.zQHLmVd4nvgsG0Olnnqj2vdhQZVIXrK9Pi-ebM",
 } as Config;
 
 export default config;

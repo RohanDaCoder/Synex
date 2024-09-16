@@ -1,4 +1,3 @@
 node_modules/
-src/config.ts
+src/config.json
 dist/
-.env
