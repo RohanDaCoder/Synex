@@ -7,7 +7,7 @@ export default {
     .setDescription("Replies With Hello")
     .setContexts(InteractionContextType.Guild),
 
-  run: async ({ interaction, client }) => {
+  run: async ({ interaction }) => {
     await interaction.reply({
       content: `Hello, ${interaction.user.displayName}!`,
     });
