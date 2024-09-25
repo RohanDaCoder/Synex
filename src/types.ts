@@ -65,7 +65,6 @@ export type Config = {
   };
   devGuildIds: string[];
   devUserIds: string[];
-  token: string;
 };
 export type Colors =
   | "black"

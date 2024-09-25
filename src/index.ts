@@ -5,6 +5,6 @@ import config from "./config";
 const client: Client = new Client({
   intents: ["GuildMembers", "GuildMessages", "MessageContent"],
 });
-client.login(config.token).then(() => loadEvents());
+client.login(process.env.token).then(() => loadEvents());
 
 export default client;
