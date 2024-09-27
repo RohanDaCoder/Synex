@@ -26,11 +26,24 @@ export interface CommandOptions {
   botPermissions?: PermissionsString | PermissionsString[];
 }
 
+export enum CommandCategory {
+  Fun = "fun",
+  Utility = "utility",
+  Moderation = "moderation",
+  Economy = "economy",
+  Dev = "dev",
+  Admin = "admin",
+  Giveaway = "giveaway",
+  Image = "image",
+  Extra = "extra",
+  Games = "games",
+}
+
 export type Command = {
   data: SlashCommandBuilder | SlashCommandOptionsOnlyBuilder;
   run: (props: SlashCommandProps) => Promise<void>;
   options?: CommandOptions;
-  category?: string;
+  category?: CommandCategory;
 };
 
 export interface LogProps {
@@ -52,11 +65,13 @@ export interface ReplyOptions {
   ephemeral?: boolean;
   emoji?: "Yes" | "No";
 }
+
 export interface Event {
   name: keyof ClientEvents;
   once: boolean;
   execute: Function;
 }
+
 export type Config = {
   emojis: {
     true: string;
@@ -66,6 +81,7 @@ export type Config = {
   devGuildIds: string[];
   devUserIds: string[];
 };
+
 export type Colors =
   | "black"
   | "red"

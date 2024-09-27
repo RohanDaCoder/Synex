@@ -1,10 +1,9 @@
 import { Client } from "discord.js";
 import loadEvents from "./Utils/loadEvents";
-import config from "./config";
-
+import { token } from "../token.json";
 const client: Client = new Client({
   intents: ["GuildMembers", "GuildMessages", "MessageContent"],
 });
-client.login(process.env.token).then(() => loadEvents());
+client.login(token).then(() => loadEvents());
 
 export default client;

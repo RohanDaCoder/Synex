@@ -3,7 +3,7 @@ import {
   InteractionContextType,
   SlashCommandBuilder,
 } from "discord.js";
-import type { Command } from "../../types";
+import { CommandCategory, type Command } from "../../types";
 
 export default {
   data: new SlashCommandBuilder()
@@ -11,9 +11,9 @@ export default {
     .setDescription("Get a User's ID")
     .setContexts(InteractionContextType.Guild)
     .addUserOption((o) =>
-      o.setName("target").setDescription("The Target User"),
+      o.setName("target").setDescription("The Target User")
     ),
-
+  category: CommandCategory.Utility,
   run: async ({ interaction }) => {
     const target = interaction.options.getUser("target") || interaction.user;
     const embed = new EmbedBuilder()

@@ -2,7 +2,7 @@ import { EmbedBuilder } from "discord.js";
 import { ReplyOptions } from "../types";
 import config from "../config";
 
-export default async (props: ReplyOptions) => {
+async function sendMessage(props: ReplyOptions): Promise<void> {
   const { interaction, ephemeral = false, message, emoji = null } = props;
 
   let emojiPrefix = "";
@@ -29,4 +29,6 @@ export default async (props: ReplyOptions) => {
       ephemeral,
     });
   }
-};
+}
+
+export default sendMessage;

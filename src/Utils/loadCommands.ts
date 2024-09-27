@@ -28,7 +28,7 @@ export default async function () {
   }
 
   const globalCommandData = Commands.globalCommands.map(
-    (command) => command.data,
+    (command) => command.data
   );
 
   await client.application.commands.set(globalCommandData);

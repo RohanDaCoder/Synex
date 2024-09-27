@@ -1,4 +1,4 @@
-import { Command } from "../../types";
+import { Command, CommandCategory } from "../../types";
 
 import {
   ActionRowBuilder,
@@ -14,7 +14,7 @@ export default {
     .setName("invite")
     .setDescription("Get the bot's invite link")
     .setContexts(InteractionContextType.Guild),
-
+  category: CommandCategory.Utility,
   run: async ({ interaction, client }) => {
     const inviteLink = `https://discord.com/oauth2/authorize?client_id=${client.user?.id}&scope=bot`;
 

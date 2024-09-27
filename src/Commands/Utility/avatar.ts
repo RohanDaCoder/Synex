@@ -3,7 +3,7 @@ import {
   InteractionContextType,
   SlashCommandBuilder,
 } from "discord.js";
-import type { Command } from "../../types";
+import { Command, CommandCategory } from "../../types";
 
 export default {
   data: new SlashCommandBuilder()
@@ -11,9 +11,9 @@ export default {
     .setDescription("Fetch A User's Or Your Avatar")
     .setContexts(InteractionContextType.Guild)
     .addUserOption((option) =>
-      option.setName("target").setDescription("The Target User"),
+      option.setName("target").setDescription("The Target User")
     ),
-
+  category: CommandCategory.Utility,
   run: async ({ interaction }) => {
     const target = interaction.options.getUser("target") || interaction.user;
     const targetAvatar = target.displayAvatarURL({ forceStatic: false });

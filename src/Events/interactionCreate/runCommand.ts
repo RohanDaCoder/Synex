@@ -1,6 +1,6 @@
 import { ChatInputCommandInteraction, Events } from "discord.js";
 import type { Command, Event } from "../../types";
-import client from "../../index";
+import client from "../..";
 import sendMessage from "../../Utils/sendMessage";
 import Commands from "../../Commands";
 import config from "../../config";
@@ -12,7 +12,7 @@ export default {
     if (!interaction.isCommand()) return;
 
     const command = Commands.allCommands.find(
-      (cmd) => cmd.data.name === interaction.commandName,
+      (cmd) => cmd.data.name === interaction.commandName
     );
 
     if (!command) {
