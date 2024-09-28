@@ -1,6 +1,7 @@
 import client from "..";
 import log from "./log";
 import Commands from "../Commands";
+import config from "@/config";
 
 export default async function () {
   if (!Commands.allCommands || Commands.allCommands.length === 0) {
@@ -37,5 +38,22 @@ export default async function () {
     color: "green",
     prefix: "Info",
     message: `Successfully loaded ${Commands.globalCommands.length} global commands.`,
+  });
+
+  const devCommandData = Commands.devCommands.map((command) => command.data);
+  config.devGuildIds.forEach(async (guildID) => {
+    const guild = await client.guilds.fetch(guildID);
+    if (!guild)
+      return log({
+        prefix: "Warning",
+        message: `Guild ${guildID} not found. Skipping...`,
+        color: "yellow",
+      });
+    await guild.commands.set(devCommandData);
+  });
+  log({
+    color: "green",
+    prefix: "Info",
+    message: `Successfully loaded ${Commands.devCommands.length} dev commands.`,
   });
 }

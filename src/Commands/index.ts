@@ -8,16 +8,7 @@ import invite from "./Utility/invite";
 import test from "./Utility/test";
 import user from "./Utility/user";
 
-const globalCommands: Command[] = [
-  hello,
-  help,
-  avatar,
-  ping,
-  id,
-  invite,
-  user,
-  test,
-];
-const devCommands: Command[] = [];
+const globalCommands: Command[] = [hello, help, avatar, ping, id, invite, user];
+const devCommands: Command[] = [test];
 const allCommands: Command[] = [...globalCommands, ...devCommands];
 export default { globalCommands, devCommands, allCommands };

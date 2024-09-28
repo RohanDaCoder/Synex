@@ -1,4 +1,4 @@
-import { Events } from "discord.js";
+import { ActivityType, Events } from "discord.js";
 import { Event } from "../../types";
 import loadCommands from "../../Utils/loadCommands";
 import client from "../..";
@@ -14,5 +14,9 @@ export default {
       prefix: "Info",
     });
     loadCommands();
+    client.user?.setActivity({
+      name: "Development Mode",
+      type: ActivityType.Streaming,
+    });
   },
 } as Event;

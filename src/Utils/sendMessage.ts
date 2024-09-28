@@ -14,7 +14,7 @@ async function sendMessage(props: ReplyOptions): Promise<void> {
   }
 
   const embed = new EmbedBuilder()
-    .setDescription(`${emojiPrefix}${message}`)
+    .setDescription(`${emojiPrefix} ${message}`)
     .setColor("Red")
     .setTimestamp();
 

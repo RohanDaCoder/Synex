@@ -67,7 +67,7 @@ export default {
       .setColor("#0099ff");
 
     const row = new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
-      selectMenu
+      selectMenu,
     );
 
     await interaction.reply({
@@ -94,7 +94,7 @@ export default {
         .setDescription(
           categoryCommands
             .map((cmd) => `**/${cmd.data.name}** - ${cmd.data.description}`)
-            .join("\n") || "No commands found in this category."
+            .join("\n") || "No commands found in this category.",
         )
         .setColor("#0099ff");
 

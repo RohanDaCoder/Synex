@@ -24,7 +24,7 @@ export default {
     }
 
     if (
-      command.options?.devOnly === true &&
+      Commands.devCommands.includes(command) &&
       !config.devUserIds.includes(interaction.user.id)
     ) {
       return sendMessage({

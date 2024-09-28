@@ -80,6 +80,7 @@ export type Config = {
   };
   devGuildIds: string[];
   devUserIds: string[];
+  clientID: number;
 };
 
 export type Colors =
@@ -117,3 +118,18 @@ export type Colors =
   | "zalgo"
   | "strip"
   | "stripColors";
+
+export type Storage = Record<string, any>;
+
+export interface DatabaseType {
+  set(key: string, value: any): Promise<void>;
+  get(key: string): Promise<any>;
+  has(key: string): Promise<boolean>;
+  delete(key: string): Promise<boolean>;
+  deleteAll(): Promise<void>;
+  size(): Promise<number>;
+  keys(): Promise<string[]>;
+  values(): Promise<any[]>;
+  toJSON(): Promise<Storage>;
+  fromJSON(json: Storage): Promise<void>;
+}

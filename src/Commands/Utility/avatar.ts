@@ -11,7 +11,7 @@ export default {
     .setDescription("Fetch A User's Or Your Avatar")
     .setContexts(InteractionContextType.Guild)
     .addUserOption((option) =>
-      option.setName("target").setDescription("The Target User")
+      option.setName("target").setDescription("The Target User"),
     ),
   category: CommandCategory.Utility,
   run: async ({ interaction }) => {

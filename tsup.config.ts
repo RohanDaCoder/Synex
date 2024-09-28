@@ -6,10 +6,10 @@ export default defineConfig({
   minify: false,
   splitting: false,
   sourcemap: false,
-  clean: true,
+  clean: false,
   target: "es2022",
   dts: false,
   bundle: true,
   external: [],
-  noExternal: ["discord.js", "colors", "dotenv", "calm.db"],
+  noExternal: ["discord.js", "colors", "dotenv"],
 });
