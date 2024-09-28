@@ -6,7 +6,6 @@ import {
   ChatInputCommandInteraction,
   SlashCommandBuilder,
   InteractionCollector,
-  FetchThreadMembersWithGuildMemberDataOptions,
 } from "discord.js";
 import { CommandCategory, type Command } from "../../types";
 import commands from "../index";
@@ -23,14 +22,16 @@ export default {
     const categories: {
       fun: Command[];
       utility: Command[];
+      economy: Command[];
     } = {
       fun: [],
       utility: [],
+      economy: [],
     };
 
-    const globalCommands = commands.globalCommands;
-    globalCommands.forEach((command) => {
-      const category = command.category || "extra";
+    const allCommands = commands.allCommands;
+    allCommands.forEach((command) => {
+      const category = command.category;
       if (category in categories) {
         categories[category as keyof typeof categories].push(command);
       }
@@ -67,7 +68,7 @@ export default {
       .setColor("#0099ff");
 
     const row = new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
-      selectMenu,
+      selectMenu
     );
 
     await interaction.reply({
@@ -94,7 +95,7 @@ export default {
         .setDescription(
           categoryCommands
             .map((cmd) => `**/${cmd.data.name}** - ${cmd.data.description}`)
-            .join("\n") || "No commands found in this category.",
+            .join("\n") || "No commands found in this category."
         )
         .setColor("#0099ff");
 

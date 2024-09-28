@@ -43,7 +43,7 @@ export type Command = {
   data: SlashCommandBuilder | SlashCommandOptionsOnlyBuilder;
   run: (props: SlashCommandProps) => Promise<void>;
   options?: CommandOptions;
-  category?: CommandCategory;
+  category: CommandCategory;
 };
 
 export interface LogProps {
@@ -77,6 +77,7 @@ export type Config = {
     true: string;
     false: string;
     loading: string;
+    money: string;
   };
   devGuildIds: string[];
   devUserIds: string[];
