@@ -1,4 +1,4 @@
-import { Command } from "../types";
+import { Command } from "@/types";
 import balance from "./Economy/balance";
 import hello from "./General/hello";
 import ping from "./General/ping";

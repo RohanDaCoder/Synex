@@ -16,16 +16,16 @@ export default {
       o
         .setName("user")
         .setDescription("Pick The User You Want To See Balance Of.")
-        .setRequired(false)
+        .setRequired(false),
     ),
   category: CommandCategory.Economy,
   run: async ({ interaction, client }) => {
     await interaction.deferReply();
     let target = interaction.options.getUser("user") || interaction.user;
-    let wallet = await db.get(`wallet_${target.id}`);
+    let wallet: number = await db.get(`wallet_${target.id}`);
     if (wallet === null) wallet = 0;
 
-    let bank = await db.get(`bank_${target.id}`);
+    let bank: number = await db.get(`bank_${target.id}`);
     if (bank === null) bank = 0;
 
     const balanceEmbed = new EmbedBuilder()
@@ -42,7 +42,7 @@ export default {
         {
           name: "Bank",
           value: formatMoney(bank),
-        }
+        },
       )
       .setColor("Random")
       .setTimestamp();
