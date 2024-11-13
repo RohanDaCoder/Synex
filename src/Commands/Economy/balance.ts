@@ -3,9 +3,9 @@ import {
   InteractionContextType,
   EmbedBuilder,
 } from "discord.js";
-import { Command, CommandCategory } from "../../types";
-import db from "@/Utils/database";
-import { formatMoney } from "@/Utils/formatMoney";
+import { Command, CommandCategory } from "@/types";
+import db from "@/utils/database";
+import { formatMoney } from "@/utils/formatMoney";
 
 export default {
   data: new SlashCommandBuilder()

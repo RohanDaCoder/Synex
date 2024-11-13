@@ -8,25 +8,25 @@ import {
   ActionRowBuilder,
   InteractionContextType,
 } from "discord.js";
-import sendMessage from "../../Utils/sendMessage";
+import sendMessage from "../../utils/sendMessage";
 
 export default {
   data: new SlashCommandBuilder()
     .setName("user")
     .setDescription(
-      "Fetch a user by mention or ID and display their information",
+      "Fetch a user by mention or ID and display their information"
     )
     .addUserOption((option) =>
       option
         .setName("user")
         .setDescription("The user to fetch")
-        .setRequired(false),
+        .setRequired(false)
     )
     .addStringOption((option) =>
       option
         .setName("user_id")
         .setDescription("The user ID to fetch")
-        .setRequired(false),
+        .setRequired(false)
     )
     .setContexts(InteractionContextType.Guild),
   category: CommandCategory.Utility,
@@ -86,7 +86,7 @@ export default {
               name: "Accent Color",
               value: user.hexAccentColor || "Unknown",
               inline: true,
-            },
+            }
           )
           .setFooter({
             text: `Requested By ${interaction.user.username}`,
@@ -109,7 +109,7 @@ export default {
         buttons.push(avatarButton);
 
         const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
-          ...buttons,
+          ...buttons
         );
 
         await interaction.editReply({ embeds: [userEmbed], components: [row] });

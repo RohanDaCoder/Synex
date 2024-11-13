@@ -1,6 +1,6 @@
 import client from "..";
 import log from "./log";
-import Commands from "../Commands";
+import Commands from "../commands";
 import config from "@/config";
 
 export default async function () {

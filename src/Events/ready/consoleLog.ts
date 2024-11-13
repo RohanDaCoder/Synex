@@ -1,8 +1,8 @@
 import { ActivityType, Events } from "discord.js";
 import { Event } from "../../types";
-import loadCommands from "../../Utils/loadCommands";
+import loadCommands from "../../utils/loadCommands";
 import client from "../..";
-import log from "../../Utils/log";
+import log from "../../utils/log";
 
 export default {
   name: Events.ClientReady,

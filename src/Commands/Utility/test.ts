@@ -1,6 +1,6 @@
 import { SlashCommandBuilder, InteractionContextType } from "discord.js";
 import { Command, CommandCategory } from "../../types";
-import db from "@/Utils/database";
+import db from "@/utils/database";
 
 export default {
   data: new SlashCommandBuilder()

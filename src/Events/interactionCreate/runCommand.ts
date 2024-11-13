@@ -1,8 +1,8 @@
 import { ChatInputCommandInteraction, Events } from "discord.js";
 import type { Command, Event } from "../../types";
 import client from "../..";
-import sendMessage from "../../Utils/sendMessage";
-import Commands from "../../Commands";
+import sendMessage from "../../utils/sendMessage";
+import Commands from "../../commands";
 import config from "../../config";
 
 export default {
