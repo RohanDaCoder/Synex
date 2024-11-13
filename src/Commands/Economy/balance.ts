@@ -4,8 +4,8 @@ import {
   EmbedBuilder,
 } from "discord.js";
 import { Command, CommandCategory } from "@/types";
-import db from "@/utils/database";
 import { formatMoney } from "@/utils/formatMoney";
+import { db } from "@/index";
 
 export default {
   data: new SlashCommandBuilder()
@@ -16,18 +16,16 @@ export default {
       o
         .setName("user")
         .setDescription("Pick The User You Want To See Balance Of.")
-        .setRequired(false),
+        .setRequired(false)
     ),
   category: CommandCategory.Economy,
   run: async ({ interaction, client }) => {
     await interaction.deferReply();
     let target = interaction.options.getUser("user") || interaction.user;
-    let wallet: number = await db.get(`wallet_${target.id}`);
-    if (wallet === null) wallet = 0;
+    let wallet: number = (await db.get(`wallet_${target.id}`)) ?? 0;
 
-    let bank: number = await db.get(`bank_${target.id}`);
-    if (bank === null) bank = 0;
-
+    let bank: number = (await db.get(`bank_${target.id}`)) ?? 0;
+    console.log(`${bank} ${wallet}`);
     const balanceEmbed = new EmbedBuilder()
       .setTitle("Balance")
       .setAuthor({
@@ -42,7 +40,7 @@ export default {
         {
           name: "Bank",
           value: formatMoney(bank),
-        },
+        }
       )
       .setColor("Random")
       .setTimestamp();

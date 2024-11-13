@@ -11,5 +11,5 @@ export default defineConfig({
   dts: false,
   bundle: true,
   external: [],
-  noExternal: ["discord.js", "colors", "quick.db"],
+  noExternal: ["discord.js", "colors", "calm.db"],
 });
