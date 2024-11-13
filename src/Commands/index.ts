@@ -8,6 +8,8 @@ import invite from "./Utility/invite";
 import test from "./Utility/test";
 import user from "./Utility/user";
 import hello from "./General/hello";
+import pay from "./Economy/pay";
+import modifymoney from "./Economy/modifymoney";
 
 const globalCommands: Command[] = [
   hello,
@@ -18,7 +20,8 @@ const globalCommands: Command[] = [
   invite,
   user,
   balance,
+  pay,
 ];
-const devCommands: Command[] = [test];
+const devCommands: Command[] = [test, modifymoney];
 const allCommands: Command[] = [...globalCommands, ...devCommands];
 export default { globalCommands, devCommands, allCommands };

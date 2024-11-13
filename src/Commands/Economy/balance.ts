@@ -25,7 +25,7 @@ export default {
     let wallet: number = (await db.get(`wallet_${target.id}`)) ?? 0;
 
     let bank: number = (await db.get(`bank_${target.id}`)) ?? 0;
-    console.log(`${bank} ${wallet}`);
+
     const balanceEmbed = new EmbedBuilder()
       .setTitle("Balance")
       .setAuthor({

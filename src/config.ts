@@ -8,7 +8,7 @@ const config: Config = {
     true: "<a:true:1270323437419626619>",
     false: "<a:false:1270323464884060254>",
     loading: "<a:loading:1270323480746790923>",
-    money: "",
+    money: "<:money:1306229612388552746>",
   },
 };
 

@@ -4,7 +4,6 @@ import {
   ChatInputCommandInteraction,
   Client,
   PermissionsString,
-  Events,
   ButtonInteraction,
   ChannelSelectMenuInteraction,
   CommandInteraction,
@@ -133,4 +132,14 @@ export interface DatabaseType {
   values(): Promise<any[]>;
   toJSON(): Promise<Storage>;
   fromJSON(json: Storage): Promise<void>;
+}
+export enum TransactionType {
+  Wallet = "wallet",
+  Bank = "bank",
+}
+
+export enum ActionType {
+  Add = "add",
+  Reduce = "reduce",
+  Set = "set",
 }
