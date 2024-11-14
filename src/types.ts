@@ -12,6 +12,7 @@ import {
   StringSelectMenuInteraction,
   UserSelectMenuInteraction,
   ClientEvents,
+  ColorResolvable,
 } from "discord.js";
 
 export type SlashCommandProps = {
@@ -69,6 +70,7 @@ export interface ReplyOptions {
     | ChannelSelectMenuInteraction;
   ephemeral?: boolean;
   emoji?: any;
+  color?: null | ColorResolvable;
 }
 export interface Event {
   name: keyof ClientEvents;

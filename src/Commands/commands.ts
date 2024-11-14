@@ -12,6 +12,7 @@ import pay from "./Economy/pay";
 import modifymoney from "./Economy/modifymoney";
 import deposit from "./Economy/deposit";
 import withdraw from "./Economy/withdraw";
+import error from "./Utility/error";
 
 const globalCommands: Command[] = [
   hello,
@@ -25,6 +26,7 @@ const globalCommands: Command[] = [
   pay,
   deposit,
   withdraw,
+  error,
 ];
 const devCommands: Command[] = [test, modifymoney];
 const allCommands: Command[] = [...globalCommands, ...devCommands];

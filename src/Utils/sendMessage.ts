@@ -1,14 +1,21 @@
-import { EmbedBuilder } from "discord.js";
+import { ColorResolvable, EmbedBuilder } from "discord.js";
 import { ReplyOptions } from "../types";
+import { Emojis } from "@/config";
 
 async function sendMessage(props: ReplyOptions): Promise<void> {
-  const { interaction, ephemeral = false, message, emoji = null } = props;
+  const {
+    interaction,
+    ephemeral = false,
+    message,
+    emoji = null,
+    color = "Red",
+  } = props;
 
-  const modifiedMessage = emoji ? `${String(emoji)} ${message}` : message;
+  const modifiedMessage = emoji ? `${emoji} ${message}` : message;
 
   const embed = new EmbedBuilder()
     .setDescription(modifiedMessage)
-    .setColor("Red")
+    .setColor(color)
     .setTimestamp();
 
   if (interaction.replied || interaction.deferred) {

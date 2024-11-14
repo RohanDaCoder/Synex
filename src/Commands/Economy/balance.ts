@@ -18,7 +18,7 @@ export default {
       o
         .setName("user")
         .setDescription("Pick The User You Want To See Balance Of.")
-        .setRequired(false),
+        .setRequired(false)
     ),
   category: CommandCategory.Economy,
   run: async ({ interaction }) => {
@@ -30,9 +30,12 @@ export default {
 
 export async function showBalance(
   user: User,
-  interaction: ChatInputCommandInteraction,
+  interaction: ChatInputCommandInteraction
 ) {
-  await interaction.deferReply();
+  if (!interaction.deferred && !interaction.replied) {
+    await interaction.deferReply();
+  }
+
   const wallet = (await db.get(`wallet_${user.id}`)) ?? 0;
   const bank = (await db.get(`bank_${user.id}`)) ?? 0;
 
@@ -44,10 +47,14 @@ export async function showBalance(
     })
     .addFields(
       { name: "Wallet", value: formatMoney(wallet) },
-      { name: "Bank", value: formatMoney(bank) },
+      { name: "Bank", value: formatMoney(bank) }
     )
     .setColor("Random")
     .setTimestamp();
 
-  await interaction.editReply({ embeds: [balanceEmbed] });
+  if (interaction.replied) {
+    await interaction.followUp({ embeds: [balanceEmbed] });
+  } else {
+    await interaction.editReply({ embeds: [balanceEmbed] });
+  }
 }

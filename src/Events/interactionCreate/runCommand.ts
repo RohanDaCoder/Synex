@@ -12,7 +12,7 @@ export default {
     if (!interaction.isCommand()) return;
 
     const command = Commands.allCommands.find(
-      (cmd) => cmd.data.name === interaction.commandName,
+      (cmd) => cmd.data.name === interaction.commandName
     );
 
     if (!command) {
@@ -36,10 +36,10 @@ export default {
 
     try {
       await command.run({ interaction, client });
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
       await sendMessage({
-        message: "There was an error while executing this command!",
+        message: `There was an error while executing this command! \n\nError: \`${error.message}\``,
         interaction,
         emoji: Emojis.Failed,
       });
