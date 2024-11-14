@@ -13,6 +13,7 @@ import {
   UserSelectMenuInteraction,
   ClientEvents,
   ColorResolvable,
+  Emoji,
 } from "discord.js";
 
 export type SlashCommandProps = {

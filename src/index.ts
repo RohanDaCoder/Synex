@@ -1,11 +1,17 @@
-import { Client } from "discord.js";
+import { Client, IntentsBitField } from "discord.js";
 import loadEvents from "./utils/loadEvents";
 import { token } from "./token.json";
 import { Database } from "calm.db";
 import config from "./config";
 
 const client: Client = new Client({
-  intents: ["GuildMembers", "GuildMessages", "MessageContent"],
+  intents: [
+    IntentsBitField.Flags.GuildMembers,
+    IntentsBitField.Flags.GuildMessages,
+    IntentsBitField.Flags.MessageContent,
+    IntentsBitField.Flags.GuildModeration,
+    IntentsBitField.Flags.Guilds,
+  ],
 });
 client.login(token).then(() => loadEvents());
 const db = new Database(`${config.clientID}_data.json`);

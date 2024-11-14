@@ -9,7 +9,7 @@
     "build": "tsc && tsup --config tsup.config.ts",
     "dev": "nodemon --exec ts-node src/index.ts",
     "start": "node .",
-    "manual": "clear && bun run build && bun run dist/index.js "
+    "manual": "bun run build && bun run dist/index.js "
   },
   "keywords": [],
   "author": "RohanDaCoder",

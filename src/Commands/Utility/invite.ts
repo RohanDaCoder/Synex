@@ -16,7 +16,7 @@ export default {
     .setContexts(InteractionContextType.Guild),
   category: CommandCategory.Utility,
   run: async ({ interaction, client }) => {
-    const inviteLink = `https://discord.com/oauth2/authorize?client_id=${client.user?.id}&scope=bot`;
+    const inviteLink = `https://discord.com/oauth2/authorize?client_id=${client.user?.id}&permissions=564464936516854&integration_type=0&scope=bot`;
 
     const button = new ButtonBuilder()
       .setLabel("Invite Link")

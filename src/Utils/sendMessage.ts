@@ -1,6 +1,5 @@
-import { ColorResolvable, EmbedBuilder } from "discord.js";
+import { EmbedBuilder } from "discord.js";
 import { ReplyOptions } from "../types";
-import { Emojis } from "@/config";
 
 async function sendMessage(props: ReplyOptions): Promise<void> {
   const {
