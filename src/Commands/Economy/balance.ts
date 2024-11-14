@@ -2,6 +2,8 @@ import {
   SlashCommandBuilder,
   InteractionContextType,
   EmbedBuilder,
+  ChatInputCommandInteraction,
+  User,
 } from "discord.js";
 import { Command, CommandCategory } from "@/types";
 import { formatMoney } from "@/utils/formatMoney";
@@ -16,35 +18,36 @@ export default {
       o
         .setName("user")
         .setDescription("Pick The User You Want To See Balance Of.")
-        .setRequired(false)
+        .setRequired(false),
     ),
   category: CommandCategory.Economy,
-  run: async ({ interaction, client }) => {
-    await interaction.deferReply();
-    let target = interaction.options.getUser("user") || interaction.user;
-    let wallet: number = (await db.get(`wallet_${target.id}`)) ?? 0;
+  run: async ({ interaction }) => {
+    const target = interaction.options.getUser("user") || interaction.user;
 
-    let bank: number = (await db.get(`bank_${target.id}`)) ?? 0;
-
-    const balanceEmbed = new EmbedBuilder()
-      .setTitle("Balance")
-      .setAuthor({
-        name: target.tag,
-        iconURL: target.displayAvatarURL({ forceStatic: true }),
-      })
-      .addFields(
-        {
-          name: "Wallet",
-          value: formatMoney(wallet),
-        },
-        {
-          name: "Bank",
-          value: formatMoney(bank),
-        }
-      )
-      .setColor("Random")
-      .setTimestamp();
-
-    await interaction.editReply({ embeds: [balanceEmbed] });
+    await showBalance(target, interaction);
   },
 } as Command;
+
+export async function showBalance(
+  user: User,
+  interaction: ChatInputCommandInteraction,
+) {
+  await interaction.deferReply();
+  const wallet = (await db.get(`wallet_${user.id}`)) ?? 0;
+  const bank = (await db.get(`bank_${user.id}`)) ?? 0;
+
+  const balanceEmbed = new EmbedBuilder()
+    .setTitle("Balance")
+    .setAuthor({
+      name: user.tag,
+      iconURL: user.displayAvatarURL({ forceStatic: true }),
+    })
+    .addFields(
+      { name: "Wallet", value: formatMoney(wallet) },
+      { name: "Bank", value: formatMoney(bank) },
+    )
+    .setColor("Random")
+    .setTimestamp();
+
+  await interaction.editReply({ embeds: [balanceEmbed] });
+}

@@ -9,24 +9,25 @@ import {
   InteractionContextType,
 } from "discord.js";
 import sendMessage from "../../utils/sendMessage";
+import { Emojis } from "@/config";
 
 export default {
   data: new SlashCommandBuilder()
     .setName("user")
     .setDescription(
-      "Fetch a user by mention or ID and display their information"
+      "Fetch a user by mention or ID and display their information",
     )
     .addUserOption((option) =>
       option
         .setName("user")
         .setDescription("The user to fetch")
-        .setRequired(false)
+        .setRequired(false),
     )
     .addStringOption((option) =>
       option
         .setName("user_id")
         .setDescription("The user ID to fetch")
-        .setRequired(false)
+        .setRequired(false),
     )
     .setContexts(InteractionContextType.Guild),
   category: CommandCategory.Utility,
@@ -41,7 +42,7 @@ export default {
         return sendMessage({
           message: "Please provide either a user mention or a user ID.",
           interaction,
-          emoji: "No",
+          emoji: Emojis.Failed,
         });
       }
 
@@ -86,7 +87,7 @@ export default {
               name: "Accent Color",
               value: user.hexAccentColor || "Unknown",
               inline: true,
-            }
+            },
           )
           .setFooter({
             text: `Requested By ${interaction.user.username}`,
@@ -109,7 +110,7 @@ export default {
         buttons.push(avatarButton);
 
         const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
-          ...buttons
+          ...buttons,
         );
 
         await interaction.editReply({ embeds: [userEmbed], components: [row] });
@@ -118,7 +119,7 @@ export default {
           message: "User not found.",
           interaction,
           ephemeral: false,
-          emoji: "No",
+          emoji: Emojis.Failed,
         });
       }
     } catch (error: any) {
@@ -127,7 +128,7 @@ export default {
         message: `An error occurrred: ${error.message}`,
         interaction,
         ephemeral: false,
-        emoji: "No",
+        emoji: Emojis.Failed,
       });
     }
   },

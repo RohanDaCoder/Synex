@@ -1,6 +1,6 @@
 import client from "..";
 import log from "./log";
-import Commands from "../commands";
+import Commands from "../commands/commands";
 import config from "@/config";
 
 export default async function () {
@@ -29,7 +29,7 @@ export default async function () {
   }
 
   const globalCommandData = Commands.globalCommands.map(
-    (command) => command.data
+    (command) => command.data,
   );
 
   await client.application.commands.set(globalCommandData);

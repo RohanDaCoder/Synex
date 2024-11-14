@@ -3,6 +3,7 @@ import { Command, CommandCategory } from "@/types";
 import { formatMoney } from "@/utils/formatMoney";
 import sendMessage from "@/utils/sendMessage";
 import { db } from "@/index";
+import { Emojis } from "@/config";
 
 export default {
   data: new SlashCommandBuilder()
@@ -13,18 +14,19 @@ export default {
         .setName("amount")
         .setDescription("The amount of money to pay")
         .setRequired(true)
+        .setMinValue(0),
     )
     .addUserOption((option) =>
       option
         .setName("user")
         .setDescription("The user you want to pay")
-        .setRequired(false)
+        .setRequired(false),
     )
     .addStringOption((option) =>
       option
         .setName("user_id")
         .setDescription("The user's ID you want to pay")
-        .setRequired(false)
+        .setRequired(false),
     ),
   category: CommandCategory.Economy,
   run: async ({ interaction, client }) => {
@@ -37,7 +39,7 @@ export default {
       return sendMessage({
         interaction,
         message: "Amount must be greater than zero.",
-        emoji: "No",
+        emoji: Emojis.Failed,
       });
     }
 
@@ -51,7 +53,7 @@ export default {
         return sendMessage({
           interaction,
           message: "The provided User ID is invalid or does not exist.",
-          emoji: "No",
+          emoji: Emojis.Failed,
         });
       }
     }
@@ -60,7 +62,7 @@ export default {
       return sendMessage({
         interaction,
         message: "Please provide a valid user or user ID.",
-        emoji: "No",
+        emoji: Emojis.Failed,
       });
     }
 
@@ -68,7 +70,7 @@ export default {
       return sendMessage({
         interaction,
         message: "You cannot pay yourself.",
-        emoji: "No",
+        emoji: Emojis.Failed,
       });
     }
 
@@ -78,7 +80,7 @@ export default {
       return sendMessage({
         interaction,
         message: "You do not have enough balance to complete this transaction.",
-        emoji: "No",
+        emoji: Emojis.Failed,
       });
     }
 
@@ -96,7 +98,7 @@ export default {
 **After Transaction:**
 - Your Balance: ${formatMoney(senderBalance - amount)}
 - ${target.username}'s Balance: ${formatMoney(targetBalance + amount)}`,
-      emoji: "Yes",
+      emoji: Emojis.Success,
     });
   },
 } as Command;

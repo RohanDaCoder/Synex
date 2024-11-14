@@ -1,20 +1,13 @@
 import { EmbedBuilder } from "discord.js";
 import { ReplyOptions } from "../types";
-import config from "../config";
 
 async function sendMessage(props: ReplyOptions): Promise<void> {
   const { interaction, ephemeral = false, message, emoji = null } = props;
 
-  let emojiPrefix = "";
-
-  if (emoji === "No") {
-    emojiPrefix = config.emojis.false;
-  } else if (emoji === "Yes") {
-    emojiPrefix = config.emojis.true;
-  }
+  const modifiedMessage = emoji ? `${String(emoji)} ${message}` : message;
 
   const embed = new EmbedBuilder()
-    .setDescription(`${emojiPrefix} ${message}`)
+    .setDescription(modifiedMessage)
     .setColor("Red")
     .setTimestamp();
 

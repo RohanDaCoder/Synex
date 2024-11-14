@@ -8,10 +8,10 @@ export default {
     .setDescription("Tests Database")
     .setContexts(InteractionContextType.Guild)
     .addStringOption((o) =>
-      o.setName("key").setDescription("Enter Key").setRequired(true)
+      o.setName("key").setDescription("Enter Key").setRequired(true),
     )
     .addStringOption((o) =>
-      o.setName("value").setDescription("Enter Value").setRequired(true)
+      o.setName("value").setDescription("Enter Value").setRequired(true),
     ),
   category: CommandCategory.Utility,
   run: async ({ interaction }) => {
@@ -30,7 +30,7 @@ export default {
       }
     } catch (error: any) {
       await interaction.editReply(
-        `An error occurred while testing the database. ${error.message}`
+        `An error occurred while testing the database. ${error.message}`,
       );
       console.log(error);
     }

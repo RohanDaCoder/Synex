@@ -10,6 +10,8 @@ import user from "./Utility/user";
 import hello from "./General/hello";
 import pay from "./Economy/pay";
 import modifymoney from "./Economy/modifymoney";
+import deposit from "./Economy/deposit";
+import withdraw from "./Economy/withdraw";
 
 const globalCommands: Command[] = [
   hello,
@@ -21,6 +23,8 @@ const globalCommands: Command[] = [
   user,
   balance,
   pay,
+  deposit,
+  withdraw,
 ];
 const devCommands: Command[] = [test, modifymoney];
 const allCommands: Command[] = [...globalCommands, ...devCommands];

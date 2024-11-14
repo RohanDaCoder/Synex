@@ -51,6 +51,12 @@ export interface LogProps {
   color: Colors;
 }
 
+export interface EmojisType {
+  Success: string;
+  Failed: string;
+  Loading: string;
+  Money: string;
+}
 export interface ReplyOptions {
   message: string;
   interaction:
@@ -62,9 +68,8 @@ export interface ReplyOptions {
     | MentionableSelectMenuInteraction
     | ChannelSelectMenuInteraction;
   ephemeral?: boolean;
-  emoji?: "Yes" | "No";
+  emoji?: any;
 }
-
 export interface Event {
   name: keyof ClientEvents;
   once: boolean;
@@ -72,12 +77,6 @@ export interface Event {
 }
 
 export type Config = {
-  emojis: {
-    true: string;
-    false: string;
-    loading: string;
-    money: string;
-  };
   devGuildIds: string[];
   devUserIds: string[];
   clientID: number;

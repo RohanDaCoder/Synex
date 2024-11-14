@@ -2,8 +2,8 @@ import { ChatInputCommandInteraction, Events } from "discord.js";
 import type { Command, Event } from "../../types";
 import client from "../..";
 import sendMessage from "../../utils/sendMessage";
-import Commands from "../../commands";
-import config from "../../config";
+import Commands from "../../commands/commands";
+import config, { Emojis } from "../../config";
 
 export default {
   name: Events.InteractionCreate,
@@ -12,14 +12,14 @@ export default {
     if (!interaction.isCommand()) return;
 
     const command = Commands.allCommands.find(
-      (cmd) => cmd.data.name === interaction.commandName
+      (cmd) => cmd.data.name === interaction.commandName,
     );
 
     if (!command) {
       return sendMessage({
         message: "This Command Does Not Exist!",
         interaction,
-        emoji: "No",
+        emoji: Emojis.Failed,
       });
     }
 
@@ -30,7 +30,7 @@ export default {
       return sendMessage({
         message: "This Command Is Only For Developers!",
         interaction,
-        emoji: "No",
+        emoji: Emojis.Failed,
       });
     }
 
@@ -41,7 +41,7 @@ export default {
       await sendMessage({
         message: "There was an error while executing this command!",
         interaction,
-        emoji: "No",
+        emoji: Emojis.Failed,
       });
     }
   },
