@@ -6,7 +6,7 @@ async function sendMessage(props: ReplyOptions): Promise<void> {
     interaction,
     ephemeral = false,
     message,
-    emoji = null,
+    emoji,
     color = 'Red',
   } = props;
 

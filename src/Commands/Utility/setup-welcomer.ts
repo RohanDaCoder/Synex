@@ -64,4 +64,7 @@ export default {
       message: `A welcome channel is already set to <#${currentWelcomeChannel}>. To change it, enable the "replace-channel" option.`,
     });
   },
+  options: {
+    userPermissions: 'ManageChannels',
+  },
 } as Command;

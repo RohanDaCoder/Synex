@@ -21,7 +21,6 @@ export type SlashCommandProps = {
   client: Client;
 };
 
-//TODO: Check Permissions For Bot And User
 export interface CommandOptions {
   userPermissions?: PermissionsString | PermissionsString[] | undefined;
   botPermissions?: PermissionsString | PermissionsString[] | undefined;
@@ -47,12 +46,12 @@ export type Command = {
   category: CommandCategory;
 };
 
-export interface EmojisType {
+export type EmojisType = {
   Success: string;
   Failed: string;
   Loading: string;
   Money: string;
-}
+};
 export interface ReplyOptions {
   message: string;
   interaction:
@@ -64,7 +63,7 @@ export interface ReplyOptions {
     | MentionableSelectMenuInteraction
     | ChannelSelectMenuInteraction;
   ephemeral?: boolean;
-  emoji?: any;
+  emoji?: string | undefined;
   color?: ColorResolvable | undefined;
 }
 export interface Event {

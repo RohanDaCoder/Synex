@@ -43,4 +43,7 @@ export default {
       embeds: [embed],
     });
   },
+  options: {
+    botPermissions: 'EmbedLinks',
+  },
 } as Command;

@@ -21,4 +21,7 @@ export default {
 
     await interaction.editReply({ embeds: [dogEmbed] });
   },
+  options: {
+    botPermissions: 'EmbedLinks',
+  },
 } as Command;

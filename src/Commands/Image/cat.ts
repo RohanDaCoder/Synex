@@ -23,4 +23,7 @@ export default {
 
     await interaction.editReply({ embeds: [catEmbed] });
   },
+  options: {
+    botPermissions: 'EmbedLinks',
+  },
 } as Command;

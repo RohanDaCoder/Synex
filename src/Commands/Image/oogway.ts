@@ -24,4 +24,7 @@ export default {
 
     await interaction.reply({ embeds: [embed] });
   },
+  options: {
+    botPermissions: 'EmbedLinks',
+  },
 } as Command;

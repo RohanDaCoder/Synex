@@ -9,14 +9,23 @@ export default {
   name: Events.InteractionCreate,
   once: false,
   async execute(interaction: ChatInputCommandInteraction) {
-    //TODO: Check Permissions For Bot And User
-
     if (!interaction.isCommand()) return;
-
+    if (!interaction.member)
+      return sendMessage({
+        interaction,
+        message: 'Something went wrong...',
+        emoji: Emojis.Failed,
+      });
     const command = Commands.allCommands.find(
       (cmd) => cmd.data.name === interaction.commandName,
     );
-
+    if (!interaction.guild) {
+      return sendMessage({
+        message: 'This command can only be used in a server (guild).',
+        interaction,
+        emoji: Emojis.Failed,
+      });
+    }
     if (!command) {
       return sendMessage({
         message: 'This Command Does Not Exist!',
@@ -35,6 +44,51 @@ export default {
         emoji: Emojis.Failed,
       });
     }
+
+    if (command.options) {
+      const { userPermissions, botPermissions } = command.options;
+
+      if (userPermissions) {
+        const member = await interaction.guild.members.fetch(
+          interaction.user.id,
+        );
+        const missingUserPermissions = Array.isArray(userPermissions)
+          ? userPermissions.filter((perm) => !member.permissions.has(perm))
+          : !member.permissions.has(userPermissions)
+            ? [userPermissions]
+            : [];
+
+        if (missingUserPermissions.length > 0) {
+          return sendMessage({
+            message: `You are missing the following permissions to execute this command: ${missingUserPermissions
+              .map((perm) => `\`${perm}\``)
+              .join(', ')}`,
+            interaction,
+            emoji: Emojis.Failed,
+          });
+        }
+      }
+
+      if (botPermissions) {
+        const botMember = await interaction.guild.members.fetchMe();
+        const missingBotPermissions = Array.isArray(botPermissions)
+          ? botPermissions.filter((perm) => !botMember.permissions.has(perm))
+          : !botMember.permissions.has(botPermissions)
+            ? [botPermissions]
+            : [];
+
+        if (missingBotPermissions.length > 0) {
+          return sendMessage({
+            message: `I am missing the following permissions to execute this command: ${missingBotPermissions
+              .map((perm) => `\`${perm}\``)
+              .join(', ')}`,
+            interaction,
+            emoji: Emojis.Failed,
+          });
+        }
+      }
+    }
+
     try {
       await command.run({ interaction, client });
     } catch (error: any) {

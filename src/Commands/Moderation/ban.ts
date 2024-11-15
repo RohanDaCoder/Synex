@@ -102,4 +102,8 @@ export default {
 
     await interaction.followUp({ embeds: [banEmbed], ephemeral: isSilent });
   },
+  options: {
+    botPermissions: 'BanMembers',
+    userPermissions: 'BanMembers',
+  },
 } as Command;

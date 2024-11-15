@@ -100,4 +100,8 @@ export default {
 
     await interaction.followUp({ embeds: [kickEmbed], ephemeral: isSilent });
   },
+  options: {
+    botPermissions: 'KickMembers',
+    userPermissions: 'KickMembers',
+  },
 } as Command;
