@@ -1,9 +1,9 @@
-import { ChatInputCommandInteraction, Events } from "discord.js";
-import type { Event } from "../../types";
-import client from "../..";
-import sendMessage from "../../utils/sendMessage";
-import Commands from "../../commands/commands";
-import config, { Emojis } from "../../config";
+import { ChatInputCommandInteraction, Events } from 'discord.js';
+import type { Event } from '../../types';
+import client from '../..';
+import sendMessage from '../../utils/sendMessage';
+import Commands from '../../commands/commands';
+import config, { Emojis } from '../../config';
 
 export default {
   name: Events.InteractionCreate,
@@ -17,7 +17,7 @@ export default {
 
     if (!command) {
       return sendMessage({
-        message: "This Command Does Not Exist!",
+        message: 'This Command Does Not Exist!',
         interaction,
         emoji: Emojis.Failed,
       });
@@ -28,7 +28,7 @@ export default {
       !config.devUserIds.includes(interaction.user.id)
     ) {
       return sendMessage({
-        message: "This Command Is Only For Developers!",
+        message: 'This Command Is Only For Developers!',
         interaction,
         emoji: Emojis.Failed,
       });

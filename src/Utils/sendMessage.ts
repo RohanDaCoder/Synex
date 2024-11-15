@@ -1,5 +1,5 @@
-import { EmbedBuilder } from "discord.js";
-import { ReplyOptions } from "../types";
+import { EmbedBuilder } from 'discord.js';
+import { ReplyOptions } from '../types';
 
 async function sendMessage(props: ReplyOptions): Promise<void> {
   const {
@@ -7,7 +7,7 @@ async function sendMessage(props: ReplyOptions): Promise<void> {
     ephemeral = false,
     message,
     emoji = null,
-    color = "Red",
+    color = 'Red',
   } = props;
 
   const modifiedMessage = emoji ? `${emoji} ${message}` : message;

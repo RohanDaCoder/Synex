@@ -1,4 +1,4 @@
-import { Command, CommandCategory } from "../../types";
+import { Command, CommandCategory } from '../../types';
 
 import {
   ActionRowBuilder,
@@ -7,11 +7,11 @@ import {
   SlashCommandBuilder,
   EmbedBuilder,
   InteractionContextType,
-} from "discord.js";
+} from 'discord.js';
 
 export default {
   data: new SlashCommandBuilder()
-    .setName("invite")
+    .setName('invite')
     .setDescription("Get the bot's invite link")
     .setContexts(InteractionContextType.Guild),
   category: CommandCategory.Utility,
@@ -19,15 +19,15 @@ export default {
     const inviteLink = `https://discord.com/oauth2/authorize?client_id=${client.user?.id}&permissions=564464936516854&integration_type=0&scope=bot`;
 
     const button = new ButtonBuilder()
-      .setLabel("Invite Link")
+      .setLabel('Invite Link')
       .setURL(inviteLink)
       .setStyle(ButtonStyle.Link);
     const row = new ActionRowBuilder<ButtonBuilder>().addComponents(button);
 
     const inviteEmbed = new EmbedBuilder()
-      .setTitle("Invite Me!")
+      .setTitle('Invite Me!')
       .setDescription(`Invite ${client.user?.username} Using The Button Below`)
-      .setColor("Blurple")
+      .setColor('Blurple')
       .setTimestamp()
       .setAuthor({
         name: `${client.user?.username}`,

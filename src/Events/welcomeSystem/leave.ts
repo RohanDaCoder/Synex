@@ -1,6 +1,6 @@
-import { Event, GatewayEventType } from "@/types";
-import { handleGatewayEvent } from "@/utils/handleGatewayEvent";
-import { Events, GuildMember } from "discord.js";
+import { Event, GatewayEventType } from '@/types';
+import { handleGatewayEvent } from '@/utils/handleGatewayEvent';
+import { Events, GuildMember } from 'discord.js';
 
 const leaveEvent: Event = {
   name: Events.GuildMemberRemove,

@@ -1,4 +1,4 @@
-import { Emojis } from "@/config";
+import { Emojis } from '@/config';
 
 export function formatMoney(amount: number) {
   const money = Emojis.Money;

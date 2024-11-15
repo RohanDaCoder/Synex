@@ -1,17 +1,17 @@
-import { EmbedBuilder, GuildMember } from "discord.js";
-import { db } from "..";
-import { GatewayEventType } from "@/types";
+import { EmbedBuilder, GuildMember } from 'discord.js';
+import { db } from '..';
+import { GatewayEventType } from '@/types';
 
 const WelcomeBackgroundUrl =
-  "https://raw.githubusercontent.com/RohanDaCoder/Synex/refs/heads/main/assets/welcome-bg.png";
+  'https://raw.githubusercontent.com/RohanDaCoder/Synex/refs/heads/main/assets/welcome-bg.png';
 
 export async function handleGatewayEvent(
   member: GuildMember,
   eventType: GatewayEventType,
 ) {
   if (!member) {
-    console.error("Error: Member not provided in handleGatewayEvent function");
-    throw new Error("Member not provided in handleGatewayEvent function");
+    console.error('Error: Member not provided in handleGatewayEvent function');
+    throw new Error('Member not provided in handleGatewayEvent function');
   }
 
   const gatewayChannelID = await db.get(`gateway_${member.guild.id}`);
@@ -35,12 +35,12 @@ function createGatewayEmbed(member: GuildMember, eventType: GatewayEventType) {
   const serverName = member.guild.name;
   const memberCount = member.guild.memberCount;
   const isWelcomeEvent = eventType === GatewayEventType.Welcome;
-  const embedTitle = isWelcomeEvent ? "Welcome!" : "Goodbye!";
-  const embedColor = isWelcomeEvent ? "#00ff00" : "#ff0000";
-  const mainText = `${isWelcomeEvent ? "Welcome to" : "Goodbye from"} ${serverName}`;
-  const secondaryText = `${isWelcomeEvent ? "You are member" : "We now have"} #${memberCount}`;
+  const embedTitle = isWelcomeEvent ? 'Welcome!' : 'Goodbye!';
+  const embedColor = isWelcomeEvent ? '#00ff00' : '#ff0000';
+  const mainText = `${isWelcomeEvent ? 'Welcome to' : 'Goodbye from'} ${serverName}`;
+  const secondaryText = `${isWelcomeEvent ? 'You are member' : 'We now have'} #${memberCount}`;
 
-  const imageUrl = `https://api.popcat.xyz/welcomecard?background=${encodeURIComponent(WelcomeBackgroundUrl)}&text1=${encodeURIComponent(member.user.username)}&text2=${encodeURIComponent(mainText)}&text3=${encodeURIComponent(secondaryText)}&avatar=${encodeURIComponent(member.user.displayAvatarURL({ forceStatic: true, extension: "png" }))}`;
+  const imageUrl = `https://api.popcat.xyz/welcomecard?background=${encodeURIComponent(WelcomeBackgroundUrl)}&text1=${encodeURIComponent(member.user.username)}&text2=${encodeURIComponent(mainText)}&text3=${encodeURIComponent(secondaryText)}&avatar=${encodeURIComponent(member.user.displayAvatarURL({ forceStatic: true, extension: 'png' }))}`;
 
   return new EmbedBuilder()
     .setTitle(embedTitle)

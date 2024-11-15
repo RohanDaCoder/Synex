@@ -1,23 +1,23 @@
-import { SlashCommandBuilder } from "discord.js";
-import axios from "axios";
-import { Command, CommandCategory } from "@/types";
+import { SlashCommandBuilder } from 'discord.js';
+import axios from 'axios';
+import { Command, CommandCategory } from '@/types';
 
 export default {
   data: new SlashCommandBuilder()
-    .setName("ai")
-    .setDescription("Talk with Synex, your AI companion")
+    .setName('ai')
+    .setDescription('Talk with Synex, your AI companion')
     .addStringOption((option) =>
       option
-        .setName("message")
-        .setDescription("The message you want to send to Synex")
+        .setName('message')
+        .setDescription('The message you want to send to Synex')
         .setRequired(true),
     ),
   category: CommandCategory.Fun,
   run: async ({ interaction }) => {
     await interaction.deferReply();
 
-    const msg = interaction.options.getString("message");
-    const model = "gemini-1.5-flash";
+    const msg = interaction.options.getString('message');
+    const model = 'gemini-1.5-flash';
 
     const { username } = interaction.user;
     const nickname = username;
@@ -47,7 +47,7 @@ export default {
       },
       {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       },
     );

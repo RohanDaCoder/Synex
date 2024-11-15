@@ -2,20 +2,20 @@ import {
   EmbedBuilder,
   InteractionContextType,
   SlashCommandBuilder,
-} from "discord.js";
-import { Command, CommandCategory } from "../../types";
+} from 'discord.js';
+import { Command, CommandCategory } from '../../types';
 
 export default {
   data: new SlashCommandBuilder()
-    .setName("avatar")
+    .setName('avatar')
     .setDescription("Fetch A User's Or Your Avatar")
     .setContexts(InteractionContextType.Guild)
     .addUserOption((option) =>
-      option.setName("target").setDescription("The Target User"),
+      option.setName('target').setDescription('The Target User'),
     ),
   category: CommandCategory.Utility,
   run: async ({ interaction }) => {
-    const target = interaction.options.getUser("target") || interaction.user;
+    const target = interaction.options.getUser('target') || interaction.user;
     const targetAvatar = target.displayAvatarURL({ forceStatic: false });
     const embed = new EmbedBuilder()
       .setAuthor({

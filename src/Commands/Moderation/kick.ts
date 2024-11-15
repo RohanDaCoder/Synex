@@ -3,30 +3,30 @@ import {
   InteractionContextType,
   PermissionFlagsBits,
   EmbedBuilder,
-} from "discord.js";
-import { Command, CommandCategory } from "../../types";
-import sendMessage from "@/utils/sendMessage";
-import { Emojis } from "@/config";
+} from 'discord.js';
+import { Command, CommandCategory } from '../../types';
+import sendMessage from '@/utils/sendMessage';
+import { Emojis } from '@/config';
 
 export default {
   data: new SlashCommandBuilder()
-    .setName("kick")
-    .setDescription("Kick a user from this server.")
+    .setName('kick')
+    .setDescription('Kick a user from this server.')
     .setContexts(InteractionContextType.Guild)
     .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers)
     .addUserOption((o) =>
-      o.setName("target").setDescription("The user to kick.").setRequired(true),
+      o.setName('target').setDescription('The user to kick.').setRequired(true),
     )
     .addStringOption((o) =>
       o
-        .setName("reason")
-        .setDescription("The reason to kick this user.")
+        .setName('reason')
+        .setDescription('The reason to kick this user.')
         .setRequired(false),
     )
     .addBooleanOption((o) =>
       o
-        .setName("is_silent")
-        .setDescription("Should the kick be silent?")
+        .setName('is_silent')
+        .setDescription('Should the kick be silent?')
         .setRequired(false),
     ),
   category: CommandCategory.Moderation,
@@ -34,9 +34,9 @@ export default {
     await interaction.deferReply();
 
     const reason =
-      interaction.options.getString("reason") ?? "No Reason Provided";
-    const targetOption = interaction.options.getUser("target");
-    const isSilent = interaction.options.getBoolean("is_silent") ?? false;
+      interaction.options.getString('reason') ?? 'No Reason Provided';
+    const targetOption = interaction.options.getUser('target');
+    const isSilent = interaction.options.getBoolean('is_silent') ?? false;
 
     if (!targetOption)
       return await sendMessage({
@@ -86,15 +86,15 @@ export default {
         name: target.user.tag,
         iconURL: target.user.displayAvatarURL({ forceStatic: true }),
       })
-      .setTitle("User Kicked")
+      .setTitle('User Kicked')
       .setDescription(`${targetOption.tag} has been kicked from the server.`)
-      .setColor("#FF0000")
+      .setColor('#FF0000')
       .setThumbnail(targetOption.displayAvatarURL({ forceStatic: true }))
       .addFields(
-        { name: "👤 Kicked User", value: targetOption.tag, inline: true },
-        { name: "🆔 User ID", value: targetOption.id, inline: true },
-        { name: "📄 Reason", value: reason, inline: true },
-        { name: "👮 Kicked By", value: interaction.user.tag, inline: true },
+        { name: '👤 Kicked User', value: targetOption.tag, inline: true },
+        { name: '🆔 User ID', value: targetOption.id, inline: true },
+        { name: '📄 Reason', value: reason, inline: true },
+        { name: '👮 Kicked By', value: interaction.user.tag, inline: true },
       )
       .setTimestamp();
 

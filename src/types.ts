@@ -14,7 +14,7 @@ import {
   UserSelectMenuInteraction,
   ClientEvents,
   ColorResolvable,
-} from "discord.js";
+} from 'discord.js';
 
 export type SlashCommandProps = {
   interaction: ChatInputCommandInteraction;
@@ -28,16 +28,16 @@ export interface CommandOptions {
 }
 
 export enum CommandCategory {
-  Fun = "fun",
-  Utility = "utility",
-  Moderation = "moderation",
-  Economy = "economy",
-  Dev = "dev",
-  Admin = "admin",
-  Giveaway = "giveaway",
-  Image = "image",
-  Extra = "extra",
-  Games = "games",
+  Fun = 'fun',
+  Utility = 'utility',
+  Moderation = 'moderation',
+  Economy = 'economy',
+  Dev = 'dev',
+  Admin = 'admin',
+  Giveaway = 'giveaway',
+  Image = 'image',
+  Extra = 'extra',
+  Games = 'games',
 }
 
 export type Command = {
@@ -80,54 +80,54 @@ export type Config = {
 };
 
 export type Colors =
-  | "black"
-  | "red"
-  | "green"
-  | "yellow"
-  | "blue"
-  | "magenta"
-  | "cyan"
-  | "white"
-  | "gray"
-  | "grey"
-  | "bgBlack"
-  | "bgRed"
-  | "bgGreen"
-  | "bgYellow"
-  | "bgBlue"
-  | "bgMagenta"
-  | "bgCyan"
-  | "bgWhite"
-  | "reset"
-  | "bold"
-  | "dim"
-  | "italic"
-  | "underline"
-  | "inverse"
-  | "hidden"
-  | "strikethrough"
-  | "rainbow"
-  | "zebra"
-  | "america"
-  | "trap"
-  | "random"
-  | "zalgo"
-  | "strip"
-  | "stripColors";
+  | 'black'
+  | 'red'
+  | 'green'
+  | 'yellow'
+  | 'blue'
+  | 'magenta'
+  | 'cyan'
+  | 'white'
+  | 'gray'
+  | 'grey'
+  | 'bgBlack'
+  | 'bgRed'
+  | 'bgGreen'
+  | 'bgYellow'
+  | 'bgBlue'
+  | 'bgMagenta'
+  | 'bgCyan'
+  | 'bgWhite'
+  | 'reset'
+  | 'bold'
+  | 'dim'
+  | 'italic'
+  | 'underline'
+  | 'inverse'
+  | 'hidden'
+  | 'strikethrough'
+  | 'rainbow'
+  | 'zebra'
+  | 'america'
+  | 'trap'
+  | 'random'
+  | 'zalgo'
+  | 'strip'
+  | 'stripColors';
 
 export enum TransactionType {
-  Wallet = "wallet",
-  Bank = "bank",
+  Wallet = 'wallet',
+  Bank = 'bank',
 }
 
 export enum ActionType {
-  Add = "add",
-  Reduce = "reduce",
-  Set = "set",
+  Add = 'add',
+  Reduce = 'reduce',
+  Set = 'set',
 }
 export enum GatewayEventType {
-  Welcome = "welcome",
-  Goodbye = "goodbye",
+  Welcome = 'welcome',
+  Goodbye = 'goodbye',
 }
 
 export interface LogProps {

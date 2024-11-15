@@ -3,30 +3,30 @@ import {
   InteractionContextType,
   PermissionFlagsBits,
   EmbedBuilder,
-} from "discord.js";
-import { Command, CommandCategory } from "../../types";
-import sendMessage from "@/utils/sendMessage";
-import { Emojis } from "@/config";
+} from 'discord.js';
+import { Command, CommandCategory } from '../../types';
+import sendMessage from '@/utils/sendMessage';
+import { Emojis } from '@/config';
 
 export default {
   data: new SlashCommandBuilder()
-    .setName("ban")
-    .setDescription("Ban a user from this server.")
+    .setName('ban')
+    .setDescription('Ban a user from this server.')
     .setContexts(InteractionContextType.Guild)
     .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
     .addUserOption((o) =>
-      o.setName("target").setDescription("The user to ban.").setRequired(true),
+      o.setName('target').setDescription('The user to ban.').setRequired(true),
     )
     .addStringOption((o) =>
       o
-        .setName("reason")
-        .setDescription("The reason to ban this user.")
+        .setName('reason')
+        .setDescription('The reason to ban this user.')
         .setRequired(false),
     )
     .addBooleanOption((o) =>
       o
-        .setName("is_silent")
-        .setDescription("Should the ban be silent?")
+        .setName('is_silent')
+        .setDescription('Should the ban be silent?')
         .setRequired(false),
     ),
   category: CommandCategory.Moderation,
@@ -34,9 +34,9 @@ export default {
     await interaction.deferReply();
 
     const reason =
-      interaction.options.getString("reason") ?? "No Reason Provided";
-    const targetOption = interaction.options.getUser("target");
-    const isSilent = interaction.options.getBoolean("is_silent") ?? false;
+      interaction.options.getString('reason') ?? 'No Reason Provided';
+    const targetOption = interaction.options.getUser('target');
+    const isSilent = interaction.options.getBoolean('is_silent') ?? false;
 
     if (!targetOption)
       return await sendMessage({
@@ -88,15 +88,15 @@ export default {
         name: interaction.user.tag,
         iconURL: interaction.user.displayAvatarURL({ forceStatic: true }),
       })
-      .setTitle("User Banned")
+      .setTitle('User Banned')
       .setDescription(`${targetOption.tag} has been banned from the server.`)
-      .setColor("#FF0000")
+      .setColor('#FF0000')
       .setThumbnail(targetOption.displayAvatarURL({ forceStatic: true }))
       .addFields(
-        { name: "👤 Banned User", value: targetOption.tag, inline: true },
-        { name: "🆔 User ID", value: targetOption.id, inline: true },
-        { name: "📄 Reason", value: reason, inline: true },
-        { name: "👮 Banned By", value: interaction.user.tag, inline: true },
+        { name: '👤 Banned User', value: targetOption.tag, inline: true },
+        { name: '🆔 User ID', value: targetOption.id, inline: true },
+        { name: '📄 Reason', value: reason, inline: true },
+        { name: '👮 Banned By', value: interaction.user.tag, inline: true },
       )
       .setTimestamp();
 

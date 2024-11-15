@@ -2,28 +2,28 @@ import {
   EmbedBuilder,
   InteractionContextType,
   SlashCommandBuilder,
-} from "discord.js";
-import { CommandCategory, type Command } from "../../types";
+} from 'discord.js';
+import { CommandCategory, type Command } from '../../types';
 
 export default {
   data: new SlashCommandBuilder()
-    .setName("id")
+    .setName('id')
     .setDescription("Get a User's ID")
     .setContexts(InteractionContextType.Guild)
     .addUserOption((o) =>
-      o.setName("target").setDescription("The Target User"),
+      o.setName('target').setDescription('The Target User'),
     ),
   category: CommandCategory.Utility,
   run: async ({ interaction }) => {
-    const target = interaction.options.getUser("target") || interaction.user;
+    const target = interaction.options.getUser('target') || interaction.user;
     const embed = new EmbedBuilder()
-      .setColor("Blurple")
+      .setColor('Blurple')
       .setAuthor({
         name: target.username,
         iconURL: target.displayAvatarURL({ forceStatic: true }),
       })
       .addFields({
-        name: "ID",
+        name: 'ID',
         value: `${target.id}`,
       })
       .setTimestamp();

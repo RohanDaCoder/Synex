@@ -1,22 +1,22 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
-import axios from "axios";
-import { Command, CommandCategory } from "@/types";
+import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
+import axios from 'axios';
+import { Command, CommandCategory } from '@/types';
 
 export default {
   data: new SlashCommandBuilder()
-    .setName("fact")
-    .setDescription("Get a random fact."),
+    .setName('fact')
+    .setDescription('Get a random fact.'),
   category: CommandCategory.Fun,
   run: async ({ interaction }) => {
     await interaction.deferReply();
 
-    const response = await axios.get("https://api.popcat.xyz/fact");
+    const response = await axios.get('https://api.popcat.xyz/fact');
     const fact = response.data.fact;
 
     const embed = new EmbedBuilder()
-      .setTitle("Random Fact")
+      .setTitle('Random Fact')
       .setDescription(fact)
-      .setColor("Random")
+      .setColor('Random')
       .setTimestamp();
 
     await interaction.editReply({

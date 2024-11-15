@@ -1,29 +1,29 @@
-import client from "..";
-import log from "./log";
-import Commands from "../commands/commands";
-import config from "@/config";
+import client from '..';
+import log from './log';
+import Commands from '../commands/commands';
+import config from '@/config';
 
 export default async function () {
   if (!Commands.allCommands || Commands.allCommands.length === 0) {
     log({
-      prefix: "Error",
-      message: "Commands not found. Shutting Down",
-      color: "red",
+      prefix: 'Error',
+      message: 'Commands not found. Shutting Down',
+      color: 'red',
     });
     process.exit(0);
   }
 
   log({
-    color: "blue",
-    prefix: "Info",
+    color: 'blue',
+    prefix: 'Info',
     message: `Loading ${Commands.allCommands.length} Commands`,
   });
 
   if (!client.application) {
     log({
-      prefix: "Error",
-      message: "Client Application not found. Shutting Down",
-      color: "red",
+      prefix: 'Error',
+      message: 'Client Application not found. Shutting Down',
+      color: 'red',
     });
     process.exit(0);
   }
@@ -35,8 +35,8 @@ export default async function () {
   await client.application.commands.set(globalCommandData);
 
   log({
-    color: "green",
-    prefix: "Info",
+    color: 'green',
+    prefix: 'Info',
     message: `Successfully loaded ${Commands.globalCommands.length} global commands.`,
   });
 
@@ -45,15 +45,15 @@ export default async function () {
     const guild = await client.guilds.fetch(guildID);
     if (!guild)
       return log({
-        prefix: "Warning",
+        prefix: 'Warning',
         message: `Guild ${guildID} not found. Skipping...`,
-        color: "yellow",
+        color: 'yellow',
       });
     await guild.commands.set(devCommandData);
   });
   log({
-    color: "green",
-    prefix: "Info",
+    color: 'green',
+    prefix: 'Info',
     message: `Successfully loaded ${Commands.devCommands.length} dev commands.`,
   });
 }

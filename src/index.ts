@@ -1,8 +1,8 @@
-import { Client, IntentsBitField } from "discord.js";
-import loadEvents from "./utils/loadEvents";
-import { token } from "./token.json";
-import { Database } from "calm.db";
-import config from "./config";
+import { Client, IntentsBitField } from 'discord.js';
+import loadEvents from './utils/loadEvents';
+import { token } from './token.json';
+import { Database } from 'calm.db';
+import config from './config';
 
 const client: Client = new Client({
   intents: [

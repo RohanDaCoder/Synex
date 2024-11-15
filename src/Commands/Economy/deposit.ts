@@ -1,25 +1,25 @@
-import { SlashCommandBuilder, InteractionContextType } from "discord.js";
-import { Command, CommandCategory } from "../../types";
-import { db } from "@/index";
-import sendMessage from "@/utils/sendMessage";
-import { showBalance } from "./balance";
-import { Emojis } from "@/config";
+import { SlashCommandBuilder, InteractionContextType } from 'discord.js';
+import { Command, CommandCategory } from '../../types';
+import { db } from '@/index';
+import sendMessage from '@/utils/sendMessage';
+import { showBalance } from './balance';
+import { Emojis } from '@/config';
 
 export default {
   data: new SlashCommandBuilder()
-    .setName("deposit")
-    .setDescription("Deposit a specific amount of money into your bank.")
+    .setName('deposit')
+    .setDescription('Deposit a specific amount of money into your bank.')
     .setContexts(InteractionContextType.Guild)
     .addIntegerOption((option) =>
       option
-        .setName("amount")
-        .setDescription("Amount of money to deposit.")
+        .setName('amount')
+        .setDescription('Amount of money to deposit.')
         .setRequired(true)
         .setMinValue(1),
     ),
   category: CommandCategory.Economy,
   run: async ({ interaction }) => {
-    const amount = interaction.options.getInteger("amount")!;
+    const amount = interaction.options.getInteger('amount')!;
     const userId = interaction.user.id;
 
     const walletBalance: number = (await db.get(`wallet_${userId}`)) ?? 0;
@@ -29,7 +29,7 @@ export default {
         interaction,
         message:
           "Insufficient funds. You don't have enough money in your wallet to deposit this amount.",
-        emoji: "No",
+        emoji: 'No',
       });
     }
 
