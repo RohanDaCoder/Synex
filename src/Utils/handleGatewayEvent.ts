@@ -7,7 +7,7 @@ const WelcomeBackgroundUrl =
 
 export async function handleGatewayEvent(
   member: GuildMember,
-  eventType: GatewayEventType
+  eventType: GatewayEventType,
 ) {
   if (!member) {
     console.error("Error: Member not provided in handleGatewayEvent function");

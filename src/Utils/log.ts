@@ -5,8 +5,8 @@ function log({ prefix, message, color }: LogProps) {
   // eslint-disable-next-line no-console
   console.log(
     `${colors[color](`[${prefix}]`)} ${colors.gray(
-      `[${timestamp}]`
-    )} ${message}`
+      `[${timestamp}]`,
+    )} ${message}`,
   );
 }
 export default log;

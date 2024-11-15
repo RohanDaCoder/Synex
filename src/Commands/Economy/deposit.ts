@@ -15,7 +15,7 @@ export default {
         .setName("amount")
         .setDescription("Amount of money to deposit.")
         .setRequired(true)
-        .setMinValue(1)
+        .setMinValue(1),
     ),
   category: CommandCategory.Economy,
   run: async ({ interaction }) => {

@@ -22,10 +22,12 @@ export default {
     const categories: {
       fun: Command[];
       utility: Command[];
+      image: Command[];
       economy: Command[];
     } = {
       fun: [],
       utility: [],
+      image: [],
       economy: [],
     };
 
@@ -110,7 +112,6 @@ export default {
         interaction.editReply({
           content: "The Command has timed out.",
           components: [],
-          embeds: [],
         });
       }
     });

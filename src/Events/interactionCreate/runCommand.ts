@@ -12,7 +12,7 @@ export default {
     if (!interaction.isCommand()) return;
 
     const command = Commands.allCommands.find(
-      (cmd) => cmd.data.name === interaction.commandName
+      (cmd) => cmd.data.name === interaction.commandName,
     );
 
     if (!command) {

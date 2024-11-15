@@ -20,15 +20,15 @@ export default {
         .setName("channel")
         .setDescription("The channel where welcome messages will be sent.")
         .addChannelTypes(ChannelType.GuildText, ChannelType.GuildAnnouncement)
-        .setRequired(true)
+        .setRequired(true),
     )
     .addBooleanOption((option) =>
       option
         .setName("replace-channel")
         .setDescription(
-          "If a welcome channel is already set, should it be replaced?"
+          "If a welcome channel is already set, should it be replaced?",
         )
-        .setRequired(false)
+        .setRequired(false),
     ),
   category: CommandCategory.Utility,
   run: async ({ interaction }) => {
@@ -42,7 +42,7 @@ export default {
         message: "The specified channel could not be found.",
       });
     const currentWelcomeChannel = await db.get(
-      `gateway_${interaction.guild?.id}`
+      `gateway_${interaction.guild?.id}`,
     );
     const replaceChannel =
       interaction.options.getBoolean("replace-channel") ?? false;

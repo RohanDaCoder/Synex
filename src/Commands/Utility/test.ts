@@ -15,14 +15,14 @@ export default {
         .setRequired(true)
         .addChoices(
           { name: "Welcome", value: GatewayEventType.Welcome },
-          { name: "Goodbye", value: GatewayEventType.Goodbye }
-        )
+          { name: "Goodbye", value: GatewayEventType.Goodbye },
+        ),
     ),
   category: CommandCategory.Utility,
   run: async ({ interaction }) => {
     const eventOption = interaction.options.getString(
       "event",
-      true
+      true,
     ) as GatewayEventType;
 
     const guildMember = await interaction.guild?.members.fetchMe();

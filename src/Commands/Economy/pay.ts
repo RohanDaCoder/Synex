@@ -14,19 +14,19 @@ export default {
         .setName("amount")
         .setDescription("The amount of money to pay")
         .setRequired(true)
-        .setMinValue(1)
+        .setMinValue(1),
     )
     .addUserOption((option) =>
       option
         .setName("user")
         .setDescription("The user you want to pay")
-        .setRequired(false)
+        .setRequired(false),
     )
     .addStringOption((option) =>
       option
         .setName("user_id")
         .setDescription("The user's ID you want to pay")
-        .setRequired(false)
+        .setRequired(false),
     ),
   category: CommandCategory.Economy,
   run: async ({ interaction, client }) => {

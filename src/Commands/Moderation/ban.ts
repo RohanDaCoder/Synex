@@ -15,19 +15,19 @@ export default {
     .setContexts(InteractionContextType.Guild)
     .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
     .addUserOption((o) =>
-      o.setName("target").setDescription("The user to ban.").setRequired(true)
+      o.setName("target").setDescription("The user to ban.").setRequired(true),
     )
     .addStringOption((o) =>
       o
         .setName("reason")
         .setDescription("The reason to ban this user.")
-        .setRequired(false)
+        .setRequired(false),
     )
     .addBooleanOption((o) =>
       o
         .setName("is_silent")
         .setDescription("Should the ban be silent?")
-        .setRequired(false)
+        .setRequired(false),
     ),
   category: CommandCategory.Moderation,
   run: async ({ interaction }) => {
@@ -96,7 +96,7 @@ export default {
         { name: "👤 Banned User", value: targetOption.tag, inline: true },
         { name: "🆔 User ID", value: targetOption.id, inline: true },
         { name: "📄 Reason", value: reason, inline: true },
-        { name: "👮 Banned By", value: interaction.user.tag, inline: true }
+        { name: "👮 Banned By", value: interaction.user.tag, inline: true },
       )
       .setTimestamp();
 

@@ -15,19 +15,19 @@ export default {
     .setContexts(InteractionContextType.Guild)
     .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers)
     .addUserOption((o) =>
-      o.setName("target").setDescription("The user to kick.").setRequired(true)
+      o.setName("target").setDescription("The user to kick.").setRequired(true),
     )
     .addStringOption((o) =>
       o
         .setName("reason")
         .setDescription("The reason to kick this user.")
-        .setRequired(false)
+        .setRequired(false),
     )
     .addBooleanOption((o) =>
       o
         .setName("is_silent")
         .setDescription("Should the kick be silent?")
-        .setRequired(false)
+        .setRequired(false),
     ),
   category: CommandCategory.Moderation,
   run: async ({ interaction }) => {
@@ -94,7 +94,7 @@ export default {
         { name: "👤 Kicked User", value: targetOption.tag, inline: true },
         { name: "🆔 User ID", value: targetOption.id, inline: true },
         { name: "📄 Reason", value: reason, inline: true },
-        { name: "👮 Kicked By", value: interaction.user.tag, inline: true }
+        { name: "👮 Kicked By", value: interaction.user.tag, inline: true },
       )
       .setTimestamp();
 

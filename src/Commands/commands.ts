@@ -16,14 +16,41 @@ import error from "./Utility/error";
 import ban from "./Moderation/ban";
 import kick from "./Moderation/kick";
 import setupWelcomer from "./Utility/setup-welcomer";
+import joke from "./Fun/joke";
+import pickupLine from "./Fun/pickup-line";
+import imdb from "./Fun/imdb";
+import fact from "./Fun/fact";
+import bidenpost from "./Image/bidenpost";
+import cat from "./Image/cat";
+import dog from "./Image/dog";
+import drakememe from "./Image/drakememe";
+import iphoneAlert from "./Image/iphone-alert";
+import jail from "./Image/jail";
+import mnm from "./Image/mnm";
+import oogway from "./Image/oogway";
+import pooh from "./Image/pooh";
+import sadcat from "./Image/sadcat";
+import wanted from "./Image/wanted";
+import whowouldwin from "./Fun/whowouldwin";
+import wouldyourather from "./Fun/wouldyourather";
+import ai from "./Fun/ai";
 
 const globalCommands: Command[] = [
+  iphoneAlert,
   hello,
   help,
+  drakememe,
+  dog,
   avatar,
   ping,
+  joke,
+  fact,
   id,
+  pickupLine,
+  imdb,
   invite,
+  bidenpost,
+  cat,
   user,
   balance,
   pay,
@@ -33,6 +60,15 @@ const globalCommands: Command[] = [
   ban,
   kick,
   setupWelcomer,
+  jail,
+  mnm,
+  oogway,
+  pooh,
+  sadcat,
+  wanted,
+  whowouldwin,
+  wouldyourather,
+  ai,
 ];
 const devCommands: Command[] = [test, modifymoney];
 const allCommands: Command[] = [...globalCommands, ...devCommands];

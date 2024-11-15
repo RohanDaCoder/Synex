@@ -16,16 +16,16 @@ export default {
         .addChoices(
           { name: "Add", value: ActionType.Add },
           { name: "Reduce", value: ActionType.Reduce },
-          { name: "Set", value: ActionType.Set }
+          { name: "Set", value: ActionType.Set },
         )
-        .setRequired(true)
+        .setRequired(true),
     )
     .addNumberOption((option) =>
       option
         .setName("amount")
         .setDescription("Amount of money")
         .setRequired(true)
-        .setMinValue(0)
+        .setMinValue(0),
     )
     .addStringOption((option) =>
       option
@@ -33,19 +33,19 @@ export default {
         .setDescription("Type of transaction")
         .addChoices(
           { name: "Wallet", value: TransactionType.Wallet },
-          { name: "Bank", value: TransactionType.Bank }
+          { name: "Bank", value: TransactionType.Bank },
         )
-        .setRequired(true)
+        .setRequired(true),
     )
     .addUserOption((option) =>
       option
         .setName("user")
-        .setDescription("The user you want to modify balance")
+        .setDescription("The user you want to modify balance"),
     )
     .addStringOption((option) =>
       option
         .setName("user_id")
-        .setDescription("The user ID you want to modify balance")
+        .setDescription("The user ID you want to modify balance"),
     ),
   category: CommandCategory.Economy,
   run: async ({ client, interaction }) => {
@@ -64,7 +64,7 @@ export default {
     const action = interaction.options.getString("action") as ActionType;
     const amount = interaction.options.getNumber("amount") ?? 0;
     const balanceType = interaction.options.getString(
-      "transaction_type"
+      "transaction_type",
     ) as TransactionType;
 
     await interaction.deferReply();
