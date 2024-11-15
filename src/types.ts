@@ -21,10 +21,10 @@ export type SlashCommandProps = {
   client: Client;
 };
 
+//TODO: Check Permissions For Bot And User
 export interface CommandOptions {
-  devOnly?: boolean;
-  userPermissions?: PermissionsString | PermissionsString[];
-  botPermissions?: PermissionsString | PermissionsString[];
+  userPermissions?: PermissionsString | PermissionsString[] | undefined;
+  botPermissions?: PermissionsString | PermissionsString[] | undefined;
 }
 
 export enum CommandCategory {

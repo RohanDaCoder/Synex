@@ -9,6 +9,8 @@ export default {
   name: Events.InteractionCreate,
   once: false,
   async execute(interaction: ChatInputCommandInteraction) {
+    //TODO: Check Permissions For Bot And User
+
     if (!interaction.isCommand()) return;
 
     const command = Commands.allCommands.find(
@@ -33,7 +35,6 @@ export default {
         emoji: Emojis.Failed,
       });
     }
-
     try {
       await command.run({ interaction, client });
     } catch (error: any) {
