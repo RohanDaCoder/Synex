@@ -34,6 +34,7 @@ import wanted from './Image/wanted';
 import whowouldwin from './Fun/whowouldwin';
 import wouldyourather from './Fun/wouldyourather';
 import ai from './Fun/ai';
+import nickname from './Moderation/nickname';
 
 const globalCommands: Command[] = [
   iphoneAlert,
@@ -42,6 +43,7 @@ const globalCommands: Command[] = [
   drakememe,
   dog,
   avatar,
+  nickname,
   ping,
   joke,
   fact,
