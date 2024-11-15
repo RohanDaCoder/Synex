@@ -8,9 +8,9 @@
     "format": "prettier -w .",
     "build": "tsc && tsup --config tsup.config.ts",
     "dev": "nodemon --exec ts-node src/index.ts",
-    "start": "node .",
+    "start": "bun dist/index.js",
     "lint": "eslint 'src/**/*.ts'",
-    "manual": "bun run lint && bun run build && bun run dist/index.js "
+    "deploy": "bun run lint && bun run build && bun run dist/index.js "
   },
   "keywords": [],
   "author": "RohanDaCoder",
@@ -23,11 +23,9 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.14.0",
-    "@stylistic/eslint-plugin-js": "^2.10.1",
     "@typescript-eslint/eslint-plugin": "^8.14.0",
     "@typescript-eslint/parser": "^8.14.0",
     "eslint": "^9.14.0",
-    "eslint-plugin-stylistic-js": "^0.0.0-0",
     "globals": "^15.12.0",
     "nodemon": "^3.1.7",
     "prettier": "^3.3.3",
