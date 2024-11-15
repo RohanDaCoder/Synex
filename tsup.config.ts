@@ -4,7 +4,7 @@ export default defineConfig({
   entry: ["src/index.ts"],
   format: ["cjs"],
   platform: "node",
-  minify: true,
+  minify: false,
   splitting: false,
   sourcemap: false,
   clean: true,

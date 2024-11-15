@@ -71,7 +71,7 @@ export interface ReplyOptions {
     | ChannelSelectMenuInteraction;
   ephemeral?: boolean;
   emoji?: any;
-  color?: null | ColorResolvable;
+  color?: ColorResolvable | undefined;
 }
 export interface Event {
   name: keyof ClientEvents;
@@ -121,20 +121,6 @@ export type Colors =
   | "strip"
   | "stripColors";
 
-export type Storage = Record<string, any>;
-
-export interface DatabaseType {
-  set(key: string, value: any): Promise<void>;
-  get(key: string): Promise<any>;
-  has(key: string): Promise<boolean>;
-  delete(key: string): Promise<boolean>;
-  deleteAll(): Promise<void>;
-  size(): Promise<number>;
-  keys(): Promise<string[]>;
-  values(): Promise<any[]>;
-  toJSON(): Promise<Storage>;
-  fromJSON(json: Storage): Promise<void>;
-}
 export enum TransactionType {
   Wallet = "wallet",
   Bank = "bank",
