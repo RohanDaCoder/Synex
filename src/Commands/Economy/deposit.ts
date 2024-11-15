@@ -1,8 +1,4 @@
-import {
-  SlashCommandBuilder,
-  InteractionContextType,
-  ChatInputCommandInteraction,
-} from "discord.js";
+import { SlashCommandBuilder, InteractionContextType } from "discord.js";
 import { Command, CommandCategory } from "../../types";
 import { db } from "@/index";
 import sendMessage from "@/utils/sendMessage";
@@ -19,7 +15,7 @@ export default {
         .setName("amount")
         .setDescription("Amount of money to deposit.")
         .setRequired(true)
-        .setMinValue(1),
+        .setMinValue(1)
     ),
   category: CommandCategory.Economy,
   run: async ({ interaction }) => {

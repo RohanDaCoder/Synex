@@ -3,7 +3,7 @@
     "prefix": "synexCMD",
     "body": [
       "import { SlashCommandBuilder, InteractionContextType } from \"discord.js\";",
-      "import { Command, CommandCategory } from \"../../types\";",
+      "import { Command, CommandCategory } from \"@/types\";",
       "",
       "export default {",
       "  data: new SlashCommandBuilder()",
