@@ -2,7 +2,8 @@ import { EmbedBuilder, GuildMember } from "discord.js";
 import { db } from "..";
 import { GatewayEventType } from "@/types";
 
-const WelcomeBackgroundUrl = "https://cdn.popcat.xyz/welcome-bg.png";
+const WelcomeBackgroundUrl =
+  "https://raw.githubusercontent.com/RohanDaCoder/Synex/refs/heads/main/assets/welcome-bg.png";
 
 export async function handleGatewayEvent(
   member: GuildMember,
