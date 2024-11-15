@@ -1,11 +1,12 @@
 import { SlashCommandBuilder } from 'discord.js';
 import axios from 'axios';
 import { Command, CommandCategory } from '@/types';
+import client from '@/index';
 
 export default {
   data: new SlashCommandBuilder()
     .setName('ai')
-    .setDescription('Talk with Synex, your AI companion')
+    .setDescription('Talk with Synex')
     .addStringOption((option) =>
       option
         .setName('message')
@@ -23,8 +24,8 @@ export default {
     const nickname = username;
 
     const context = `
-      Your Name Is Lean, A Discord Bot. You are a funny guy who likes to keep conversations light and engaging. 
-      Your creator is Rohan (rohan_ohio). You are currently running on an AI command on Lean. 
+      Your Name Is ${client.user?.globalName}, A Discord Bot. You are a funny guy who likes to keep conversations light and engaging. 
+      Your creator is Rohan (rohan_ohio). You are currently running on an Ai slash command on Synex. 
       You are helpful, friendly, and always ready to assist users with their queries. 
       This user's name is "${username}" (nickname: "${nickname}"). 
       You are interacting on the "${interaction.guild?.name}" server. 
