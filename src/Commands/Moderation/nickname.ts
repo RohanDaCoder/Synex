@@ -37,25 +37,15 @@ export default {
       });
     }
 
-    try {
-      await member.setNickname(nickname);
-      return sendMessage({
-        message: `Successfully changed nickname for **${user.tag}** to **${nickname}**.`,
-        interaction,
-        emoji: Emojis.Success,
-        ephemeral: true,
-        color: 'Green',
-      });
-    } catch (error) {
-      console.error(error);
-      return sendMessage({
-        message: `Failed to change nickname for **${user.tag}**.`,
-        interaction,
-        emoji: Emojis.Failed,
-        color: 'Red',
-        ephemeral: true,
-      });
-    }
+    await member.setNickname(nickname);
+
+    sendMessage({
+      message: `Successfully changed nickname for **${user.tag}** to **${nickname}**.`,
+      interaction,
+      emoji: Emojis.Success,
+      ephemeral: true,
+      color: 'Green',
+    });
   },
   options: {
     botPermissions: ['ManageNicknames', 'ChangeNickname'],
