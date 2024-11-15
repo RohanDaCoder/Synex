@@ -14,25 +14,25 @@ export default {
         .setName("amount")
         .setDescription("The amount of money to pay")
         .setRequired(true)
-        .setMinValue(0),
+        .setMinValue(1)
     )
     .addUserOption((option) =>
       option
         .setName("user")
         .setDescription("The user you want to pay")
-        .setRequired(false),
+        .setRequired(false)
     )
     .addStringOption((option) =>
       option
         .setName("user_id")
         .setDescription("The user's ID you want to pay")
-        .setRequired(false),
+        .setRequired(false)
     ),
   category: CommandCategory.Economy,
   run: async ({ interaction, client }) => {
     const user = interaction.options.getUser("user");
     const userId = interaction.options.getString("user_id");
-    const amount = interaction.options.getInteger("amount")!!;
+    const amount = interaction.options.getInteger("amount") ?? 1;
     const senderId = interaction.user.id;
 
     if (amount <= 0) {

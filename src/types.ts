@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {
   SlashCommandBuilder,
   SlashCommandOptionsOnlyBuilder,
@@ -13,7 +14,6 @@ import {
   UserSelectMenuInteraction,
   ClientEvents,
   ColorResolvable,
-  Emoji,
 } from "discord.js";
 
 export type SlashCommandProps = {
@@ -47,12 +47,6 @@ export type Command = {
   category: CommandCategory;
 };
 
-export interface LogProps {
-  prefix: string;
-  message: string;
-  color: Colors;
-}
-
 export interface EmojisType {
   Success: string;
   Failed: string;
@@ -76,13 +70,13 @@ export interface ReplyOptions {
 export interface Event {
   name: keyof ClientEvents;
   once: boolean;
-  execute: Function;
+  execute: (...args: any[]) => any;
 }
 
 export type Config = {
   devGuildIds: string[];
   devUserIds: string[];
-  clientID: number;
+  clientID: string;
 };
 
 export type Colors =
@@ -134,4 +128,10 @@ export enum ActionType {
 export enum GatewayEventType {
   Welcome = "welcome",
   Goodbye = "goodbye",
+}
+
+export interface LogProps {
+  prefix: string;
+  message: string;
+  color: Colors;
 }

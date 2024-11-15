@@ -1,7 +1,7 @@
 import { Config, EmojisType } from "./types";
 
 const config: Config = {
-  clientID: 1270321720292540446,
+  clientID: "1270321720292540446",
   devGuildIds: ["1271700025646387221"],
   devUserIds: ["922419431508938773"],
 };

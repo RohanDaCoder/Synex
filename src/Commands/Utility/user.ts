@@ -95,7 +95,7 @@ export default {
           })
           .setTimestamp();
 
-        let buttons: ButtonBuilder[] = [];
+        const buttons: ButtonBuilder[] = [];
         if (user.bannerURL()) {
           const bannerButton = new ButtonBuilder()
             .setLabel("Banner URL")
