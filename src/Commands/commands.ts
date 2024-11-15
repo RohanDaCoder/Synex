@@ -56,7 +56,6 @@ const globalCommands: Command[] = [
   pay,
   deposit,
   withdraw,
-  error,
   ban,
   kick,
   setupWelcomer,
@@ -70,6 +69,6 @@ const globalCommands: Command[] = [
   wouldyourather,
   ai,
 ];
-const devCommands: Command[] = [test, modifymoney];
+const devCommands: Command[] = [test, modifymoney, error];
 const allCommands: Command[] = [...globalCommands, ...devCommands];
 export default { globalCommands, devCommands, allCommands };
