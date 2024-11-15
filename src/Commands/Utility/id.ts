@@ -11,7 +11,7 @@ export default {
     .setDescription("Get a User's ID")
     .setContexts(InteractionContextType.Guild)
     .addUserOption((o) =>
-      o.setName("target").setDescription("The Target User"),
+      o.setName("target").setDescription("The Target User")
     ),
   category: CommandCategory.Utility,
   run: async ({ interaction }) => {

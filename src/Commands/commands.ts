@@ -15,6 +15,7 @@ import withdraw from "./Economy/withdraw";
 import error from "./Utility/error";
 import ban from "./Moderation/ban";
 import kick from "./Moderation/kick";
+import setupWelcomer from "./Utility/setup-welcomer";
 
 const globalCommands: Command[] = [
   hello,
@@ -31,6 +32,7 @@ const globalCommands: Command[] = [
   error,
   ban,
   kick,
+  setupWelcomer,
 ];
 const devCommands: Command[] = [test, modifymoney];
 const allCommands: Command[] = [...globalCommands, ...devCommands];

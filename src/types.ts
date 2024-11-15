@@ -145,3 +145,7 @@ export enum ActionType {
   Reduce = "reduce",
   Set = "set",
 }
+export enum GatewayEventType {
+  Welcome = "welcome",
+  Goodbye = "goodbye",
+}
