@@ -13,6 +13,7 @@ const client: Client = new Client({
 		IntentsBitField.Flags.Guilds,
 	],
 });
+
 client.login(token).then(() => loadEvents());
 const db = new Database(`${config.clientID}_data.json`);
 export default client;

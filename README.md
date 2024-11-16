@@ -1,7 +1,5 @@
 # Synex - A Discord Bot
 
-### Made by Rohan
-
 Synex is a feature-rich **Discord bot** built with **TypeScript** and **Discord.js v14**. It offers a variety of functionalities to manage your Discord server, including custom commands, user management, activity tracking, and more.
 
 ---
@@ -34,41 +32,45 @@ Synex is a feature-rich **Discord bot** built with **TypeScript** and **Discord.
 ### ⚙️ Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/RohanDaCoder/synex.git
    cd synex
    ```
 
 2. Install dependencies using **bun**:
+
    ```bash
    bun install
    ```
 
 3. **Configure Your Token**:
    Rename the `token.example.json` file to `token.json` and replace `"Your Token Here"` with your actual Discord Bot Token:
+
    ```json
-   { 
-     "token": "Your Token Here"
+   {
+   	"token": "Your Token Here"
    }
    ```
 
 4. **Configure Bot Settings**:
    Rename `src/config.example.ts` to `src/config.ts` and adjust the settings (e.g., bot ID, developer server IDs, etc.):
+
    ```typescript
    import { Config, EmojisType } from './types';
 
    const config: Config = {
-     clientID: '1270321720292540446', // The Bot's ID
-     devGuildIds: ['1271700025646387221'], // Developer Server IDS
-     devUserIds: ['922419431508938773'], // Developer's IDS
+   	clientID: '1270321720292540446', // The Bot's ID
+   	devGuildIds: ['1271700025646387221'], // Developer Server IDS
+   	devUserIds: ['922419431508938773'], // Developer's IDS
    };
 
    // Emojis
    const Emojis: EmojisType = {
-     Success: '<a:true:1270323437419626619>',
-     Failed: '<a:false:1270323464884060254>',
-     Loading: '<a:loading:1270323480746790923>',
-     Money: '<:money:1306229612388552746>',
+   	Success: '<a:true:1270323437419626619>',
+   	Failed: '<a:false:1270323464884060254>',
+   	Loading: '<a:loading:1270323480746790923>',
+   	Money: '<:money:1306229612388552746>',
    };
 
    export { Emojis };
@@ -81,6 +83,10 @@ Synex is a feature-rich **Discord bot** built with **TypeScript** and **Discord.
    bun run build
    bun run start
    ```
+   or
+   ```bash
+   bun run deploy
+   ```
 
 ---
 
@@ -88,7 +94,7 @@ Synex is a feature-rich **Discord bot** built with **TypeScript** and **Discord.
 
 Synex bundles into a single file, resulting in a lightweight **2 MB** final build.
 
-**Warning**: The **Discord Bot Token** is included in the final bundle, so be cautious and ensure the repository is private or securely manage your token.
+⚠ **Warning**: The **Discord Bot Token** is included in the final bundle, so be cautious and ensure the repository is private or securely manage your token.
 
 ---
 
