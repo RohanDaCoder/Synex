@@ -30,7 +30,7 @@ export default {
 				)
 				.setRequired(false),
 		),
-	category: CommandCategory.Utility,
+	category: CommandCategory.Admin,
 	run: async ({ interaction }) => {
 		await interaction.deferReply();
 

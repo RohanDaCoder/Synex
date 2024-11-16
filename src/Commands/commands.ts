@@ -15,7 +15,7 @@ import withdraw from './Economy/withdraw';
 import error from './Utility/error';
 import ban from './Moderation/ban';
 import kick from './Moderation/kick';
-import setupWelcomer from './Utility/setup-welcomer';
+import setupWelcomer from './Admin/setup-welcomer';
 import joke from './Fun/joke';
 import pickupLine from './Fun/pickup-line';
 import imdb from './Fun/imdb';
@@ -35,6 +35,7 @@ import whowouldwin from './Fun/whowouldwin';
 import wouldyourather from './Fun/wouldyourather';
 import ai from './Fun/ai';
 import nickname from './Moderation/nickname';
+import setupServerStats from './Admin/setup-server-stats';
 
 const globalCommands: Command[] = [
 	iphoneAlert,
@@ -69,6 +70,7 @@ const globalCommands: Command[] = [
 	wanted,
 	whowouldwin,
 	wouldyourather,
+	setupServerStats,
 	ai,
 ];
 const devCommands: Command[] = [test, modifymoney, error];
