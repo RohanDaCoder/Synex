@@ -5,7 +5,6 @@ const config: Config = {
 	devGuildIds: ['1271700025646387221'],
 	devUserIds: ['922419431508938773'],
 };
-
 const Emojis: EmojisType = {
 	Success: '<a:true:1270323437419626619>',
 	Failed: '<a:false:1270323464884060254>',

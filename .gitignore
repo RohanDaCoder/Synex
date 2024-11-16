@@ -1,3 +1,4 @@
 node_modules/
 dist/
-src/token.json
+token.json
+src/config.ts
