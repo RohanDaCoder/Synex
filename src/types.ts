@@ -1,136 +1,136 @@
 /* eslint-disable no-unused-vars */
 import {
-  SlashCommandBuilder,
-  SlashCommandOptionsOnlyBuilder,
-  ChatInputCommandInteraction,
-  Client,
-  PermissionsString,
-  ButtonInteraction,
-  ChannelSelectMenuInteraction,
-  CommandInteraction,
-  MentionableSelectMenuInteraction,
-  RoleSelectMenuInteraction,
-  StringSelectMenuInteraction,
-  UserSelectMenuInteraction,
-  ClientEvents,
-  ColorResolvable,
+	SlashCommandBuilder,
+	SlashCommandOptionsOnlyBuilder,
+	ChatInputCommandInteraction,
+	Client,
+	PermissionsString,
+	ButtonInteraction,
+	ChannelSelectMenuInteraction,
+	CommandInteraction,
+	MentionableSelectMenuInteraction,
+	RoleSelectMenuInteraction,
+	StringSelectMenuInteraction,
+	UserSelectMenuInteraction,
+	ClientEvents,
+	ColorResolvable,
 } from 'discord.js';
 
 export type SlashCommandProps = {
-  interaction: ChatInputCommandInteraction;
-  client: Client;
+	interaction: ChatInputCommandInteraction;
+	client: Client;
 };
 
 export interface CommandOptions {
-  userPermissions?: PermissionsString | PermissionsString[] | undefined;
-  botPermissions?: PermissionsString | PermissionsString[] | undefined;
+	userPermissions?: PermissionsString | PermissionsString[] | undefined;
+	botPermissions?: PermissionsString | PermissionsString[] | undefined;
 }
 
 export enum CommandCategory {
-  Fun = 'fun',
-  Utility = 'utility',
-  Moderation = 'moderation',
-  Economy = 'economy',
-  Dev = 'dev',
-  Admin = 'admin',
-  Giveaway = 'giveaway',
-  Image = 'image',
-  Extra = 'extra',
-  Games = 'games',
+	Fun = 'fun',
+	Utility = 'utility',
+	Moderation = 'moderation',
+	Economy = 'economy',
+	Dev = 'dev',
+	Admin = 'admin',
+	Giveaway = 'giveaway',
+	Image = 'image',
+	Extra = 'extra',
+	Games = 'games',
 }
 
 export type Command = {
-  data: SlashCommandBuilder | SlashCommandOptionsOnlyBuilder;
-  run: (props: SlashCommandProps) => Promise<void>;
-  options?: CommandOptions;
-  category: CommandCategory;
+	data: SlashCommandBuilder | SlashCommandOptionsOnlyBuilder;
+	run: (props: SlashCommandProps) => Promise<void>;
+	options?: CommandOptions;
+	category: CommandCategory;
 };
 
 export type EmojisType = {
-  Success: string;
-  Failed: string;
-  Loading: string;
-  Money: string;
+	Success: string;
+	Failed: string;
+	Loading: string;
+	Money: string;
 };
 export interface ReplyOptions {
-  message: string;
-  interaction:
-    | CommandInteraction
-    | ButtonInteraction
-    | StringSelectMenuInteraction
-    | UserSelectMenuInteraction
-    | RoleSelectMenuInteraction
-    | MentionableSelectMenuInteraction
-    | ChannelSelectMenuInteraction;
-  ephemeral?: boolean;
-  emoji?: string | undefined;
-  color?: ColorResolvable | undefined;
+	message: string;
+	interaction:
+		| CommandInteraction
+		| ButtonInteraction
+		| StringSelectMenuInteraction
+		| UserSelectMenuInteraction
+		| RoleSelectMenuInteraction
+		| MentionableSelectMenuInteraction
+		| ChannelSelectMenuInteraction;
+	ephemeral?: boolean;
+	emoji?: string | undefined;
+	color?: ColorResolvable | undefined;
 }
 export interface Event {
-  name: keyof ClientEvents;
-  once: boolean;
-  execute: (...args: any[]) => any;
+	name: keyof ClientEvents;
+	once: boolean;
+	execute: (...args: any[]) => any;
 }
 
 export type Config = {
-  devGuildIds: string[];
-  devUserIds: string[];
-  clientID: string;
+	devGuildIds: string[];
+	devUserIds: string[];
+	clientID: string;
 };
 
 export type Colors =
-  | 'black'
-  | 'red'
-  | 'green'
-  | 'yellow'
-  | 'blue'
-  | 'magenta'
-  | 'cyan'
-  | 'white'
-  | 'gray'
-  | 'grey'
-  | 'bgBlack'
-  | 'bgRed'
-  | 'bgGreen'
-  | 'bgYellow'
-  | 'bgBlue'
-  | 'bgMagenta'
-  | 'bgCyan'
-  | 'bgWhite'
-  | 'reset'
-  | 'bold'
-  | 'dim'
-  | 'italic'
-  | 'underline'
-  | 'inverse'
-  | 'hidden'
-  | 'strikethrough'
-  | 'rainbow'
-  | 'zebra'
-  | 'america'
-  | 'trap'
-  | 'random'
-  | 'zalgo'
-  | 'strip'
-  | 'stripColors';
+	| 'black'
+	| 'red'
+	| 'green'
+	| 'yellow'
+	| 'blue'
+	| 'magenta'
+	| 'cyan'
+	| 'white'
+	| 'gray'
+	| 'grey'
+	| 'bgBlack'
+	| 'bgRed'
+	| 'bgGreen'
+	| 'bgYellow'
+	| 'bgBlue'
+	| 'bgMagenta'
+	| 'bgCyan'
+	| 'bgWhite'
+	| 'reset'
+	| 'bold'
+	| 'dim'
+	| 'italic'
+	| 'underline'
+	| 'inverse'
+	| 'hidden'
+	| 'strikethrough'
+	| 'rainbow'
+	| 'zebra'
+	| 'america'
+	| 'trap'
+	| 'random'
+	| 'zalgo'
+	| 'strip'
+	| 'stripColors';
 
 export enum TransactionType {
-  Wallet = 'wallet',
-  Bank = 'bank',
+	Wallet = 'wallet',
+	Bank = 'bank',
 }
 
 export enum ActionType {
-  Add = 'add',
-  Reduce = 'reduce',
-  Set = 'set',
+	Add = 'add',
+	Reduce = 'reduce',
+	Set = 'set',
 }
 export enum GatewayEventType {
-  Welcome = 'welcome',
-  Goodbye = 'goodbye',
+	Welcome = 'welcome',
+	Goodbye = 'goodbye',
 }
 
 export interface LogProps {
-  prefix: string;
-  message: string;
-  color: Colors;
+	prefix: string;
+	message: string;
+	color: Colors;
 }

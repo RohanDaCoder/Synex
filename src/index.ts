@@ -5,13 +5,13 @@ import { Database } from 'calm.db';
 import config from './config';
 
 const client: Client = new Client({
-  intents: [
-    IntentsBitField.Flags.GuildMembers,
-    IntentsBitField.Flags.GuildMessages,
-    IntentsBitField.Flags.MessageContent,
-    IntentsBitField.Flags.GuildModeration,
-    IntentsBitField.Flags.Guilds,
-  ],
+	intents: [
+		IntentsBitField.Flags.GuildMembers,
+		IntentsBitField.Flags.GuildMessages,
+		IntentsBitField.Flags.MessageContent,
+		IntentsBitField.Flags.GuildModeration,
+		IntentsBitField.Flags.Guilds,
+	],
 });
 client.login(token).then(() => loadEvents());
 const db = new Database(`${config.clientID}_data.json`);
