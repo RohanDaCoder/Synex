@@ -37,7 +37,7 @@ export default {
       });
     }
 
-    await member.setNickname(nickname);
+    await member.setNickname(nickname, `Requested by ${interaction.user.tag}`);
 
     sendMessage({
       message: `Successfully changed nickname for **${user.tag}** to **${nickname}**.`,
