@@ -1,7 +1,7 @@
 {
 	"name": "synex",
 	"version": "1.0.0",
-	"description": "",
+	"description": "A feature-rich Discord bot built with TypeScript and Discord.js v14.",
 	"main": "dist/index.js",
 	"private": true,
 	"scripts": {
@@ -9,9 +9,14 @@
 		"build": "tsc && tsup --config tsup.config.ts",
 		"start": "bun dist/index.js",
 		"lint": "eslint 'src/**/*.ts'",
-		"deploy": "bun run lint && bun run build && bun run dist/index.js "
+		"deploy": "bun run lint && bun run build && bun run start"
 	},
-	"keywords": [],
+	"keywords": [
+		"discord",
+		"bot",
+		"typescript",
+		"discord.js"
+	],
 	"author": "RohanDaCoder",
 	"license": "MIT",
 	"dependencies": {
@@ -21,10 +26,10 @@
 		"discord.js": "^14.16.3"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.14.0",
+		"@eslint/js": "^9.15.0",
 		"@typescript-eslint/eslint-plugin": "^8.14.0",
 		"@typescript-eslint/parser": "^8.14.0",
-		"eslint": "^9.14.0",
+		"eslint": "^9.15.0",
 		"globals": "^15.12.0",
 		"prettier": "^3.3.3",
 		"tsup": "^8.3.5",
