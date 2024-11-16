@@ -1,8 +1,13 @@
-import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
+import {
+	EmbedBuilder,
+	InteractionContextType,
+	SlashCommandBuilder,
+} from 'discord.js';
 import { Command, CommandCategory } from '@/types';
 
 export default {
 	data: new SlashCommandBuilder()
+		.setContexts(InteractionContextType.Guild)
 		.setName('poohmeme')
 		.setDescription('Creates a Pooh meme with custom texts.')
 		.addStringOption((option) =>

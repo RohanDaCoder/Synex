@@ -1,4 +1,8 @@
-import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
+import {
+	SlashCommandBuilder,
+	EmbedBuilder,
+	InteractionContextType,
+} from 'discord.js';
 import { Command, CommandCategory } from '@/types';
 import sendMessage from '@/utils/sendMessage';
 import { Emojis } from '@/config';
@@ -6,6 +10,7 @@ import { Emojis } from '@/config';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('whowouldwin')
+		.setContexts(InteractionContextType.Guild)
 		.setDescription(
 			"Creates a 'Who would win?' meme with the avatars of two users.",
 		)

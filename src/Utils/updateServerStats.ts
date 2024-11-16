@@ -1,19 +1,21 @@
 import { Guild, PermissionFlagsBits } from 'discord.js';
-import { db } from '..';
+import client, { db } from '..';
 
 export default async function updateServerStats(guild: Guild) {
 	const channelIds = {
-		humanChannel: await db.get(`serverstats_human_${guild.id}`),
-		botChannel: await db.get(`serverstats_bot_${guild.id}`),
-		allChannel: await db.get(`serverstats_all_${guild.id}`),
+		humanChannel: await db.get(`serverstats_humanChannel_id_${guild.id}`),
+		botChannel: await db.get(`serverstats_botChannel_id_${guild.id}`),
+		allChannel: await db.get(`serverstats_allChannel_id_${guild.id}`),
 	};
 
 	const channelNames = {
 		humanChannel:
-			(await db.get(`serverstats_human_name_${guild.id}`)) || 'Humans',
-		botChannel: (await db.get(`serverstats_bot_name_${guild.id}`)) || 'Bots',
+			(await db.get(`serverstats_humanChannel_name_${guild.id}`)) || 'Humans',
+		botChannel:
+			(await db.get(`serverstats_botChannel_name_${guild.id}`)) || 'Bots',
 		allChannel:
-			(await db.get(`serverstats_all_name_${guild.id}`)) || 'All Members',
+			(await db.get(`serverstats_allChannel_name_${guild.id}`)) ||
+			'All Members',
 	};
 
 	if (
@@ -77,5 +79,12 @@ export default async function updateServerStats(guild: Guild) {
 		allChannel
 			.setName(`${channelNames.allChannel}: ${allMembersCount}`)
 			.catch(console.error);
+	}
+}
+
+export async function updateAllServerStats() {
+	for (const g of await client.guilds.fetch()) {
+		const fullGuild: Guild = await client.guilds.fetch(g[1].id);
+		await updateServerStats(fullGuild);
 	}
 }

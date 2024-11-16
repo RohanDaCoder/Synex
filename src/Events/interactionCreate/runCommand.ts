@@ -10,6 +10,13 @@ export default {
 	once: false,
 	async execute(interaction: ChatInputCommandInteraction) {
 		if (!interaction.isCommand()) return;
+		if (!interaction.guild)
+			return sendMessage({
+				interaction,
+				message: 'You can only use my commands in a server.',
+				emoji: Emojis.Failed,
+			});
+
 		if (!interaction.member)
 			return sendMessage({
 				interaction,

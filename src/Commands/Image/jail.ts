@@ -1,4 +1,8 @@
-import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
+import {
+	SlashCommandBuilder,
+	EmbedBuilder,
+	InteractionContextType,
+} from 'discord.js';
 import { Command, CommandCategory } from '@/types';
 import sendMessage from '@/utils/sendMessage';
 
@@ -6,6 +10,7 @@ export default {
 	data: new SlashCommandBuilder()
 		.setName('jail')
 		.setDescription('Puts a user behind bars.')
+		.setContexts(InteractionContextType.Guild)
 		.addUserOption((option) =>
 			option
 				.setName('user')

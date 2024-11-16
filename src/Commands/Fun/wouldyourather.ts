@@ -1,10 +1,15 @@
-import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
+import {
+	SlashCommandBuilder,
+	EmbedBuilder,
+	InteractionContextType,
+} from 'discord.js';
 import { Command, CommandCategory } from '@/types';
 import axios from 'axios';
 
 export default {
 	data: new SlashCommandBuilder()
 		.setName('wouldyourather')
+		.setContexts(InteractionContextType.Guild)
 		.setDescription("Fetches a 'Would You Rather' question."),
 	category: CommandCategory.Fun,
 	run: async ({ interaction }) => {

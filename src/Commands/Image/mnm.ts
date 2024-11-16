@@ -1,10 +1,15 @@
-import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
+import {
+	SlashCommandBuilder,
+	EmbedBuilder,
+	InteractionContextType,
+} from 'discord.js';
 import { Command, CommandCategory } from '@/types';
 import sendMessage from '@/utils/sendMessage';
 import { Emojis } from '@/config';
 
 export default {
 	data: new SlashCommandBuilder()
+		.setContexts(InteractionContextType.Guild)
 		.setName('mnm')
 		.setDescription("Creates an M&M meme with a user's avatar.")
 		.addUserOption((option) =>

@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from 'discord.js';
+import { InteractionContextType, SlashCommandBuilder } from 'discord.js';
 import { Command, CommandCategory } from '@/types';
 import { formatMoney } from '@/utils/formatMoney';
 import sendMessage from '@/utils/sendMessage';
@@ -8,6 +8,7 @@ import { Emojis } from '@/config';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('pay')
+		.setContexts(InteractionContextType.Guild)
 		.setDescription('Pay some money to a user.')
 		.addIntegerOption((option) =>
 			option

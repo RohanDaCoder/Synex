@@ -1,9 +1,14 @@
-import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
+import {
+	SlashCommandBuilder,
+	EmbedBuilder,
+	InteractionContextType,
+} from 'discord.js';
 import { Command, CommandCategory } from '@/types';
 
 export default {
 	data: new SlashCommandBuilder()
 		.setName('drake')
+		.setContexts(InteractionContextType.Guild)
 		.setDescription('Generate a Drake meme.')
 		.addStringOption((option) =>
 			option

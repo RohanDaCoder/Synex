@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from 'discord.js';
+import { InteractionContextType, SlashCommandBuilder } from 'discord.js';
 import axios from 'axios';
 import { Command, CommandCategory } from '@/types';
 import client from '@/index';
@@ -6,6 +6,7 @@ import client from '@/index';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('ai')
+		.setContexts(InteractionContextType.Guild)
 		.setDescription('Talk with Synex')
 		.addStringOption((option) =>
 			option

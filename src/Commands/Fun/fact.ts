@@ -1,9 +1,14 @@
-import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
+import {
+	SlashCommandBuilder,
+	EmbedBuilder,
+	InteractionContextType,
+} from 'discord.js';
 import axios from 'axios';
 import { Command, CommandCategory } from '@/types';
 
 export default {
 	data: new SlashCommandBuilder()
+		.setContexts(InteractionContextType.Guild)
 		.setName('fact')
 		.setDescription('Get a random fact.'),
 	category: CommandCategory.Fun,

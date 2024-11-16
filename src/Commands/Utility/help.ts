@@ -6,6 +6,7 @@ import {
 	ChatInputCommandInteraction,
 	SlashCommandBuilder,
 	InteractionCollector,
+	InteractionContextType,
 } from 'discord.js';
 import { CommandCategory, type Command } from '../../types';
 import commands from '../commands';
@@ -13,6 +14,8 @@ import commands from '../commands';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('help')
+		.setContexts(InteractionContextType.Guild)
+
 		.setDescription("List My Command's Descriptions"),
 	run: async ({
 		interaction,

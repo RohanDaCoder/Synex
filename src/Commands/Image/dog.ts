@@ -1,9 +1,14 @@
-import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
+import {
+	SlashCommandBuilder,
+	EmbedBuilder,
+	InteractionContextType,
+} from 'discord.js';
 import { Command, CommandCategory } from '@/types';
 import axios from 'axios';
 
 export default {
 	data: new SlashCommandBuilder()
+		.setContexts(InteractionContextType.Guild)
 		.setName('dog')
 		.setDescription('Fetch a random dog picture'),
 	category: CommandCategory.Image,

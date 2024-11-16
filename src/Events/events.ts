@@ -1,8 +1,8 @@
 import { Event } from '../types';
 import runCommand from './interactionCreate/runCommand';
 import consoleLog from './ready/consoleLog';
-import joinEvent from './welcomeSystem/join';
-import leaveEvent from './welcomeSystem/leave';
+import joinEvent from './guildMemberJoinLeave/join';
+import leaveEvent from './guildMemberJoinLeave/leave';
 
 const events: Event[] = [runCommand, consoleLog, joinEvent, leaveEvent];
 

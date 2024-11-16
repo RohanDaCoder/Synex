@@ -1,16 +1,18 @@
-import {
-	SlashCommandBuilder,
-	InteractionContextType,
-	ChannelType,
-} from 'discord.js';
-import { Command, CommandCategory } from '@/types';
-import { db } from '@/index';
 import { Emojis } from '@/config';
+import { db } from '@/index';
+import { Command, CommandCategory } from '@/types';
 import sendMessage from '@/utils/sendMessage';
+import { updateAllServerStats } from '@/utils/updateServerStats';
+import {
+	CategoryChannel,
+	ChannelType,
+	InteractionContextType,
+	SlashCommandBuilder,
+} from 'discord.js';
 
 export default {
 	data: new SlashCommandBuilder()
-		.setName('setupstats')
+		.setName('setup-server-stats')
 		.setDescription(
 			'Sets up the server stats voice channels for bot, human, and all members.',
 		)
@@ -19,6 +21,7 @@ export default {
 			option
 				.setName('category')
 				.setDescription('The category to place the channels in.')
+				.addChannelTypes(ChannelType.GuildCategory)
 				.setRequired(true),
 		)
 		.addStringOption((option) =>
@@ -41,22 +44,14 @@ export default {
 		),
 	category: CommandCategory.Admin,
 	run: async ({ interaction }) => {
+		await interaction.deferReply();
 		const guild = interaction.guild!;
-		const category = interaction.options.getChannel('category')!;
+		const category: CategoryChannel =
+			interaction.options.getChannel('category')!;
 		const humanChannelName =
 			interaction.options.getString('human_channel_name')!;
 		const botChannelName = interaction.options.getString('bot_channel_name')!;
 		const allChannelName = interaction.options.getString('all_channel_name')!;
-
-		if (category.type !== ChannelType.GuildCategory) {
-			await sendMessage({
-				interaction,
-				message: 'Please provide a valid category.',
-				emoji: Emojis.Failed,
-				ephemeral: true,
-			});
-			return;
-		}
 
 		const channels = await Promise.all([
 			guild.channels.create({
@@ -94,23 +89,38 @@ export default {
 			}),
 		]);
 
-		const channelIds = {
-			humanChannel: channels[0]?.id,
-			botChannel: channels[1]?.id,
-			allChannel: channels[2]?.id,
-		};
-
-		await Promise.all(
-			Object.entries(channelIds).map(([key, value]) => {
-				return db.set(`serverstats_${key}_${guild.id}`, value);
-			}),
+		await db.set(
+			`serverstats_humanChannel_id_${interaction.guild!.id}`,
+			channels[0]?.id,
+		);
+		await db.set(
+			`serverstats_botChannel_id_${interaction.guild!.id}`,
+			channels[1]?.id,
+		);
+		await db.set(
+			`serverstats_allChannel_id_${interaction.guild!.id}`,
+			channels[2]?.id,
 		);
 
+		await db.set(
+			`serverstats_humanChannel_name_${interaction.guild!.id}`,
+			humanChannelName,
+		);
+		await db.set(
+			`serverstats_botChannel_name_${interaction.guild!.id}`,
+			botChannelName,
+		);
+		await db.set(
+			`serverstats_allChannel_name_${interaction.guild!.id}`,
+			allChannelName,
+		);
+
+		await updateAllServerStats();
 		await sendMessage({
 			interaction,
 			message: 'Server stats voice channels have been successfully set up.',
 			emoji: Emojis.Success,
-			ephemeral: false,
+			color: 'Green',
 		});
 	},
 	options: {

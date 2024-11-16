@@ -1,9 +1,14 @@
-import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
+import {
+	SlashCommandBuilder,
+	EmbedBuilder,
+	InteractionContextType,
+} from 'discord.js';
 import { Command, CommandCategory } from '@/types';
 
 export default {
 	data: new SlashCommandBuilder()
 		.setName('bidenpost')
+		.setContexts(InteractionContextType.Guild)
 		.setDescription('Make Biden Post Something On Twitter With A Custom Text')
 		.addStringOption((option) =>
 			option

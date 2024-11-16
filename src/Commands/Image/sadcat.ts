@@ -7,6 +7,7 @@ import { Command, CommandCategory } from '@/types';
 
 export default {
 	data: new SlashCommandBuilder()
+		.setContexts(InteractionContextType.Guild)
 		.setName('sadcat')
 		.setDescription('Creates a sad cat meme with custom text.')
 		.addStringOption((option) =>
