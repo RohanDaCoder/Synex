@@ -36,13 +36,17 @@ import wouldyourather from './Fun/wouldyourather';
 import ai from './Fun/ai';
 import nickname from './Moderation/nickname';
 import setupServerStats from './Admin/setup-server-stats';
+import accountage from './Utility/accountage';
+import timer from './Utility/timer';
 
 const globalCommands: Command[] = [
 	iphoneAlert,
 	hello,
 	help,
+	timer,
 	drakememe,
 	dog,
+	accountage,
 	avatar,
 	nickname,
 	ping,

@@ -16,7 +16,10 @@ export default {
 	category: CommandCategory.Utility,
 	run: async ({ interaction }) => {
 		const target = interaction.options.getUser('target') || interaction.user;
-		const targetAvatar = target.displayAvatarURL({ forceStatic: false });
+		const targetAvatar = target.displayAvatarURL({
+			forceStatic: false,
+			extension: 'png',
+		});
 		const embed = new EmbedBuilder()
 			.setAuthor({
 				name: target.username,
