@@ -38,6 +38,7 @@ import nickname from './Moderation/nickname';
 import setupServerStats from './Admin/setup-server-stats';
 import accountage from './Utility/accountage';
 import timer from './Utility/timer';
+import rename from './Utility/rename';
 
 const globalCommands: Command[] = [
 	iphoneAlert,
@@ -76,6 +77,7 @@ const globalCommands: Command[] = [
 	wouldyourather,
 	setupServerStats,
 	ai,
+	rename,
 ];
 const devCommands: Command[] = [test, modifymoney, error];
 const allCommands: Command[] = [...globalCommands, ...devCommands];

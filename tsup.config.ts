@@ -8,10 +8,10 @@ export default defineConfig({
 	keepNames: true,
 	splitting: false,
 	sourcemap: false,
-	clean: false,
+	clean: true,
 	target: 'es2024',
 	dts: false,
 	bundle: true,
-	external: [],
 	noExternal: ['discord.js', 'colors', 'calm.db', 'parse-duration', 'axios'],
+	tsconfig: 'tsconfig.json',
 });

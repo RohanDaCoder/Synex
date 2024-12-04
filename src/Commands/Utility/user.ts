@@ -106,7 +106,7 @@ export default {
 				const avatarButton = new ButtonBuilder()
 					.setLabel('Avatar URL')
 					.setStyle(ButtonStyle.Link)
-					.setURL(interaction.user.displayAvatarURL());
+					.setURL(user.displayAvatarURL());
 				buttons.push(avatarButton);
 
 				const row = new ActionRowBuilder<ButtonBuilder>().addComponents(

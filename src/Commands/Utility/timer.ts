@@ -11,19 +11,24 @@ import { Emojis } from '@/config.example';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('timer')
-		.setDescription(
-			'Set a timer using a human-readable duration (e.g., 5d 4h 3m 2s)',
-		)
+		.setDescription('Set a timer')
 		.setContexts(InteractionContextType.Guild)
 		.addStringOption((o) =>
 			o
 				.setName('duration')
 				.setDescription('Duration (e.g., 5d 4h 3m 2s)')
 				.setRequired(true),
+		)
+		.addStringOption((o) =>
+			o
+				.setName('title')
+				.setDescription('Optional title for the timer')
+				.setRequired(false),
 		),
 	category: CommandCategory.Utility,
 	run: async ({ interaction }) => {
 		const durationInput = interaction.options.getString('duration')!;
+		const title = interaction.options.getString('title') || 'Timer';
 		const totalMilliseconds = parse(durationInput || '');
 
 		if (!totalMilliseconds || totalMilliseconds <= 0) {
@@ -37,24 +42,14 @@ export default {
 
 		const endTime = new Date(Date.now() + totalMilliseconds);
 		const embed = new EmbedBuilder()
-			.setTitle('⏳ Timer Set')
+			.setTitle(`${title}`)
 			.setDescription(
-				`The timer is set for **${durationInput.trim()}**.\nIt will end <t:${Math.floor(
+				`Ends: <t:${Math.floor(
 					endTime.getTime() / 1000,
-				)}:R> (<t:${Math.floor(endTime.getTime() / 1000)}:F>).`,
+				)}:R> (<t:${Math.floor(endTime.getTime() / 1000)}:F>)`,
 			)
-			.setColor(0x7289da)
-			.setTimestamp();
+			.setColor(0x7289da);
 
 		await interaction.reply({ embeds: [embed] });
-
-		setTimeout(async () => {
-			await sendMessage({
-				interaction,
-				message: '⏰ Time’s up!',
-				emoji: Emojis.Success,
-				ephemeral: false,
-			});
-		}, totalMilliseconds);
 	},
 } as Command;
