@@ -1,8 +1,8 @@
 import { Client, IntentsBitField } from 'discord.js';
 import loadEvents from './utils/loadEvents';
-import { token } from '../token.json';
 import { Database } from 'calm.db';
 import config from './config';
+import 'dotenv/config';
 
 const client: Client = new Client({
 	intents: [
@@ -14,7 +14,7 @@ const client: Client = new Client({
 	],
 });
 
-client.login(token).then(() => loadEvents());
+client.login(process.env.token).then(() => loadEvents());
 const db = new Database(`${config.clientID}_data.json`);
 export default client;
 export { db };

@@ -12,6 +12,13 @@ export default defineConfig({
 	target: 'es2024',
 	dts: false,
 	bundle: true,
-	noExternal: ['discord.js', 'colors', 'calm.db', 'parse-duration', 'axios'],
+	noExternal: [
+		'discord.js',
+		'colors',
+		'calm.db',
+		'parse-duration',
+		'axios',
+		'dotenv',
+	],
 	tsconfig: 'tsconfig.json',
 });
