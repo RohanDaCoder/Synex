@@ -79,11 +79,14 @@ Synex is a feature-rich **Discord bot** built with **TypeScript** and **Discord.
 
 5. **Build and Start**:
    After configuration, build and start the bot:
+
    ```bash
    bun run build
    bun run start
    ```
+
    or
+
    ```bash
    bun run deploy
    ```

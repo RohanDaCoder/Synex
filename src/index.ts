@@ -1,6 +1,6 @@
 import { Client, IntentsBitField } from 'discord.js';
 import loadEvents from './utils/loadEvents';
-import { token } from './token.json';
+import { token } from '../token.json';
 import { Database } from 'calm.db';
 import config from './config';
 
