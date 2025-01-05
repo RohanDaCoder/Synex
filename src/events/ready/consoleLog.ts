@@ -14,9 +14,11 @@ export default {
 			prefix: 'Info',
 		});
 		loadCommands();
-		client.user?.setActivity({
-			name: 'Development Mode',
-			type: ActivityType.Streaming,
+
+		client.user?.setPresence({
+			activities: [
+				{ name: 'Synex is at your service.', type: ActivityType.Custom },
+			],
 		});
 	},
 } as Event;
