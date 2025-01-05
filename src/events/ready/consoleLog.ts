@@ -17,7 +17,10 @@ export default {
 
 		client.user?.setPresence({
 			activities: [
-				{ name: 'Synex is at your service.', type: ActivityType.Custom },
+				{
+					name: `Synex is at your service.`,
+					type: ActivityType.Custom,
+				},
 			],
 		});
 	},
