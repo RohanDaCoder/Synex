@@ -11,9 +11,7 @@ export default {
 	data: new SlashCommandBuilder()
 		.setName('whowouldwin')
 		.setContexts(InteractionContextType.Guild)
-		.setDescription(
-			"Creates a 'Who would win?' meme with the avatars of two users.",
-		)
+		.setDescription("Creates a 'Who would win?' meme.")
 		.addUserOption((option) =>
 			option
 				.setName('user1')

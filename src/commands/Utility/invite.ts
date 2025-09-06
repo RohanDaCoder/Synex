@@ -12,7 +12,7 @@ import {
 export default {
 	data: new SlashCommandBuilder()
 		.setName('invite')
-		.setDescription("Get the bot's invite link")
+		.setDescription("Sends the bot's invite link.")
 		.setContexts(InteractionContextType.Guild),
 	category: CommandCategory.Utility,
 	run: async ({ interaction, client }) => {

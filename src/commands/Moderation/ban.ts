@@ -11,7 +11,7 @@ import { Emojis } from '@/config';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('ban')
-		.setDescription('Ban a user from this server.')
+		.setDescription('Bans a user from the server.')
 		.setContexts(InteractionContextType.Guild)
 		.setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
 		.addUserOption((o) =>

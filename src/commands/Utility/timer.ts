@@ -11,7 +11,7 @@ import { Emojis } from '@/config.example';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('timer')
-		.setDescription('Set a timer')
+		.setDescription('Sets a timer.')
 		.setContexts(InteractionContextType.Guild)
 		.addStringOption((o) =>
 			o

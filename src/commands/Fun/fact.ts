@@ -10,7 +10,7 @@ export default {
 	data: new SlashCommandBuilder()
 		.setContexts(InteractionContextType.Guild)
 		.setName('fact')
-		.setDescription('Get a random fact.'),
+		.setDescription('Tells a random fact.'),
 	category: CommandCategory.Fun,
 	run: async ({ interaction }) => {
 		await interaction.deferReply();

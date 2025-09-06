@@ -9,7 +9,7 @@ import axios from 'axios';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('pickup-line')
-		.setDescription('Get a random pickup line.')
+		.setDescription('Tells a random pickup line.')
 		.setContexts(InteractionContextType.Guild),
 	category: CommandCategory.Fun,
 	run: async ({ interaction }) => {

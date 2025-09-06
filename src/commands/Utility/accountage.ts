@@ -10,7 +10,7 @@ import { Emojis } from '@/config';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('accountage')
-		.setDescription("Check Someone's Account's Age")
+		.setDescription("Displays a user's account age.")
 		.setContexts(InteractionContextType.Guild)
 		.addUserOption((o) => o.setName('target').setDescription('The Target User'))
 		.addStringOption((o) => o.setName('user_id').setDescription('The User ID')),

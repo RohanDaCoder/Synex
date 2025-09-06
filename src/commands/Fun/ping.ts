@@ -8,12 +8,11 @@ import { CommandCategory, type Command } from '@/types';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('ping')
-		.setDescription('Pong!')
+		.setDescription("Checks the bot's latency.")
 		.setContexts(InteractionContextType.Guild),
 	category: CommandCategory.Fun,
 	run: async ({ interaction, client }) => {
-		const embed = new EmbedBuilder()
-			.setColor('#2F3136')
+				const embed = new EmbedBuilder()
 			.setTitle('Client Ping')
 			.addFields({
 				name: '*Latency*',

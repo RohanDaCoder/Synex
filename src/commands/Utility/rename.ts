@@ -10,7 +10,7 @@ import { Emojis } from '@/config';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('rename')
-		.setDescription('Rename the current channel')
+		.setDescription('Renames the current channel.')
 		.addStringOption((option) =>
 			option
 				.setName('new-name')

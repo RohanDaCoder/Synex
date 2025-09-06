@@ -14,9 +14,7 @@ import { Emojis } from '@/config';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('user')
-		.setDescription(
-			'Fetch a user by mention or ID and display their information',
-		)
+		.setDescription('Displays information about a user.')
 		.addUserOption((option) =>
 			option
 				.setName('user')
@@ -38,19 +36,13 @@ export default {
 			const userOption = interaction.options.getUser('user');
 			const userIdOption = interaction.options.getString('user_id');
 
-			if (!userOption && !userIdOption) {
-				return sendMessage({
-					message: 'Please provide either a user mention or a user ID.',
-					interaction,
-					emoji: Emojis.Failed,
-				});
-			}
-
 			let user;
 			if (userOption) {
 				user = await client.users.fetch(userOption.id);
 			} else if (userIdOption) {
 				user = await client.users.fetch(userIdOption);
+			} else {
+				user = interaction.user; // Default to the requester
 			}
 
 			if (user) {
@@ -64,30 +56,38 @@ export default {
 					.setTitle('User Information')
 					.setThumbnail(user.displayAvatarURL())
 					.addFields(
-						{ name: 'Tag', value: user.tag || 'Unknown', inline: true },
-						{
-							name: 'Username',
-							value: user.username || 'Unknown',
-							inline: true,
-						},
-						{
-							name: 'Discriminator',
-							value: user.discriminator || 'Unknown',
-							inline: true,
-						},
-						{ name: 'ID', value: user.id || 'Unknown', inline: true },
-						{ name: 'Bot', value: user.bot ? 'Yes' : 'No', inline: true },
-						{ name: 'Created At', value: createdAtFormatted, inline: true },
-						{
-							name: 'Global Name',
-							value: user.globalName || 'Unknown',
-							inline: true,
-						},
-						{
-							name: 'Accent Color',
-							value: user.hexAccentColor || 'Unknown',
-							inline: true,
-						},
+						...(() => {
+							const fields = [
+								{ name: 'Tag', value: user.tag || '`Unknown`', inline: true },
+								{
+									name: 'Username',
+									value: user.username || '`Unknown`',
+									inline: true,
+								},
+								{ name: 'ID', value: user.id || '`Unknown`', inline: true },
+								{ name: 'Bot', value: user.bot ? 'Yes' : 'No', inline: true },
+								{ name: 'Created At', value: createdAtFormatted, inline: true },
+								{
+									name: 'Global Name',
+									value: user.globalName || '`Unknown`',
+									inline: true,
+								},
+								{
+									name: 'Accent Color',
+									value: user.hexAccentColor || '`Unknown`',
+									inline: true,
+								},
+							];
+
+							if (user.discriminator !== '0') {
+								fields.splice(2, 0, {
+									name: 'Discriminator',
+									value: user.discriminator || '`Unknown`',
+									inline: true,
+								});
+							}
+							return fields;
+						})(),
 					)
 					.setFooter({
 						text: `Requested By ${interaction.user.username}`,

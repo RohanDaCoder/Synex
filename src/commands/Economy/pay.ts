@@ -9,7 +9,7 @@ export default {
 	data: new SlashCommandBuilder()
 		.setName('pay')
 		.setContexts(InteractionContextType.Guild)
-		.setDescription('Pay some money to a user.')
+		.setDescription('Pays a user a specific amount of money.')
 		.addIntegerOption((option) =>
 			option
 				.setName('amount')

@@ -12,7 +12,7 @@ import { db } from '@/index';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('balance')
-		.setDescription("Check Someone's Balance")
+		.setDescription("Displays a user's balance.")
 		.setContexts(InteractionContextType.Guild)
 		.addUserOption((o) =>
 			o

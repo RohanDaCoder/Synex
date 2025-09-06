@@ -8,7 +8,7 @@ import { Emojis } from '@/config';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('deposit')
-		.setDescription('Deposit a specific amount of money into your bank.')
+		.setDescription('Deposits money into your bank.')
 		.setContexts(InteractionContextType.Guild)
 		.addIntegerOption((option) =>
 			option

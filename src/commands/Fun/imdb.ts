@@ -10,7 +10,7 @@ import axios from 'axios';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('imdb')
-		.setDescription('Fetches movie information from IMDb.')
+		.setDescription('Gets information about a movie from IMDb.')
 		.setContexts(InteractionContextType.Guild)
 		.addStringOption((option) =>
 			option

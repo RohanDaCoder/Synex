@@ -8,7 +8,7 @@ import { CommandCategory, type Command } from '../../types';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('id')
-		.setDescription("Get a User's ID")
+		.setDescription("Displays a user's ID.")
 		.setContexts(InteractionContextType.Guild)
 		.addUserOption((o) =>
 			o.setName('target').setDescription('The Target User'),

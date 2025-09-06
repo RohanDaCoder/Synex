@@ -4,7 +4,7 @@ import { CommandCategory, type Command } from '@/types';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('hello')
-		.setDescription('Replies With Hello')
+		.setDescription('Says hello.')
 		.setContexts(InteractionContextType.Guild),
 	category: CommandCategory.Fun,
 	run: async ({ interaction }) => {

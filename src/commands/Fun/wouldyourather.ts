@@ -10,7 +10,7 @@ export default {
 	data: new SlashCommandBuilder()
 		.setName('wouldyourather')
 		.setContexts(InteractionContextType.Guild)
-		.setDescription("Fetches a 'Would You Rather' question."),
+		.setDescription("Asks a 'Would You Rather' question."),
 	category: CommandCategory.Fun,
 	run: async ({ interaction }) => {
 		await interaction.deferReply();

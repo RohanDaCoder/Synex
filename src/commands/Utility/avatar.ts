@@ -8,7 +8,7 @@ import { Command, CommandCategory } from '../../types';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('avatar')
-		.setDescription("Fetch A User's Or Your Avatar")
+		.setDescription("Displays a user's avatar.")
 		.setContexts(InteractionContextType.Guild)
 		.addUserOption((option) =>
 			option.setName('target').setDescription('The Target User'),
