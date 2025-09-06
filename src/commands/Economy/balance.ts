@@ -36,8 +36,12 @@ export async function showBalance(
 		await interaction.deferReply();
 	}
 
-	const wallet = (await db.get(`wallet_${user.id}`)) ?? 0;
-	const bank = (await db.get(`bank_${user.id}`)) ?? 0;
+		const [wallet, bank] = await Promise.all([
+		db.get(`wallet_${user.id}`),
+		db.get(`bank_${user.id}`),
+	]);
+	const walletValue = wallet ?? 0;
+	const bankValue = bank ?? 0;
 
 	const balanceEmbed = new EmbedBuilder()
 		.setTitle('Balance')
@@ -45,9 +49,9 @@ export async function showBalance(
 			name: user.tag,
 			iconURL: user.displayAvatarURL({ forceStatic: true }),
 		})
-		.addFields(
-			{ name: 'Wallet', value: formatMoney(wallet) },
-			{ name: 'Bank', value: formatMoney(bank) },
+				.addFields(
+			{ name: 'Wallet', value: formatMoney(walletValue) },
+			{ name: 'Bank', value: formatMoney(bankValue) },
 		)
 		.setColor('Random')
 		.setTimestamp();

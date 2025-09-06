@@ -75,8 +75,13 @@ export default {
 			});
 		}
 
-		const senderBalance: number = (await db.get(`wallet_${senderId}`)) ?? 0;
-		const targetBalance: number = (await db.get(`wallet_${target.id}`)) ?? 0;
+				const [senderBalanceRaw, targetBalanceRaw] = await Promise.all([
+			db.get(`wallet_${senderId}`),
+			db.get(`wallet_${target.id}`),
+		]);
+		const senderBalance: number = senderBalanceRaw ?? 0;
+		const targetBalance: number = targetBalanceRaw ?? 0;
+
 		if (senderBalance < amount) {
 			return sendMessage({
 				interaction,
@@ -85,8 +90,10 @@ export default {
 			});
 		}
 
-		await db.set(`${senderId}_wallet`, senderBalance - amount);
-		await db.set(`${target.id}_wallet`, targetBalance + amount);
+		await Promise.all([
+			db.set(`wallet_${senderId}`, senderBalance - amount),
+			db.set(`wallet_${target.id}`, targetBalance + amount),
+		]);
 
 		sendMessage({
 			interaction,

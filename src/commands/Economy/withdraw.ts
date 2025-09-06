@@ -22,7 +22,12 @@ export default {
 		const amount = interaction.options.getInteger('amount')!;
 		const userId = interaction.user.id;
 
-		const senderBalance: number = (await db.get(`bank_${userId}`)) ?? 0;
+				const [senderBalanceRaw, walletBalanceRaw] = await Promise.all([
+			db.get(`bank_${userId}`),
+			db.get(`wallet_${userId}`),
+		]);
+		const senderBalance: number = senderBalanceRaw ?? 0;
+		const walletBalance: number = walletBalanceRaw ?? 0;
 
 		if (senderBalance < amount) {
 			return sendMessage({
@@ -33,9 +38,10 @@ export default {
 			});
 		}
 
-		const walletBalance: number = (await db.get(`wallet_${userId}`)) ?? 0;
-		await db.set(`bank_${userId}`, senderBalance - amount);
-		await db.set(`wallet_${userId}`, walletBalance + amount);
+		await Promise.all([
+			db.set(`bank_${userId}`, senderBalance - amount),
+			db.set(`wallet_${userId}`, walletBalance + amount),
+		]);
 
 		await sendMessage({
 			interaction,

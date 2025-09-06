@@ -22,7 +22,12 @@ export default {
 		const amount = interaction.options.getInteger('amount')!;
 		const userId = interaction.user.id;
 
-		const walletBalance: number = (await db.get(`wallet_${userId}`)) ?? 0;
+				const [walletBalanceRaw, bankBalanceRaw] = await Promise.all([
+			db.get(`wallet_${userId}`),
+			db.get(`bank_${userId}`),
+		]);
+		const walletBalance: number = walletBalanceRaw ?? 0;
+		const bankBalance: number = bankBalanceRaw ?? 0;
 
 		if (walletBalance < amount) {
 			return sendMessage({
@@ -32,8 +37,6 @@ export default {
 				emoji: 'No',
 			});
 		}
-
-		const bankBalance: number = (await db.get(`bank_${userId}`)) ?? 0;
 		await db.set(`wallet_${userId}`, walletBalance - amount);
 		await db.set(`bank_${userId}`, bankBalance + amount);
 

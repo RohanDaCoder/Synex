@@ -6,9 +6,9 @@ import { Events, GuildMember } from 'discord.js';
 const joinEvent: Event = {
 	name: Events.GuildMemberAdd,
 	once: false,
-	execute: (member: GuildMember) => {
+	execute: async (member: GuildMember) => {
 		handleGatewayEvent(member, GatewayEventType.Welcome);
-		updateAllServerStats();
+		await updateAllServerStats();
 	},
 };
 export default joinEvent;

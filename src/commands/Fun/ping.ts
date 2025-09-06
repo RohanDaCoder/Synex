@@ -20,7 +20,7 @@ export default {
 			})
 			.addFields({
 				name: '*API Latency*',
-				value: `${Math.round(client.ws.ping)}ms`,
+				value: client.ws.ping === -1 ? 'N/A' : `${Math.round(client.ws.ping)}ms`,
 			})
 			.setColor('Blurple')
 			.setTimestamp()
