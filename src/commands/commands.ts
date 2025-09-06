@@ -33,7 +33,6 @@ import sadcat from './Image/sadcat';
 import wanted from './Image/wanted';
 import whowouldwin from './Fun/whowouldwin';
 import wouldyourather from './Fun/wouldyourather';
-import ai from './Fun/ai';
 import nickname from './Moderation/nickname';
 import setupServerStats from './Admin/setup-server-stats';
 import accountage from './Utility/accountage';
@@ -76,7 +75,6 @@ const globalCommands: Command[] = [
 	whowouldwin,
 	wouldyourather,
 	setupServerStats,
-	ai,
 	rename,
 ];
 const devCommands: Command[] = [test, modifymoney, error];
