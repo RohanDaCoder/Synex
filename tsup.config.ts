@@ -6,7 +6,7 @@ export default defineConfig({
 	platform: 'node',
 	minify: true,
 	keepNames: true,
-	splitting: false,
+	splitting: true,
 	sourcemap: false,
 	clean: true,
 	target: 'es2024',

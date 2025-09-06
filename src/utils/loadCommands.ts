@@ -28,8 +28,8 @@ export default async function () {
 		process.exit(0);
 	}
 
-	const globalCommandData = Commands.globalCommands.map(
-		(command) => command.data,
+		const globalCommandData = Commands.globalCommands.map((command) =>
+		command.data.toJSON(),
 	);
 
 	await client.application.commands.set(globalCommandData);
@@ -40,7 +40,9 @@ export default async function () {
 		message: `Successfully loaded ${Commands.globalCommands.length} global commands.`,
 	});
 
-	const devCommandData = Commands.devCommands.map((command) => command.data);
+	const devCommandData = Commands.devCommands.map((command) =>
+		command.data.toJSON(),
+	);
 	config.devGuildIds.forEach(async (guildID) => {
 		const guild = await client.guilds.fetch(guildID);
 		if (!guild)
