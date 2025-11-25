@@ -36,7 +36,7 @@ export async function showBalance(
 		await interaction.deferReply();
 	}
 
-		const [wallet, bank] = await Promise.all([
+	const [wallet, bank] = await Promise.all([
 		db.get(`wallet_${user.id}`),
 		db.get(`bank_${user.id}`),
 	]);
@@ -49,7 +49,7 @@ export async function showBalance(
 			name: user.tag,
 			iconURL: user.displayAvatarURL({ forceStatic: true }),
 		})
-				.addFields(
+		.addFields(
 			{ name: 'Wallet', value: formatMoney(walletValue) },
 			{ name: 'Bank', value: formatMoney(bankValue) },
 		)

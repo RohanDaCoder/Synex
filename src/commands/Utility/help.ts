@@ -16,7 +16,7 @@ export default {
 		.setName('help')
 		.setContexts(InteractionContextType.Guild)
 
-		.setDescription("Lists all available commands."),
+		.setDescription('Lists all available commands.'),
 	run: async ({
 		interaction,
 	}: {

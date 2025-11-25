@@ -28,7 +28,7 @@ export default async function () {
 		process.exit(0);
 	}
 
-		const globalCommandData = Commands.globalCommands.map((command) =>
+	const globalCommandData = Commands.globalCommands.map((command) =>
 		command.data.toJSON(),
 	);
 

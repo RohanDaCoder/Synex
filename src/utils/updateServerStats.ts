@@ -2,7 +2,7 @@ import { Guild, PermissionFlagsBits } from 'discord.js';
 import client, { db } from '..';
 
 export default async function updateServerStats(guild: Guild) {
-		const [humanChannelId, botChannelId, allChannelId] = await Promise.all([
+	const [humanChannelId, botChannelId, allChannelId] = await Promise.all([
 		db.get(`serverstats_humanChannel_id_${guild.id}`),
 		db.get(`serverstats_botChannel_id_${guild.id}`),
 		db.get(`serverstats_allChannel_id_${guild.id}`),
@@ -13,7 +13,7 @@ export default async function updateServerStats(guild: Guild) {
 		allChannel: allChannelId,
 	};
 
-		const [humanChannelName, botChannelName, allChannelName] = await Promise.all([
+	const [humanChannelName, botChannelName, allChannelName] = await Promise.all([
 		db.get(`serverstats_humanChannel_name_${guild.id}`),
 		db.get(`serverstats_botChannel_name_${guild.id}`),
 		db.get(`serverstats_allChannel_name_${guild.id}`),

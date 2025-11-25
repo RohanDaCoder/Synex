@@ -75,7 +75,7 @@ export default {
 			});
 		}
 
-				const [senderBalanceRaw, targetBalanceRaw] = await Promise.all([
+		const [senderBalanceRaw, targetBalanceRaw] = await Promise.all([
 			db.get(`wallet_${senderId}`),
 			db.get(`wallet_${target.id}`),
 		]);

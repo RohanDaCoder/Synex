@@ -22,7 +22,7 @@ export default {
 		const amount = interaction.options.getInteger('amount')!;
 		const userId = interaction.user.id;
 
-				const [senderBalanceRaw, walletBalanceRaw] = await Promise.all([
+		const [senderBalanceRaw, walletBalanceRaw] = await Promise.all([
 			db.get(`bank_${userId}`),
 			db.get(`wallet_${userId}`),
 		]);

@@ -17,7 +17,5 @@ const client: Client = new Client({
 client.login(process.env.token).then(() => loadEvents());
 const db = new Database(`${config.clientID}_data.json`);
 
-
-
 export default client;
 export { db };
