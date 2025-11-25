@@ -7,6 +7,7 @@
 	"scripts": {
 		"format": "prettier -w .",
 		"build": "bun build src/index.ts --target=bun --sourcemap --outdir=dist/ --minify",
+		"build:node": "bun run build --target=node",
 		"start": "bun run dist/index.js",
 		"dev": "bun --watch run src/",
 		"deploy": "bun run build && bun run start"
