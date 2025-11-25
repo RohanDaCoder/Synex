@@ -6,10 +6,9 @@
 	"private": true,
 	"scripts": {
 		"format": "prettier -w .",
-		"build": "tsc && tsup --config tsup.config.ts",
-		"start": "bun dist/index.js",
-		"lint": "eslint 'src/**/*.ts'",
-		"deploy": "bun run lint && bun run build && bun run start"
+		"build": "bun build src/index.ts --target=bun --sourcemap --outdir=dist/ --minify",
+		"start": "bun run dist/index.js",
+		"deploy": "bun run build && bun run start"
 	},
 	"keywords": [
 		"discord",
@@ -28,14 +27,6 @@
 		"parse-duration": "^2.1.4"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.35.0",
-		"@typescript-eslint/eslint-plugin": "^8.42.0",
-		"@typescript-eslint/parser": "^8.42.0",
-		"eslint": "^9.35.0",
-		"globals": "^16.3.0",
-		"prettier": "^3.6.2",
-		"tsup": "^8.5.0",
-		"typescript": "^5.9.2",
-		"typescript-eslint": "^8.42.0"
+		"prettier": "^3.6.2"
 	}
 }
