@@ -1,7 +1,6 @@
-import { ActivityType, Events, Client } from 'discord.js';
+import { Events, Client } from 'discord.js';
 import type { Event } from '../../types';
 import log from '../../util/log';
-import client from '../..';
 import loadCommands from '../../util/loadCommands';
 
 export default {
