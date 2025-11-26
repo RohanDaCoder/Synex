@@ -12,7 +12,8 @@
 	"type": "module",
 	"dependencies": {
 		"discord.js": "^14.25.1",
-		"dotenv": "^17.2.3"
+		"dotenv": "^17.2.3",
+		"yoctocolors": "^2.1.2"
 	},
 	"devDependencies": {
 		"prettier": "^3.6.2"
