@@ -8,13 +8,13 @@ import type {
 	SlashCommandOptionsOnlyBuilder,
 } from 'discord.js';
 
-export type LogType = 'INFO' | 'ERROR' | 'WARN';
+export type LogType = 'INFO' | 'ERROR' | 'WARN' | 'TODO';
 
 // EVENTS
-export interface Event {
-	name: keyof ClientEvents | Events;
+export interface Event<T extends keyof ClientEvents> {
+	name: T;
 	once: boolean;
-	execute: (...args: any[]) => any;
+	execute: (...args: ClientEvents[T]) => any;
 }
 
 // COMMANDS

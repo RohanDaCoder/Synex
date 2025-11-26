@@ -8,5 +8,5 @@ export default async function () {
 		await client.destroy();
 		process.exit(0);
 	}
-	log('INFO', 'Loading Commands');
+	log('INFO', `Loading ${commands.allCommands.length} Commands`);
 }
