@@ -1,6 +1,5 @@
 import { Client } from 'discord.js';
 import 'dotenv/config';
-import { bgYellowBright, bold, yellowBright } from 'yoctocolors';
 import log from './util/log';
 import loadEvents from './util/loadEvents';
 
