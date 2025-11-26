@@ -6,6 +6,7 @@
 		"start": "bun dist/index.js",
 		"dev": "bun --watch run src/",
 		"build": "tsc && bun build src/index.ts --sourcemap --minify --outdir=dist/ --target=bun",
+		"build:node": "bun run build --target=node",
 		"deploy": "bun run build && bun run start",
 		"format": "prettier -w ."
 	},
