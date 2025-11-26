@@ -1,5 +1,5 @@
 import type { LogType } from '../types';
-import colors, { bold, gray, reset, white } from 'yoctocolors';
+import colors, { bold, gray, reset, whiteBright } from 'yoctocolors';
 function log(logType: LogType, message: string) {
 	let applyColorBasedOnType: Function;
 	switch (logType) {
@@ -13,10 +13,10 @@ function log(logType: LogType, message: string) {
 			applyColorBasedOnType = colors.bgYellow;
 			break;
 		case 'TODO':
-			applyColorBasedOnType = colors.bgMagenta
+			applyColorBasedOnType = colors.bgMagenta;
 			break;
 		default:
-			throw new TypeError("Invalid type provided in log function");
+			throw new TypeError('Invalid type provided in log function');
 			break;
 	}
 	const paddedLogType = ` ${logType} `;
@@ -27,7 +27,7 @@ function log(logType: LogType, message: string) {
 	});
 	console.log(
 		bold(
-			white(
+			whiteBright(
 				applyColorBasedOnType(paddedLogType) +
 					' ' +
 					gray(timestamp) +

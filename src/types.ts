@@ -1,11 +1,19 @@
 import type {
+	ButtonInteraction,
+	ChannelSelectMenuInteraction,
 	ChatInputCommandInteraction,
 	Client,
 	ClientEvents,
+	ColorResolvable,
+	CommandInteraction,
 	Events,
+	MentionableSelectMenuInteraction,
 	PermissionsString,
+	RoleSelectMenuInteraction,
 	SlashCommandBuilder,
 	SlashCommandOptionsOnlyBuilder,
+	StringSelectMenuInteraction,
+	UserSelectMenuInteraction,
 } from 'discord.js';
 
 export type LogType = 'INFO' | 'ERROR' | 'WARN' | 'TODO';
@@ -60,3 +68,18 @@ export type EmojisType = {
 	Loading: string;
 	Money: string;
 };
+
+export interface ReplyOptions {
+	message: string;
+	interaction:
+		| CommandInteraction
+		| ButtonInteraction
+		| StringSelectMenuInteraction
+		| UserSelectMenuInteraction
+		| RoleSelectMenuInteraction
+		| MentionableSelectMenuInteraction
+		| ChannelSelectMenuInteraction;
+	ephemeral?: boolean;
+	emoji?: string | undefined;
+	color?: ColorResolvable | undefined;
+}

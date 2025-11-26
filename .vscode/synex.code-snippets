@@ -1,0 +1,21 @@
+{
+	"Synex Command Template": {
+		"prefix": "synexCMD",
+		"body": [
+			"import { SlashCommandBuilder, InteractionContextType } from 'discord.js';",
+			"import { type Command, CommandCategory } from '../../types';",
+			"",
+			"export default {",
+			"  data: new SlashCommandBuilder()",
+			"    .setName(\"${1}\")",
+			"    .setDescription(\"${2}\")",
+			"    .setContexts(InteractionContextType.Guild)${3},",
+			"    category: CommandCategory.${4},",
+			"  run: async ({ interaction, client }) => {",
+			"    ${5}",
+			"  },",
+			"} as Command;",
+		],
+		"description": "A template for creating a Synex command using TypeScript.",
+	},
+}

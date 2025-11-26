@@ -8,5 +8,7 @@ const client = new Client({
 	intents: ['Guilds', 'GuildMessages'],
 });
 log('INFO', 'Starting...');
-client.login(process.env.token).then(async () => await loadEvents());
+client.login(process.env.token).then(async () => {
+	await loadEvents();
+});
 export default client;
