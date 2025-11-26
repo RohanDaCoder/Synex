@@ -6,7 +6,6 @@ import type {
 	ClientEvents,
 	ColorResolvable,
 	CommandInteraction,
-	Events,
 	MentionableSelectMenuInteraction,
 	PermissionsString,
 	RoleSelectMenuInteraction,

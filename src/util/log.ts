@@ -1,5 +1,11 @@
 import type { LogType } from '../types';
 import colors, { bold, gray, reset, whiteBright } from 'yoctocolors';
+
+/**
+ * A custom log function
+ * @param {LogType} logType Log type (info, warn, error, todo)
+ * @param {string} message The message you want to print
+ */
 function log(logType: LogType, message: string) {
 	let applyColorBasedOnType: Function;
 	switch (logType) {

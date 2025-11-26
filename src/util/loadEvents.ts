@@ -2,7 +2,10 @@ import client from '..';
 import events from '../events/events';
 import log from './log';
 
-export default async function () {
+/**
+ * Loads events
+ */
+export default async function loadEvents() {
 	log('INFO', `Loading ${events.length} Events`);
 	events.forEach((event) => {
 		if (event.once) {

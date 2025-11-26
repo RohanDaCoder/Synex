@@ -3,7 +3,10 @@ import commands from '../commands/commands';
 import config from '../config';
 import log from './log';
 
-export default async function () {
+/**
+ * Loads commands
+ */
+export default async function loadCommands() {
 	if (!commands.allCommands || commands.allCommands.length === 0) {
 		log('ERROR', 'No Commands found. Terminating...');
 		await client.destroy();
