@@ -2,6 +2,7 @@ import type {
 	ChatInputCommandInteraction,
 	Client,
 	ClientEvents,
+	Events,
 	PermissionsString,
 	SlashCommandBuilder,
 	SlashCommandOptionsOnlyBuilder,
@@ -11,7 +12,7 @@ export type LogType = 'INFO' | 'ERROR' | 'WARN';
 
 // EVENTS
 export interface Event {
-	name: keyof ClientEvents;
+	name: keyof ClientEvents | Events;
 	once: boolean;
 	execute: (...args: any[]) => any;
 }
