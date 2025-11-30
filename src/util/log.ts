@@ -31,6 +31,7 @@ function log(logType: LogType, message: string) {
 		minute: 'numeric',
 		hour12: true,
 	});
+	// oxlint-disable-next-line no-console
 	console.log(
 		bold(
 			whiteBright(
