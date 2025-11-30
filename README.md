@@ -9,15 +9,10 @@
 
 ---
 
-
 Synex is a free and open source discord bot.
-
 
 <h2 align="center">Architecture</h2>
 
 > **⚠ TODO**
-
-
-
 
 [support-invite]: https://discord.gg/QfBRzT6EpM
