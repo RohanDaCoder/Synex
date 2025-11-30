@@ -19,6 +19,7 @@
 		"yoctocolors": "^2.1.2"
 	},
 	"devDependencies": {
+		"oxfmt": "^0.15.0",
 		"prettier": "^3.6.2",
 		"typescript": "^5.9.3"
 	}
