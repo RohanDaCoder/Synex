@@ -5,9 +5,10 @@
 	"scripts": {
 		"start": "bun dist/index.js",
 		"dev": "bun --watch run src/",
-		"build": "bun run format && tsc && bun build src/index.ts --sourcemap --minify --outdir=dist/ --target=bun",
+		"build": "bun run format && bun run lint && tsc --noEmit && bun build src/index.ts --sourcemap --minify --outdir=dist/ --target=bun",
 		"build:node": "bun run build --target=node",
 		"deploy": "bun run build && bun run start",
+		"lint": "oxlint -f stylish",
 		"format": "oxfmt"
 	},
 	"type": "module",
@@ -20,6 +21,7 @@
 	},
 	"devDependencies": {
 		"oxfmt": "^0.15.0",
+		"oxlint": "^1.30.0",
 		"typescript": "^5.9.3"
 	}
 }
