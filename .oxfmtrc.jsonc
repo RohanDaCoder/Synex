@@ -1,9 +1,11 @@
 {
-	"semi": true,
-	"singleQuote": true,
-	"trailingComma": "all",
-	"tabWidth": 2,
-	"useTabs": true,
-	"bracketSpacing": true,
-	"printWidth": 80
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "tabWidth": 2,
+  "useTabs": true,
+  "bracketSpacing": true,
+  "printWidth": 80,
+  "ignorePatterns": [".git/", "dist/", "node_modules/", "bun.lock"],
 }
