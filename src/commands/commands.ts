@@ -1,3 +1,5 @@
+import type { Command } from '@/types';
+
 import ping from './Fun/ping';
 import avatar from './Utility/avatar';
 import help from './Utility/help';
@@ -30,7 +32,6 @@ import nickname from './Moderation/nickname';
 import accountage from './Utility/accountage';
 import timer from './Utility/timer';
 import rename from './Utility/rename';
-import type { Command } from '@/types';
 import shutdown from './Utility/shutdown';
 
 const globalCommands: Command[] = [
