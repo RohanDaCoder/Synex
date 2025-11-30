@@ -5,11 +5,11 @@
 	"scripts": {
 		"start": "bun dist/index.js",
 		"dev": "bun --watch run src/",
-		"build": "bun run format && bun run lint && tsc --noEmit && bun build src/index.ts --sourcemap --minify --outdir=dist/ --target=bun",
+		"build": "bun run lint && tsc --noEmit && bun build src/index.ts --sourcemap --minify --outdir=dist/ --target=bun",
 		"build:node": "bun run build --target=node",
 		"deploy": "bun run build && bun run start",
 		"lint": "oxlint -f stylish",
-		"format": "oxfmt"
+		"format": "prettier -w ."
 	},
 	"type": "module",
 	"dependencies": {
@@ -20,8 +20,8 @@
 		"yoctocolors": "^2.1.2"
 	},
 	"devDependencies": {
-		"oxfmt": "^0.15.0",
 		"oxlint": "^1.30.0",
+		"prettier": "^3.7.3",
 		"typescript": "^5.9.3"
 	}
 }
