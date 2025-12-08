@@ -5,7 +5,7 @@
 	"scripts": {
 		"start": "bun dist/index.js",
 		"dev": "bun --watch run src/",
-		"build": "bun run lint && tsc --noEmit && bun build src/index.ts --sourcemap --minify --outdir=dist/ --target=bun",
+		"build": "bun run lint && tsc --noEmit && bun build src/index.ts --sourcemap --outdir=dist/ --production --target=bun",
 		"build:node": "bun run build --target=node",
 		"deploy": "bun run build && bun run start",
 		"lint": "oxlint -f stylish",
