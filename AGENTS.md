@@ -142,7 +142,7 @@ Trial-and-error, placeholder logic, or “good enough” solutions are forbidden
 - Explicit, correct TypeScript types are required everywhere
 - `any`, unsafe casts, ignored errors, or lint bypasses are forbidden
 - Naming conventions must exactly match existing code
-
+- Use the custom log function inside utils folder.
 ---
 
 ## Restrictions
