@@ -1,7 +1,10 @@
-import type {
-	Client,
-	ChatInputCommandInteraction,
-	RESTPostAPIApplicationCommandsJSONBody,
+import {
+	ActionRowBuilder,
+	ButtonBuilder,
+	ButtonStyle,
+	type Client,
+	type ChatInputCommandInteraction,
+	type RESTPostAPIApplicationCommandsJSONBody,
 } from 'discord.js';
 import type { Command, Config, CommandCategory } from '../types';
 import sendMessage from '../util/sendMessage';
@@ -121,10 +124,20 @@ class CommandHandler {
 			});
 		} catch (error: any) {
 			console.error(error);
-			this.sendError(
+			const button = new ButtonBuilder()
+				.setCustomId('open_bug_report_modal')
+				.setLabel('Report Bug')
+				.setStyle(ButtonStyle.Danger);
+
+			const row = new ActionRowBuilder<ButtonBuilder>().addComponents(button);
+
+			await sendMessage({
 				interaction,
-				`There was an error while executing this command! \n\nError: \`${error.message}\``,
-			);
+				message: `There was an error while executing this command! \n\n**Error:** \`${error.message}\``,
+				emoji: getEmoji('Failed'),
+				components: [row],
+				ephemeral: true,
+			});
 			await logCommandUsage({
 				interaction,
 				command,

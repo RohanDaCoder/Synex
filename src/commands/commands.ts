@@ -7,6 +7,7 @@ import id from './Utility/id';
 import invite from './Utility/invite';
 import test from './Utility/test';
 import user from './Utility/user';
+import bugreport from './Utility/bugreport';
 import hello from './Fun/hello';
 import error from './Utility/error';
 import ban from './Moderation/ban';
@@ -53,6 +54,7 @@ const allCommands: Command[] = [
 	// Utility commands
 	accountage,
 	avatar,
+	bugreport,
 	id,
 	invite,
 	user,

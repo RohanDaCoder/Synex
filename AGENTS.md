@@ -92,6 +92,7 @@ All commits must follow the established repository convention.
 
 Before writing, modifying, or generating **any** code, the agent **must**:
 
+- Search online for discord documentation
 - Analyze the full project structure
 - Read and fully understand `types.ts`
 - Review `package.json` to understand:
@@ -142,7 +143,7 @@ Trial-and-error, placeholder logic, or “good enough” solutions are forbidden
 - Explicit, correct TypeScript types are required everywhere
 - `any`, unsafe casts, ignored errors, or lint bypasses are forbidden
 - Naming conventions must exactly match existing code
-- Use the custom log function inside utils folder.
+- Use the custom sendMessage, logger inside src/utils folder.
 ---
 
 ## Restrictions
