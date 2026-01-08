@@ -22,22 +22,12 @@ export default {
 	}: {
 		interaction: ChatInputCommandInteraction;
 	}) => {
-		const categories: {
-			fun: Command[];
-			utility: Command[];
-			image: Command[];
-		} = {
-			fun: [],
-			utility: [],
-			image: [],
-		};
+		const categories: Record<string, Command[]> = {};
 
-		const allCommands = commands.allCommands;
-		allCommands.forEach((command) => {
+		commands.forEach((command) => {
 			const category = command.category;
-			if (category in categories) {
-				categories[category as keyof typeof categories].push(command);
-			}
+			if (!categories[category]) categories[category] = [];
+			categories[category].push(command);
 		});
 
 		const buttonNames: Record<string, string> = {
@@ -77,7 +67,6 @@ export default {
 		await interaction.reply({
 			embeds: [initialEmbed],
 			components: [row],
-			ephemeral: false,
 		});
 
 		const filter = (i: any) =>
@@ -89,8 +78,8 @@ export default {
 		});
 
 		collector.on('collect', async (i) => {
-			const category = i.values[0] as keyof typeof categories;
-			const categoryCommands = categories[category];
+			const category = i.values[0] as string;
+			const categoryCommands = categories[category] || [];
 			await i.deferUpdate();
 
 			const embed = new EmbedBuilder()
@@ -104,7 +93,6 @@ export default {
 
 			await i.editReply({
 				embeds: [embed],
-				ephemeral: false,
 			});
 		});
 

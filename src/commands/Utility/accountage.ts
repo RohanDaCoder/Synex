@@ -5,7 +5,7 @@ import {
 } from 'discord.js';
 import { type Command, CommandCategory } from '@/types';
 import sendMessage from '@/util/sendMessage';
-import config from '@/config';
+import getEmoji from '@/util/getEmoji';
 
 export default {
 	data: new SlashCommandBuilder()
@@ -28,8 +28,7 @@ export default {
 			return sendMessage({
 				interaction,
 				message: 'Invalid user or user ID provided.',
-				emoji: config.emojis.Failed,
-				ephemeral: true,
+				emoji: getEmoji('Failed'),
 			});
 		}
 

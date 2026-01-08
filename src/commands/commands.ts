@@ -34,38 +34,53 @@ import timer from './Utility/timer';
 import rename from './Utility/rename';
 import shutdown from './Utility/shutdown';
 
-const globalCommands: Command[] = [
+const allCommands: Command[] = [
+	// Fun commands
 	iphoneAlert,
 	hello,
 	help,
 	timer,
 	drakememe,
 	dog,
-	accountage,
-	avatar,
-	nickname,
 	ping,
 	joke,
 	fact,
-	id,
 	pickupLine,
 	imdb,
+	whowouldwin,
+	wouldyourather,
+
+	// Utility commands
+	accountage,
+	avatar,
+	id,
 	invite,
-	bidenpost,
-	cat,
 	user,
+	nickname,
+	rename,
+	timer,
+
+	// Moderation commands
 	ban,
 	kick,
+
+	// Image commands
+	bidenpost,
+	cat,
+	dog,
+	drakememe,
+	iphoneAlert,
 	jail,
 	mnm,
 	oogway,
 	pooh,
 	sadcat,
 	wanted,
-	whowouldwin,
-	wouldyourather,
-	rename,
+
+	// Dev commands
+	test,
+	error,
+	shutdown,
 ];
-const devCommands: Command[] = [test, error, shutdown];
-const allCommands: Command[] = [...globalCommands, ...devCommands];
-export default { globalCommands, devCommands, allCommands };
+
+export default allCommands;

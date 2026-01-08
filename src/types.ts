@@ -57,15 +57,8 @@ export enum CommandCategory {
 // CONFIG
 
 export type Config = {
-	emojis: EmojisType;
 	devGuildIds: string[];
 	devUserIds: string[];
-};
-export type EmojisType = {
-	Success: string;
-	Failed: string;
-	Loading: string;
-	Money: string;
 };
 
 export interface ReplyOptions {

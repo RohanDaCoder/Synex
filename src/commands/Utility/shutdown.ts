@@ -2,7 +2,7 @@ import { SlashCommandBuilder, InteractionContextType } from 'discord.js';
 import { type Command, CommandCategory } from '../../types';
 import log from '@/util/log';
 import sendMessage from '@/util/sendMessage';
-import config from '@/config';
+import getEmoji from '@/util/getEmoji';
 
 export default {
 	data: new SlashCommandBuilder()
@@ -14,7 +14,7 @@ export default {
 		const message = `Shutdown initated by ${interaction.user.username}`;
 		await sendMessage({
 			interaction,
-			emoji: config.emojis.Success,
+			emoji: getEmoji('Success'),
 			color: 'Green',
 			message,
 		});

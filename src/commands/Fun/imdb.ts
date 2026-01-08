@@ -30,7 +30,6 @@ export default {
 		if (!data.title) {
 			return await sendMessage({
 				message: `No movie found with that title.`,
-				ephemeral: true,
 				interaction,
 			});
 		}

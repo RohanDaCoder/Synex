@@ -6,7 +6,7 @@ import {
 } from 'discord.js';
 import { type Command, CommandCategory } from '../../types';
 import sendMessage from '@/util/sendMessage';
-import config from '@/config';
+import getEmoji from '@/util/getEmoji';
 
 export default {
 	data: new SlashCommandBuilder()
@@ -42,7 +42,7 @@ export default {
 			return await sendMessage({
 				interaction,
 				message: "That user doesn't exist or couldn't be fetched.",
-				emoji: config.emojis.Failed,
+				emoji: getEmoji('Failed'),
 			});
 
 		const target = await interaction.guild?.members.fetch({
@@ -56,21 +56,21 @@ export default {
 				interaction,
 				message:
 					"The specified user isn't in this server or couldn't be fetched.",
-				emoji: config.emojis.Failed,
+				emoji: getEmoji('Failed'),
 			});
 
 		if (target.id === interaction.user.id)
 			return await sendMessage({
 				interaction,
 				message: "You can't ban yourself.",
-				emoji: config.emojis.Failed,
+				emoji: getEmoji('Failed'),
 			});
 
 		if (!target.bannable)
 			return await sendMessage({
 				interaction,
 				message: "I don't have permission to ban this user.",
-				emoji: config.emojis.Failed,
+				emoji: getEmoji('Failed'),
 			});
 
 		await target
@@ -100,7 +100,10 @@ export default {
 			)
 			.setTimestamp();
 
-		await interaction.followUp({ embeds: [banEmbed], ephemeral: isSilent });
+		await interaction.followUp({
+			embeds: [banEmbed],
+			flags: isSilent ? 'Ephemeral' : undefined,
+		});
 	},
 	options: {
 		botPermissions: 'BanMembers',

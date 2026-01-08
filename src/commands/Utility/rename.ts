@@ -5,7 +5,7 @@ import {
 } from 'discord.js';
 import { type Command, CommandCategory } from '@/types';
 import sendMessage from '@/util/sendMessage';
-import config from '@/config';
+import getEmoji from '@/util/getEmoji';
 
 export default {
 	data: new SlashCommandBuilder()
@@ -23,7 +23,7 @@ export default {
 		const newName = interaction.options.getString('new-name')!;
 		if (!(interaction.channel instanceof TextChannel) || !interaction.channel)
 			return;
-		await interaction.deferReply({ ephemeral: true });
+		await interaction.deferReply({ flags: 'Ephemeral' });
 
 		await interaction.channel.setName(
 			newName,
@@ -33,8 +33,7 @@ export default {
 			interaction,
 			message: `Channel renamed to \`${newName}\``,
 			color: 'Green',
-			emoji: config.emojis.Success,
-			ephemeral: true,
+			emoji: getEmoji('Success'),
 		});
 	},
 	options: {

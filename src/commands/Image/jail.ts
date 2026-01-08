@@ -25,7 +25,6 @@ export default {
 			await sendMessage({
 				interaction,
 				message: 'Please mention a valid user to put behind bars!',
-				ephemeral: true,
 				color: 'Red',
 			});
 			return;
