@@ -59,6 +59,7 @@ export enum CommandCategory {
 export type Config = {
 	devGuildIds: string[];
 	devUserIds: string[];
+	usageLogChannelId: string;
 };
 
 export interface ReplyOptions {

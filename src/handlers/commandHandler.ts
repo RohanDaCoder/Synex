@@ -8,6 +8,7 @@ import sendMessage from '../util/sendMessage';
 import log from '../util/log';
 import { getMissingPermissions } from '../util/permissionUtils';
 import getEmoji from '../util/getEmoji';
+import logCommandUsage from '../util/logCommandUsage';
 
 class CommandHandler {
 	private commands: Map<string, Command>;
@@ -111,12 +112,27 @@ class CommandHandler {
 
 		try {
 			await command.run({ interaction, client: this.client });
+			await logCommandUsage({
+				interaction,
+				command,
+				client: this.client,
+				config: this.config,
+				success: true,
+			});
 		} catch (error: any) {
 			console.error(error);
 			this.sendError(
 				interaction,
 				`There was an error while executing this command! \n\nError: \`${error.message}\``,
 			);
+			await logCommandUsage({
+				interaction,
+				command,
+				client: this.client,
+				config: this.config,
+				success: false,
+				error,
+			});
 		}
 	}
 
