@@ -15,6 +15,7 @@ async function sendMessage(props: ReplyOptions): Promise<void> {
 		message,
 		emoji,
 		color = 'Red',
+		components,
 	} = props;
 
 	const modifiedMessage = emoji ? `${emoji} ${message}` : message;
@@ -28,11 +29,13 @@ async function sendMessage(props: ReplyOptions): Promise<void> {
 		await interaction.followUp({
 			embeds: [embed],
 			flags: ephemeral ? 'Ephemeral' : undefined,
+			components,
 		});
 	} else {
 		await interaction.reply({
 			embeds: [embed],
 			flags: ephemeral ? 'Ephemeral' : undefined,
+			components,
 		});
 	}
 }

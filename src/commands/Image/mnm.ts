@@ -5,7 +5,7 @@ import {
 } from 'discord.js';
 import { type Command, CommandCategory } from '@/types';
 import sendMessage from '@/util/sendMessage';
-import config from '@/config';
+import getEmoji from '@/util/getEmoji';
 
 export default {
 	data: new SlashCommandBuilder()
@@ -26,9 +26,8 @@ export default {
 			await sendMessage({
 				interaction,
 				message: 'Please mention a valid user to create the M&M meme.',
-				ephemeral: true,
 				color: 'Red',
-				emoji: config.emojis.Failed,
+				emoji: getEmoji('Failed'),
 			});
 			return;
 		}

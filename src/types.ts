@@ -7,6 +7,7 @@ import type {
 	ColorResolvable,
 	CommandInteraction,
 	MentionableSelectMenuInteraction,
+	ModalSubmitInteraction,
 	PermissionsString,
 	RoleSelectMenuInteraction,
 	SlashCommandBuilder,
@@ -57,15 +58,10 @@ export enum CommandCategory {
 // CONFIG
 
 export type Config = {
-	emojis: EmojisType;
 	devGuildIds: string[];
 	devUserIds: string[];
-};
-export type EmojisType = {
-	Success: string;
-	Failed: string;
-	Loading: string;
-	Money: string;
+	usageLogChannelId: string;
+	bugReportChannelId: string;
 };
 
 export interface ReplyOptions {
@@ -77,8 +73,10 @@ export interface ReplyOptions {
 		| UserSelectMenuInteraction
 		| RoleSelectMenuInteraction
 		| MentionableSelectMenuInteraction
-		| ChannelSelectMenuInteraction;
+		| ChannelSelectMenuInteraction
+		| ModalSubmitInteraction;
 	ephemeral?: boolean;
 	emoji?: string | undefined;
 	color?: ColorResolvable | undefined;
+	components?: any[] | undefined;
 }

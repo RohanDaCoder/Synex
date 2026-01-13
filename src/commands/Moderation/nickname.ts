@@ -1,7 +1,7 @@
 import { SlashCommandBuilder, InteractionContextType } from 'discord.js';
 import { type Command, CommandCategory } from '@/types';
-import config from '@/config';
 import sendMessage from '@/util/sendMessage';
+import getEmoji from '@/util/getEmoji';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('nickname')
@@ -31,8 +31,7 @@ export default {
 				message: 'I could not find the specified member in this server.',
 				interaction,
 				color: 'Red',
-				emoji: config.emojis.Failed,
-				ephemeral: true,
+				emoji: getEmoji('Failed'),
 			});
 		}
 
@@ -41,8 +40,7 @@ export default {
 		sendMessage({
 			message: `Successfully changed nickname for **${user.tag}** to **${nickname}**.`,
 			interaction,
-			emoji: config.emojis.Success,
-			ephemeral: true,
+			emoji: getEmoji('Success'),
 			color: 'Green',
 		});
 	},

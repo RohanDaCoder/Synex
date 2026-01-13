@@ -6,7 +6,7 @@ export default {
 		.setName('error')
 		.setDescription('Get a test error')
 		.setContexts(InteractionContextType.Guild),
-	category: CommandCategory.Utility,
+	category: CommandCategory.Dev,
 	run: async () => {
 		throw new Error('Just an test Error');
 	},

@@ -6,7 +6,7 @@ import {
 } from 'discord.js';
 import { type Command, CommandCategory } from '../../types';
 import sendMessage from '@/util/sendMessage';
-import config from '@/config';
+import getEmoji from '@/util/getEmoji';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('kick')
@@ -41,7 +41,7 @@ export default {
 			return await sendMessage({
 				interaction,
 				message: "That user doesn't exist or couldn't be fetched.",
-				emoji: config.emojis.Failed,
+				emoji: getEmoji('Failed'),
 			});
 
 		const target = await interaction.guild?.members.fetch({
@@ -55,21 +55,21 @@ export default {
 				interaction,
 				message:
 					"The specified user isn't in this server or couldn't be fetched.",
-				emoji: config.emojis.Failed,
+				emoji: getEmoji('Failed'),
 			});
 
 		if (target.id === interaction.user.id)
 			return await sendMessage({
 				interaction,
 				message: "You can't kick yourself.",
-				emoji: config.emojis.Failed,
+				emoji: getEmoji('Failed'),
 			});
 
 		if (!target.kickable)
 			return await sendMessage({
 				interaction,
 				message: "I don't have permission to kick this user.",
-				emoji: config.emojis.Failed,
+				emoji: getEmoji('Failed'),
 			});
 
 		await target
@@ -97,7 +97,10 @@ export default {
 			)
 			.setTimestamp();
 
-		await interaction.followUp({ embeds: [kickEmbed], ephemeral: isSilent });
+		await interaction.followUp({
+			embeds: [kickEmbed],
+			flags: isSilent ? 'Ephemeral' : undefined,
+		});
 	},
 	options: {
 		botPermissions: 'KickMembers',

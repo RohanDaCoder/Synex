@@ -6,7 +6,7 @@ export default {
 		.setName('test')
 		.setDescription('Tests Something')
 		.setContexts(InteractionContextType.Guild),
-	category: CommandCategory.Utility,
+	category: CommandCategory.Dev,
 	run: async ({ interaction }) => {
 		await interaction.reply('no tests available lmao :rofl:');
 	},

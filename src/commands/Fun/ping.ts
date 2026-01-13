@@ -12,26 +12,40 @@ export default {
 		.setContexts(InteractionContextType.Guild),
 	category: CommandCategory.Fun,
 	run: async ({ interaction, client }) => {
+		const sent = await interaction.reply({
+			content: 'Pinging...',
+			withResponse: true,
+		});
+		const roundtripLatency = sent.resource?.message?.createdTimestamp
+			? sent.resource.message.createdTimestamp - interaction.createdTimestamp
+			: Date.now() - interaction.createdTimestamp;
+		const websocketPing = Math.round(client.ws.ping);
+		const apiLatency = client.ws.ping === -1 ? 'N/A' : `${websocketPing}ms`;
 		const embed = new EmbedBuilder()
-			.setTitle('Client Ping')
-			.addFields({
-				name: '*Latency*',
-				value: `${Date.now() - interaction.createdTimestamp}ms`,
-			})
-			.addFields({
-				name: '*API Latency*',
-				value:
-					client.ws.ping === -1 ? 'N/A' : `${Math.round(client.ws.ping)}ms`,
-			})
-			.setColor('Blurple')
-			.setTimestamp()
+			.setTitle('Pong!')
+			.setColor(0x00ff00)
+			.addFields(
+				{
+					name: ':stopwatch: Roundtrip Latency',
+					value: `**${roundtripLatency}ms**`,
+					inline: true,
+				},
+				{
+					name: ':heart_on_fire: Websocket Heartbeat',
+					value: `**${apiLatency}**`,
+					inline: true,
+				},
+			)
 			.setFooter({
 				text: interaction.user.username,
 				iconURL: interaction.user.displayAvatarURL(),
-			});
-		await interaction.reply({
-			embeds: [embed],
-			content: 'Pong!',
-		});
+			})
+			.setTimestamp();
+
+		if (client.user) {
+			embed.setThumbnail(client.user.displayAvatarURL());
+		}
+
+		await interaction.editReply({ content: null, embeds: [embed] });
 	},
 } as Command;

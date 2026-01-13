@@ -8,8 +8,8 @@ import {
 	ActionRowBuilder,
 	InteractionContextType,
 } from 'discord.js';
-import config from '@/config';
 import sendMessage from '@/util/sendMessage';
+import getEmoji from '@/util/getEmoji';
 
 export default {
 	data: new SlashCommandBuilder()
@@ -118,8 +118,7 @@ export default {
 				await sendMessage({
 					message: 'User not found.',
 					interaction,
-					ephemeral: false,
-					emoji: config.emojis.Failed,
+					emoji: getEmoji('Failed'),
 				});
 			}
 		} catch (error: any) {
@@ -127,8 +126,7 @@ export default {
 			await sendMessage({
 				message: `An error occurrred: ${error.message}`,
 				interaction,
-				ephemeral: false,
-				emoji: config.emojis.Failed,
+				emoji: getEmoji('Failed'),
 			});
 		}
 	},

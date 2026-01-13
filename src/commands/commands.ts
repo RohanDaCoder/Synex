@@ -7,6 +7,7 @@ import id from './Utility/id';
 import invite from './Utility/invite';
 import test from './Utility/test';
 import user from './Utility/user';
+import bugreport from './Utility/bugreport';
 import hello from './Fun/hello';
 import error from './Utility/error';
 import ban from './Moderation/ban';
@@ -33,39 +34,57 @@ import accountage from './Utility/accountage';
 import timer from './Utility/timer';
 import rename from './Utility/rename';
 import shutdown from './Utility/shutdown';
+import message from './Utility/message';
 
-const globalCommands: Command[] = [
+const allCommands: Command[] = [
+	// Fun commands
 	iphoneAlert,
 	hello,
 	help,
 	timer,
 	drakememe,
 	dog,
-	accountage,
-	avatar,
-	nickname,
 	ping,
 	joke,
 	fact,
-	id,
 	pickupLine,
 	imdb,
+	whowouldwin,
+	wouldyourather,
+
+	// Utility commands
+	accountage,
+	avatar,
+	bugreport,
+	id,
 	invite,
-	bidenpost,
-	cat,
+	message,
 	user,
+	nickname,
+	rename,
+	timer,
+
+	// Moderation commands
 	ban,
 	kick,
+
+	// Image commands
+	bidenpost,
+	cat,
+	dog,
+	drakememe,
+	iphoneAlert,
 	jail,
 	mnm,
 	oogway,
 	pooh,
 	sadcat,
 	wanted,
-	whowouldwin,
-	wouldyourather,
-	rename,
+
+	// Dev commands
+	test,
+	error,
+	shutdown,
 ];
-const devCommands: Command[] = [test, error, shutdown];
-const allCommands: Command[] = [...globalCommands, ...devCommands];
-export default { globalCommands, devCommands, allCommands };
+
+export default allCommands;

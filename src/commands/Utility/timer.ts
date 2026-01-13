@@ -6,7 +6,7 @@ import {
 } from 'discord.js';
 import { type Command, CommandCategory } from '@/types';
 import sendMessage from '@/util/sendMessage';
-import config from '@/config';
+import getEmoji from '@/util/getEmoji';
 export default {
 	data: new SlashCommandBuilder()
 		.setName('timer')
@@ -34,8 +34,7 @@ export default {
 			return sendMessage({
 				interaction,
 				message: 'Invalid duration. Use a format like 5d 4h 3m 2s.',
-				emoji: config.emojis.Failed,
-				ephemeral: true,
+				emoji: getEmoji('Failed'),
 			});
 		}
 
