@@ -34,6 +34,7 @@ import accountage from './Utility/accountage';
 import timer from './Utility/timer';
 import rename from './Utility/rename';
 import shutdown from './Utility/shutdown';
+import message from './Utility/message';
 
 const allCommands: Command[] = [
 	// Fun commands
@@ -57,6 +58,7 @@ const allCommands: Command[] = [
 	bugreport,
 	id,
 	invite,
+	message,
 	user,
 	nickname,
 	rename,
