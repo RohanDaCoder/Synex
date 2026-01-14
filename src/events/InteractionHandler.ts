@@ -5,7 +5,7 @@ import { CommandContext } from '../commands';
 import { isDeveloper, isDevMode } from '../validations';
 import { cooldownManager } from '../validations/cooldown';
 import { emoji } from '../config';
-import { sendMessage } from '../utils/index.js';
+import { sendMessage } from '../utils/index';
 
 export class InteractionHandler {
   async execute(interaction: ChatInputCommandInteraction): Promise<void> {

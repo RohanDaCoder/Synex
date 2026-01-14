@@ -1,6 +1,6 @@
 import type { LogType } from '../types';
 import colors, { bold, gray, whiteBright } from 'yoctocolors';
-import { config } from '../config/index.js';
+import { config } from '../config/index';
 
 interface LogOptions {
   timestamp?: boolean;

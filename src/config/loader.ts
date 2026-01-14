@@ -1,4 +1,4 @@
-import type { Config } from './schema.js';
+import type { Config } from './schema';
 
 function getEnv(key: string, required: boolean): string | undefined {
   const value = process.env[key];
