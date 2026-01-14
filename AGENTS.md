@@ -76,7 +76,6 @@ All commits must follow the established repository convention.
 - Concise, imperative description
 - One logical change per commit
 - No punctuation or emojis
-- Always use replace tool, if rewriting or making a huge change, then overwrite the file.
 
 ### Examples
 
@@ -144,8 +143,9 @@ Trial-and-error, placeholder logic, or “good enough” solutions are forbidden
 - Explicit, correct TypeScript types are required everywhere
 - `any`, unsafe casts, ignored errors, or lint bypasses are forbidden
 - Naming conventions must exactly match existing code
-- Use the custom sendMessage, logger inside src/utils folder.
-
+- Use the custom sendMessage, logger from the utils folder
+- Always use replace tool, if rewriting or making a huge change, then overwrite the file.
+- Do not write file extensions, bundlers handles them
 ---
 
 ## Restrictions

@@ -1,25 +1,25 @@
 {
-  "name": "synex",
-  "module": "index.ts",
-  "private": true,
-  "scripts": {
-    "start": "bun dist/index.js",
-    "dev": "bun --watch run src/",
-    "build": "bun run typecheck && bun build src/index.ts --sourcemap --outdir=dist/ --production --target=bun",
-    "build:node": "bun run build --target=node",
-    "deploy": "bun run build && bun run start",
-    "format": "prettier -w .",
-    "typecheck": "oxlint -f stylish && tsc --noEmit"
-  },
-  "type": "module",
-  "dependencies": {
-    "discord.js": "^14.25.1",
-    "dotenv": "^17.2.3",
-    "yoctocolors": "^2.1.2"
-  },
-  "devDependencies": {
-    "oxlint": "^1.39.0",
-    "prettier": "^3.7.4",
-    "typescript": "^5.9.3"
-  }
+	"name": "synex",
+	"module": "index.ts",
+	"private": true,
+	"scripts": {
+		"start": "bun dist/index.js",
+		"dev": "bun --watch run src/",
+		"build": "bun run typecheck && bun build src/index.ts --sourcemap --outdir=dist/ --production --target=bun",
+		"build:node": "bun run build --target=node",
+		"deploy": "bun run build && bun run start",
+		"format": "prettier -w .",
+		"typecheck": "oxlint -f stylish && tsc --noEmit"
+	},
+	"type": "module",
+	"dependencies": {
+		"discord.js": "^14.25.1",
+		"dotenv": "^17.2.3",
+		"yoctocolors": "^2.1.2"
+	},
+	"devDependencies": {
+		"oxlint": "^1.39.0",
+		"prettier": "^3.7.4",
+		"typescript": "^5.9.3"
+	}
 }

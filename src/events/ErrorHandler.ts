@@ -1,7 +1,7 @@
-import { logger } from '../services/logger';
+import { logger } from '../utils/logger';
 
 export class ErrorHandler {
-  execute(error: Error): void {
-    logger.error('Unhandled error', error);
-  }
+	execute(error: Error): void {
+		logger.error('Unhandled error', error);
+	}
 }

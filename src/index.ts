@@ -1,18 +1,18 @@
 import 'dotenv/config';
 import { createClient, setupBot, loadCommands } from './bot';
 import { config } from './config';
-import { logger } from './services/logger';
+import { logger } from './utils/logger';
 
 async function main(): Promise<void> {
-  const client = createClient();
-  await loadCommands();
+	const client = createClient();
+	await loadCommands();
 
-  setupBot(client);
+	setupBot(client);
 
-  await client.login(config.discord.token);
+	await client.login(config.discord.token);
 }
 
 main().catch((err) => {
-  logger.error('Fatal error', err as Error);
-  process.exit(1);
+	logger.error('Fatal error', err as Error);
+	process.exit(1);
 });
