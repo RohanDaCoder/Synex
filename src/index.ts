@@ -1,39 +1,18 @@
-import { Client } from 'discord.js';
 import 'dotenv/config';
-import log from './util/log';
-import loadEvents from './util/loadEvents';
-import allCommands from './commands/commands';
-import commandHandler from './handlers/commandHandler';
-import config from './config';
-import { CommandCategory } from './types';
+import { createClient, setupBot, loadCommands } from './bot';
+import { config } from './config';
+import { logger } from './services/logger';
 
-const client = new Client({
-	intents: ['Guilds', 'GuildMessages'],
+async function main(): Promise<void> {
+  const client = createClient();
+  await loadCommands();
+
+  setupBot(client);
+
+  await client.login(config.discord.token);
+}
+
+main().catch((err) => {
+  logger.error('Fatal error', err as Error);
+  process.exit(1);
 });
-
-const globalCommands = allCommands.filter(
-	(cmd) => cmd.category !== CommandCategory.Dev,
-);
-const devCommands = allCommands.filter(
-	(cmd) => cmd.category === CommandCategory.Dev,
-);
-
-export const globalCommandHandler = new commandHandler(
-	globalCommands,
-	client,
-	config,
-	'global',
-);
-
-export const devCommandHandler = new commandHandler(
-	devCommands,
-	client,
-	config,
-	'dev',
-);
-
-log('INFO', 'Starting...');
-client.login(process.env.token).then(async () => {
-	await loadEvents();
-});
-export default client;

@@ -9,12 +9,7 @@
 		"prefer-switch": "warn",
 		"error-message": "error",
 		"prefer-ternary": "warn",
-		"unicorn/filename-case": [
-			"error",
-			{
-				"case": "camelCase"
-			}
-		],
+		"unicorn/filename-case": "off",
 		"typescript/explicit-module-boundary-types": "off",
 		"typescript/no-explicit-any": "off",
 		"no-unused-vars": "error",

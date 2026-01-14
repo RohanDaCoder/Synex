@@ -1,7 +1,6 @@
-```md
 # Synex Agent Guidelines
 
-Synex is a **GitHub-hosted Discord bot** built with **Bun**.  
+Synex is a **Discord bot** built with **Bun**.  
 These rules are **strictly enforced** and act as a binding contract for all agents and contributors.  
 Any output that violates these rules is considered **invalid**.
 
@@ -13,6 +12,7 @@ Any output that violates these rules is considered **invalid**.
 
 - **Bun only**
 - Use `bun help` for command reference.
+- Use `bunx` to run package binarys.
 
 ### Linting
 
@@ -57,7 +57,7 @@ All commits must follow the established repository convention.
 
 ### Format
 
-<type>: <short, imperative description>
+<type>: <short, minimal, imperative description>
 
 ### Allowed Types
 
@@ -71,11 +71,11 @@ All commits must follow the established repository convention.
 - `git` — gitignore or repository configuration
 
 ### Rules
-
 - Lowercase type
 - Concise, imperative description
 - One logical change per commit
 - No punctuation or emojis
+- Always use replace tool, if rewriting or making a huge change, then overwrite the file. 
 
 ### Examples
 
@@ -178,15 +178,14 @@ Any of the following immediately invalidate the output:
 Before finalizing output, the agent **must** confirm:
 
 - [ ] Project structure analyzed
-- [ ] `types.ts` reviewed
+- [ ] Types properly reviewed
 - [ ] Existing patterns followed
 - [ ] Code is minimal and task-scoped
 - [ ] All types are explicit and safe
 - [ ] No comments added
-- [ ] `bun run build` passes
+- [ ] Build passes
 - [ ] User tested and approved changes
 - [ ] Commit message follows standard
 - [ ] Changes committed and pushed to GitHub
 
 If any checklist item cannot be confirmed, the agent must not proceed.
-```
