@@ -14,10 +14,10 @@ Any output that violates these rules is considered **invalid**.
 - Use `bun help` for command reference.
 - Use `bunx` to run package binarys.
 
-### Linting
+### Typechecking
 
-- **OxLint**
-- Command: `bun run lint`
+- **OxLint + TSC**
+- Command: `bun run typecheck`
 - All rules are mandatory.
 
 ### Formatting
@@ -71,11 +71,12 @@ All commits must follow the established repository convention.
 - `git` — gitignore or repository configuration
 
 ### Rules
+
 - Lowercase type
 - Concise, imperative description
 - One logical change per commit
 - No punctuation or emojis
-- Always use replace tool, if rewriting or making a huge change, then overwrite the file. 
+- Always use replace tool, if rewriting or making a huge change, then overwrite the file.
 
 ### Examples
 
@@ -144,6 +145,7 @@ Trial-and-error, placeholder logic, or “good enough” solutions are forbidden
 - `any`, unsafe casts, ignored errors, or lint bypasses are forbidden
 - Naming conventions must exactly match existing code
 - Use the custom sendMessage, logger inside src/utils folder.
+
 ---
 
 ## Restrictions
