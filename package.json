@@ -9,7 +9,7 @@
 		"build:node": "bun run build --target=node",
 		"deploy": "bun run build && bun run start",
 		"lint": "oxlint -f stylish",
-		"format": "prettier -w ."
+		"format": "prettier -wc ."
 	},
 	"type": "module",
 	"dependencies": {
