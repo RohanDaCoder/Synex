@@ -23,7 +23,6 @@ function log(logType: LogType, message: string) {
 			break;
 		default:
 			throw new TypeError('Invalid type provided in log function');
-			break;
 	}
 	const paddedLogType = ` ${logType} `;
 	const timestamp = new Date().toLocaleTimeString([], {

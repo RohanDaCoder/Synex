@@ -92,13 +92,14 @@ export default {
 				color: 'Red',
 				ephemeral: true,
 			});
-		} else {
-			await sendMessage({
-				interaction,
-				message: 'Message sent',
-				emoji: getEmoji('Success'),
-				color: 'Green',
-			});
+			return;
 		}
+
+		await sendMessage({
+			interaction,
+			message: 'Message sent',
+			emoji: getEmoji('Success'),
+			color: 'Green',
+		});
 	},
 } as Command;

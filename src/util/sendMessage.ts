@@ -1,4 +1,4 @@
-import { EmbedBuilder } from 'discord.js';
+import { EmbedBuilder, type InteractionReplyOptions } from 'discord.js';
 import type { ReplyOptions } from '../types';
 
 /**
@@ -25,19 +25,18 @@ async function sendMessage(props: ReplyOptions): Promise<void> {
 		.setColor(color)
 		.setTimestamp();
 
+	const payload: InteractionReplyOptions = {
+		embeds: [embed],
+		flags: ephemeral ? 'Ephemeral' : undefined,
+		components,
+	};
+
 	if (interaction.replied || interaction.deferred) {
-		await interaction.followUp({
-			embeds: [embed],
-			flags: ephemeral ? 'Ephemeral' : undefined,
-			components,
-		});
-	} else {
-		await interaction.reply({
-			embeds: [embed],
-			flags: ephemeral ? 'Ephemeral' : undefined,
-			components,
-		});
+		await interaction.followUp(payload);
+		return;
 	}
+
+	await interaction.reply(payload);
 }
 
 export default sendMessage;
