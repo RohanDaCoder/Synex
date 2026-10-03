@@ -144,6 +144,7 @@ Trial-and-error, placeholder logic, or “good enough” solutions are forbidden
 - `any`, unsafe casts, ignored errors, or lint bypasses are forbidden
 - Naming conventions must exactly match existing code
 - Use the custom sendMessage, logger inside src/utils folder.
+
 ---
 
 ## Restrictions
