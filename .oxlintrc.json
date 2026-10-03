@@ -6,7 +6,6 @@
 	},
 	"plugins": ["typescript", "eslint", "unicorn"],
 	"rules": {
-		"prefer-switch": "warn",
 		"error-message": "error",
 		"prefer-ternary": "warn",
 		"unicorn/filename-case": [
@@ -39,7 +38,6 @@
 		"no-empty": "error",
 		"no-eq-null": "error",
 		"no-eval": "warn",
-		"no-invalid-this": "error",
 		"no-redeclare": "error",
 		"default-case-last": "warn",
 		"eqeqeq": ["warn", "always"],
