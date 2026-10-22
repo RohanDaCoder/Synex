@@ -5,23 +5,18 @@
 	"scripts": {
 		"start": "bun dist/index.js",
 		"dev": "bun --watch run src/",
-		"build": "bun run lint && tsc --noEmit && bun build src/index.ts --sourcemap --outdir=dist/ --production --target=bun",
+		"build": "bun run lint && bun check && bun build src/index.ts --sourcemap --outdir=dist/ --production --target=bun",
 		"build:node": "bun run build --target=node",
 		"deploy": "bun run build && bun run start",
-		"lint": "oxlint -f stylish",
-		"format": "prettier -wc ."
+		"lint": "bun lint --config .oxlintrc.json",
+		"format": "bun fmt --config .prettierrc"
 	},
 	"type": "module",
 	"dependencies": {
-		"axios": "^1.13.5",
-		"discord.js": "^14.25.1",
-		"dotenv": "^17.3.1",
-		"parse-duration": "^2.1.5",
-		"yoctocolors": "^2.1.2"
-	},
-	"devDependencies": {
-		"oxlint": "^1.47.0",
-		"prettier": "^3.8.1",
-		"typescript": "^5.9.3"
+		"axios": "^1.20.0",
+		"discord.js": "^14.27.0",
+		"dotenv": "^18.0.8",
+		"parse-duration": "^2.1.9",
+		"yoctocolors": "^2.2.0"
 	}
 }
